@@ -1,0 +1,21 @@
+{
+    "raspberry_pie" : {
+        "arm32":{
+            "cross_compiler_binary_prefix" : "arm-eabi-",
+            "unwanted_gcc_options" : [],
+            "wanted_gnat_options" : ["-msoft-float", "-fno-PIE", "-nostdlib", "-fno-exceptions", "-gnatp"]
+        },
+        "arm64":{
+            "cross_compiler_binary_prefix" : "aarch64-linux-gnu-",
+            "unwanted_gcc_options" : [],
+            "wanted_gnat_options" : ["-msoft-float", "-fno-PIE", "-nostdlib", "-fno-exceptions", "-gnatp"]
+        }
+    },
+    "jetson_nano" : {
+        "arm64":{
+            "cross_compiler_binary_prefix" : "aarch64-linux-gnu-",
+            "unwanted_gcc_options" : [],
+            "wanted_gnat_options" : ["-fno-PIE"]
+        }
+    }
+}

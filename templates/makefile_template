@@ -1,0 +1,5 @@
+obj-m := <module_name>.o
+<module_name>-y := <expanded_module_objects>
+
+all:
+	make ARCH=<target_architecture> CROSS_COMPILE=<cross_compile_path_and_prefix> -C <kernel_sources_path> M=<makefile_location> modules

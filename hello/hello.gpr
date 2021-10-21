@@ -1,0 +1,103 @@
+project hello is
+
+    for create_missing_dirs use "True";
+    for Languages use ("ada", "c");
+    for Target use "armhf-linux";
+    for Source_Dirs use ("src");
+    for Object_Dir use "obj";
+
+    package Compiler is
+        --for Local_Configuration_Pragmas use "gnat.adc";
+        for Switches ("Ada") use (
+            "-msoft-float",
+"-fno-PIE",
+"-nostdlib",
+"-fno-exceptions",
+"-gnatp"
+            );
+        for Switches ("C") use (
+            "-nostdinc",
+"-isystem",
+"/home/henley/wave/arm-elf-linux64/gnat/install/bin/../lib/gcc/arm-eabi/10.3.1/include",
+"-I/home/henley/adacore/repos/cross/linux_rp32/arch/arm/include",
+"-I/home/henley/adacore/repos/cross/linux_rp32/arch/arm/include/generated",
+"-I/home/henley/adacore/repos/cross/linux_rp32/include",
+"-I/home/henley/adacore/repos/cross/linux_rp32/arch/arm/include/uapi",
+"-I/home/henley/adacore/repos/cross/linux_rp32/arch/arm/include/generated/uapi",
+"-I/home/henley/adacore/repos/cross/linux_rp32/include/uapi",
+"-I/home/henley/adacore/repos/cross/linux_rp32/include/generated/uapi",
+"-include",
+"/home/henley/adacore/repos/cross/linux_rp32/include/linux/kconfig.h",
+"-include",
+"/home/henley/adacore/repos/cross/linux_rp32/include/linux/compiler_types.h",
+"-D__KERNEL__",
+"-mlittle-endian",
+"-fmacro-prefix-map=./=",
+"-Wall",
+"-Wundef",
+"-Werror=strict-prototypes",
+"-Wno-trigraphs",
+"-fno-strict-aliasing",
+"-fno-common",
+"-fshort-wchar",
+"-fno-PIE",
+"-Werror=implicit-function-declaration",
+"-Werror=implicit-int",
+"-Werror=return-type",
+"-Wno-format-security",
+"-std=gnu89",
+"-fno-dwarf2-cfi-asm",
+"-fno-omit-frame-pointer",
+"-mapcs",
+"-mno-sched-prolog",
+"-fno-ipa-sra",
+"-mabi=aapcs-linux",
+"-mfpu=vfp",
+"-marm",
+"-Wa,-mno-warn-deprecated",
+"-D__LINUX_ARM_ARCH__=7",
+"-march=armv7-a",
+"-msoft-float",
+"-Uarm",
+"-fno-delete-null-pointer-checks",
+"-Wno-frame-address",
+"-Wno-format-truncation",
+"-Wno-format-overflow",
+"-Wno-address-of-packed-member",
+"-O2",
+"-fno-allow-store-data-races",
+"-Wframe-larger-than=1024",
+"-fstack-protector-strong",
+"-Wimplicit-fallthrough",
+"-Wno-unused-but-set-variable",
+"-Wno-unused-const-variable",
+"-fno-omit-frame-pointer",
+"-fno-optimize-sibling-calls",
+"-pg",
+"-Wdeclaration-after-statement",
+"-Wvla",
+"-Wno-pointer-sign",
+"-Wno-stringop-truncation",
+"-Wno-zero-length-bounds",
+"-Wno-array-bounds",
+"-Wno-stringop-overflow",
+"-Wno-restrict",
+"-Wno-maybe-uninitialized",
+"-fno-strict-overflow",
+"-fno-stack-check",
+"-fconserve-stack",
+"-Werror=date-time",
+"-Werror=incompatible-pointer-types",
+"-Werror=designated-init",
+"-Wno-packed-not-aligned",
+"-DMODULE",
+"-DKBUILD_BASENAME='hello'",
+"-DKBUILD_MODNAME='hello'"
+            );
+    end Compiler;
+
+    package Linker is
+        for Switches ("Ada") use ("-Wl,-r");
+    end Linker;
+
+end hello;
