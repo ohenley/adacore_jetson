@@ -1,0 +1,15 @@
+graph: { title: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-bitops.adb"
+node: { title: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-bitops.adb:system__bit_ops__raise_error" label: "Raise_Error\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-bitops.adb:214:4\n16 bytes (static)\n0 dynamic objects" }
+node: { title: "ada__exceptions__call_last_chance_handler_with_message" label: "Call_Last_Chance_Handler_With_Message\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-except.adb:40:14" shape : ellipse }
+edge: { sourcename: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-bitops.adb:system__bit_ops__raise_error" targetname: "ada__exceptions__call_last_chance_handler_with_message" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-except.adb:95:10" }
+node: { title: "system__bit_ops__bit_and" label: "Bit_And\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-bitops.adb:83:4\n16 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "system__bit_ops__bit_and" targetname: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-bitops.adb:system__bit_ops__raise_error" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-bitops.adb:96:10" }
+node: { title: "system__bit_ops__bit_eq" label: "Bit_Eq\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-bitops.adb:108:4\n48 bytes (static)\n0 dynamic objects" }
+node: { title: "memcmp" label: "builtin_memcmp\n<built-in>" shape : ellipse }
+edge: { sourcename: "system__bit_ops__bit_eq" targetname: "memcmp" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-bitops.adb:127:34" }
+node: { title: "system__bit_ops__bit_not" label: "Bit_Not\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-bitops.adb:146:4\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "system__bit_ops__bit_or" label: "Bit_Or\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-bitops.adb:164:4\n16 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "system__bit_ops__bit_or" targetname: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-bitops.adb:system__bit_ops__raise_error" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-bitops.adb:177:10" }
+node: { title: "system__bit_ops__bit_xor" label: "Bit_Xor\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-bitops.adb:189:4\n16 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "system__bit_ops__bit_xor" targetname: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-bitops.adb:system__bit_ops__raise_error" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-bitops.adb:202:10" }
+}

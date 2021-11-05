@@ -1,0 +1,9 @@
+graph: { title: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valboo.adb"
+node: { title: "system__val_bool__value_boolean" label: "Value_Boolean\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valboo.adb:40:4\n80 bytes (dynamic)\n1 dynamic objects\n S /home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valboo.adb:43:7" }
+node: { title: "memcpy" label: "builtin_memcpy\n<built-in>" shape : ellipse }
+edge: { sourcename: "system__val_bool__value_boolean" targetname: "memcpy" }
+node: { title: "system__val_util__normalize_string" label: "Normalize_String\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valuti.ads:41:14" shape : ellipse }
+edge: { sourcename: "system__val_bool__value_boolean" targetname: "system__val_util__normalize_string" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valboo.adb:46:7" }
+node: { title: "system__val_util__bad_value" label: "Bad_Value\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valuti.ads:37:14" shape : ellipse }
+edge: { sourcename: "system__val_bool__value_boolean" targetname: "system__val_util__bad_value" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valboo.adb:55:10" }
+}

@@ -9,7 +9,9 @@ extern void ada_cleanup_module (void);
 
 int init_module(void)
 {
+    printk(KERN_INFO "before");
     ada_init_module();
+    printk(KERN_INFO "after");
     return 0;
 }
 

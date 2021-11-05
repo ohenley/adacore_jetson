@@ -1,0 +1,8 @@
+graph: { title: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-memory.adb"
+node: { title: "__gnat_malloc" label: "Alloc\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-memory.adb:48:4\n16 bytes (static)\n0 dynamic objects" }
+node: { title: "ada__exceptions__call_last_chance_handler_with_message" label: "Call_Last_Chance_Handler_With_Message\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-except.adb:40:14" shape : ellipse }
+edge: { sourcename: "__gnat_malloc" targetname: "ada__exceptions__call_last_chance_handler_with_message" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-except.adb:95:10" }
+node: { title: "malloc" label: "C_Malloc\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-memory.adb:41:13" shape : ellipse }
+edge: { sourcename: "__gnat_malloc" targetname: "malloc" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-memory.adb:66:17" }
+edge: { sourcename: "__gnat_malloc" targetname: "ada__exceptions__call_last_chance_handler_with_message" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-except.adb:95:10" }
+}

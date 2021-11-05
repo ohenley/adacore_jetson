@@ -1,0 +1,26 @@
+graph: { title: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-tags.adb"
+node: { title: "ada__tags__tag_tableIP" label: "tag_tableIP\n<built-in>\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "memset" label: "builtin_memset\n<built-in>" shape : ellipse }
+edge: { sourcename: "ada__tags__tag_tableIP" targetname: "memset" }
+node: { title: "ada__tags__address_arrayIP" label: "address_arrayIP\n<built-in>\n0 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "ada__tags__address_arrayIP" targetname: "memset" }
+node: { title: "ada__tags__type_specific_dataIP" label: "type_specific_dataIP\n<built-in>\n0 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "ada__tags__type_specific_dataIP" targetname: "memset" }
+node: { title: "ada__tags__dispatch_table_wrapperIP" label: "dispatch_table_wrapperIP\n<built-in>\n0 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "ada__tags__dispatch_table_wrapperIP" targetname: "memset" }
+node: { title: "ada__tags__no_dispatch_table_wrapperIP" label: "no_dispatch_table_wrapperIP\n<built-in>\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "ada__tags__cw_membership" label: "Cw_Membership\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-tags.adb:79:4\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "ada__tags__expanded_name" label: "Expanded_Name\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-tags.adb:97:4\n48 bytes (static)\n0 dynamic objects" }
+node: { title: "ada__exceptions__call_last_chance_handler_with_message" label: "Call_Last_Chance_Handler_With_Message\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-except.adb:40:14" shape : ellipse }
+edge: { sourcename: "ada__tags__expanded_name" targetname: "ada__exceptions__call_last_chance_handler_with_message" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-tags.adb:104:10" }
+node: { title: "system__secondary_stack__ss_allocate" label: "Ss_Allocate\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-secsta.ads:58:14" shape : ellipse }
+edge: { sourcename: "ada__tags__expanded_name" targetname: "system__secondary_stack__ss_allocate" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-tags.adb:110:7" }
+node: { title: "memcpy" label: "builtin_memcpy\n<built-in>" shape : ellipse }
+edge: { sourcename: "ada__tags__expanded_name" targetname: "memcpy" }
+node: { title: "ada__tags__external_tag" label: "External_Tag\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-tags.adb:117:4\n48 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "ada__tags__external_tag" targetname: "ada__exceptions__call_last_chance_handler_with_message" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-tags.adb:124:10" }
+edge: { sourcename: "ada__tags__external_tag" targetname: "system__secondary_stack__ss_allocate" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-tags.adb:130:7" }
+edge: { sourcename: "ada__tags__external_tag" targetname: "memcpy" }
+node: { title: "ada__tags__parent_tag" label: "Parent_Tag\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-tags.adb:153:4\n16 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "ada__tags__parent_tag" targetname: "ada__exceptions__call_last_chance_handler_with_message" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-tags.adb:159:10" }
+}

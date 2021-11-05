@@ -1,0 +1,131 @@
+graph: { title: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb"
+node: { title: "system__libm_single__identity" label: "Identity\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.ads:522:4\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "system__libm_single__nan" label: "Nan\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.ads:527:4\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "system__libm_single__exact" label: "Exact\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.ads:529:4\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "system__libm_single__epsilon" label: "Epsilon\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.ads:531:4\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "system__libm_single__maximum_relative_error" label: "Maximum_Relative_Error\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.ads:533:4\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "system__libm_single__float_approximations__float_polynomials__polynomialIPXnb" label: "polynomialIPXnb\n<built-in>\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "system__libm_single__float_approximations__approx_asinXn" label: "Approx_Asin\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:107:7\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "system__libm_single__float_approximations__approx_atanXn" label: "Approx_Atan\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:157:7\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "system__libm_single__float_approximations__approx_cosXn" label: "Approx_Cos\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:199:7\n0 bytes (static)\n1 dynamic objects\n Cos_P /home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:204:10" }
+node: { title: "system__libm_single__float_approximations__approx_expXn" label: "Approx_Exp\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:250:7\n0 bytes (static)\n2 dynamic objects\n Exp_P /home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:252:10\n Exp_Q /home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:267:10" }
+node: { title: "system__libm_single__float_approximations__approx_logXn" label: "Approx_Log\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:299:7\n0 bytes (static)\n2 dynamic objects\n Log_P /home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:301:10\n Log_Q /home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:311:10" }
+node: { title: "system__libm_single__float_approximations__approx_power_logXn" label: "Approx_Power_Log\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:342:7\n0 bytes (static)\n1 dynamic objects\n Power_Log_P /home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:343:10" }
+node: { title: "system__libm_single__float_approximations__approx_exp2Xn" label: "Approx_Exp2\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:369:7\n0 bytes (static)\n1 dynamic objects\n Exp2_P /home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:370:10" }
+node: { title: "system__libm_single__float_approximations__approx_sinXn" label: "Approx_Sin\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:392:7\n0 bytes (static)\n1 dynamic objects\n Sin_P /home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:397:10" }
+node: { title: "system__libm_single__float_approximations__approx_sinhXn" label: "Approx_Sinh\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:434:7\n0 bytes (static)\n2 dynamic objects\n Sinh_P /home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:435:10\n Sinh_Q /home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:446:10" }
+node: { title: "system__libm_single__float_approximations__approx_tanXn" label: "Approx_Tan\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:472:7\n0 bytes (static)\n2 dynamic objects\n Tan_P /home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:473:10\n Tan_Q /home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:482:10" }
+node: { title: "system__libm_single__float_approximations__approx_cotXn" label: "Approx_Cot\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:507:7\n0 bytes (static)\n2 dynamic objects\n Tan_P /home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:508:10\n Tan_Q /home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:517:10" }
+node: { title: "system__libm_single__float_approximations__approx_tanhXn" label: "Approx_Tanh\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:541:7\n0 bytes (static)\n2 dynamic objects\n Tanh_P /home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:542:10\n Tanh_Q /home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:552:10" }
+node: { title: "system__libm_single__float_approximations__asinXn" label: "Asin\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:577:7\n32 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "system__libm_single__float_approximations__asinXn" targetname: "system__libm_single__float_approximations__approx_asinXn" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:587:31" }
+node: { title: "sqrtf" label: "Sqrt\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-lisisq.ads:40:13" shape : ellipse }
+edge: { sourcename: "system__libm_single__float_approximations__asinXn" targetname: "sqrtf" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:821:13" }
+edge: { sourcename: "system__libm_single__float_approximations__asinXn" targetname: "system__libm_single__float_approximations__approx_asinXn" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:594:57" }
+node: { title: "system__libm_single__float_approximations__multiply_addXn" label: "Multiply_Add\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:98:7\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "system__libm_single__instantiations__acosXn" label: "Acos\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:610:4\n48 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "system__libm_single__instantiations__acosXn" targetname: "system__libm_single__float_approximations__approx_asinXn" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:624:41" }
+edge: { sourcename: "system__libm_single__instantiations__acosXn" targetname: "sqrtf" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:821:13" }
+edge: { sourcename: "system__libm_single__instantiations__acosXn" targetname: "system__libm_single__float_approximations__approx_asinXn" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:634:25" }
+node: { title: "system__libm_single__instantiations__atan2Xn" label: "Atan2\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:646:4\n32 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "system__libm_single__instantiations__atan2Xn" targetname: "system__libm_single__float_approximations__approx_atanXn" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:736:20" }
+edge: { sourcename: "system__libm_single__instantiations__atan2Xn" targetname: "system__libm_single__float_approximations__approx_atanXn" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:736:20" }
+edge: { sourcename: "system__libm_single__instantiations__atan2Xn" targetname: "system__libm_single__float_approximations__approx_atanXn" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:736:20" }
+edge: { sourcename: "system__libm_single__instantiations__atan2Xn" targetname: "system__libm_single__float_approximations__approx_atanXn" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:736:20" }
+node: { title: "system__libm_single__float_tableIP" label: "float_tableIP\n<built-in>\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "system__libm_single__reduce_1_16" label: "Reduce_1_16\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:109:4\n16 bytes (static)\n0 dynamic objects" }
+node: { title: "system__fat_flt__attr_float__machine_rounding" label: "Machine_Rounding\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-fatgen.ads:71:13" shape : ellipse }
+edge: { sourcename: "system__libm_single__reduce_1_16" targetname: "system__fat_flt__attr_float__machine_rounding" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:110:8" }
+node: { title: "system__libm_single__reconstruct_pow" label: "Reconstruct_Pow\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:175:4\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "system__fat_flt__attr_float__scaling" label: "Scaling\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-fatgen.ads:81:13" shape : ellipse }
+edge: { sourcename: "system__libm_single__reconstruct_pow" targetname: "system__fat_flt__attr_float__scaling" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:186:19" }
+node: { title: "system__libm_single__reduce_044" label: "Reduce_044\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:193:4\n16 bytes (static)\n0 dynamic objects" }
+node: { title: "system__libm_single__reduce_ln_2" label: "Reduce_Ln_2\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:224:4\n48 bytes (static)\n0 dynamic objects" }
+node: { title: "system__fat_flt__attr_float__rounding" label: "Rounding\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-fatgen.ads:79:13" shape : ellipse }
+edge: { sourcename: "system__libm_single__reduce_ln_2" targetname: "system__fat_flt__attr_float__rounding" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:228:35" }
+node: { title: "system__libm_single__split_veltkamp" label: "Split_Veltkamp\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:253:4\n32 bytes (static)\n0 dynamic objects" }
+node: { title: "system__libm_single__reduce_half_pi_large" label: "Reduce_Half_Pi_Large\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:264:4\n128 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "system__libm_single__reduce_half_pi_large" targetname: "system__fat_flt__attr_float__machine_rounding" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:295:16" }
+node: { title: "system__libm_single__reduce_half_pi" label: "Reduce_Half_Pi\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:303:4\n64 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "system__libm_single__reduce_half_pi" targetname: "system__fat_flt__attr_float__machine_rounding" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:313:39" }
+edge: { sourcename: "system__libm_single__reduce_half_pi" targetname: "system__libm_single__reduce_half_pi_large" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:331:10" }
+node: { title: "acosf" label: "Acos\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:348:4\n0 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "acosf" targetname: "system__libm_single__instantiations__acosXn" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:348:54" }
+node: { title: "asinf" label: "Asin\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:374:4\n32 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "asinf" targetname: "system__libm_single__float_approximations__approx_asinXn" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:587:31" }
+edge: { sourcename: "asinf" targetname: "sqrtf" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:821:13" }
+edge: { sourcename: "asinf" targetname: "system__libm_single__float_approximations__approx_asinXn" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:594:57" }
+node: { title: "atanf" label: "Atan\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:406:4\n0 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "atanf" targetname: "system__libm_single__instantiations__atan2Xn" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:406:54" }
+node: { title: "atan2f" label: "Atan2\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:412:4\n0 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "atan2f" targetname: "system__libm_single__instantiations__atan2Xn" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:412:57" }
+node: { title: "atanhf" label: "Atanh\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:418:4\n48 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "atanhf" targetname: "logf" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:630:17" }
+edge: { sourcename: "atanhf" targetname: "logf" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:630:17" }
+node: { title: "cosf" label: "Cos\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:430:4\n32 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "cosf" targetname: "system__libm_single__reduce_half_pi" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:439:7" }
+edge: { sourcename: "cosf" targetname: "system__libm_single__float_approximations__approx_cosXn" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:442:20" }
+edge: { sourcename: "cosf" targetname: "system__libm_single__float_approximations__approx_sinXn" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:444:20" }
+node: { title: "expf" label: "Exp\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:512:4\n32 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "expf" targetname: "system__libm_single__reduce_ln_2" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:533:7" }
+edge: { sourcename: "expf" targetname: "system__libm_single__float_approximations__approx_expXn" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:534:12" }
+edge: { sourcename: "expf" targetname: "system__fat_flt__attr_float__scaling" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:535:19" }
+node: { title: "coshf" label: "Cosh\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:454:4\n16 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "coshf" targetname: "expf" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:497:15" }
+edge: { sourcename: "coshf" targetname: "expf" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:503:15" }
+node: { title: "exp2f" label: "Exp2\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:542:4\n32 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "exp2f" targetname: "system__fat_flt__attr_float__scaling" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:565:22" }
+node: { title: "logf" label: "Log\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:578:4\n48 bytes (static)\n0 dynamic objects" }
+node: { title: "system__fat_flt__attr_float__decompose" label: "Decompose\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-fatgen.adb:150:14" shape : ellipse }
+edge: { sourcename: "logf" targetname: "system__fat_flt__attr_float__decompose" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:582:42" }
+edge: { sourcename: "logf" targetname: "system__fat_flt__attr_float__scaling" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:584:42" }
+edge: { sourcename: "logf" targetname: "system__libm_single__float_approximations__approx_logXn" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:608:17" }
+node: { title: "acoshf" label: "Acosh\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:354:4\n48 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "acoshf" targetname: "logf" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:362:17" }
+edge: { sourcename: "acoshf" targetname: "sqrtf" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:821:13" }
+edge: { sourcename: "acoshf" targetname: "logf" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:630:17" }
+edge: { sourcename: "acoshf" targetname: "sqrtf" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:821:13" }
+edge: { sourcename: "acoshf" targetname: "logf" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:366:17" }
+node: { title: "asinhf" label: "Asinh\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:380:4\n64 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "asinhf" targetname: "logf" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:392:17" }
+edge: { sourcename: "asinhf" targetname: "sqrtf" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:821:13" }
+edge: { sourcename: "asinhf" targetname: "logf" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:630:17" }
+edge: { sourcename: "asinhf" targetname: "logf" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:396:17" }
+node: { title: "log1pf" label: "Log1p\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:618:4\n48 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "log1pf" targetname: "logf" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:630:17" }
+node: { title: "log2f" label: "Log2\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:638:4\n16 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "log2f" targetname: "logf" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:644:7" }
+node: { title: "powf" label: "Pow\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:650:4\n128 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "powf" targetname: "system__fat_flt__attr_float__decompose" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:659:32" }
+edge: { sourcename: "powf" targetname: "system__fat_flt__attr_float__decompose" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:660:32" }
+edge: { sourcename: "powf" targetname: "system__fat_flt__attr_float__rounding" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:789:25" }
+edge: { sourcename: "powf" targetname: "system__fat_flt__attr_float__rounding" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:811:28" }
+edge: { sourcename: "powf" targetname: "system__fat_flt__attr_float__rounding" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:789:25" }
+edge: { sourcename: "powf" targetname: "system__fat_flt__attr_float__rounding" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libm.adb:861:30" }
+edge: { sourcename: "powf" targetname: "system__libm_single__reduce_044" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:685:10" }
+edge: { sourcename: "powf" targetname: "system__libm_single__float_approximations__approx_power_logXn" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:689:16" }
+edge: { sourcename: "powf" targetname: "system__fat_flt__attr_float__machine_rounding" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:110:8" }
+edge: { sourcename: "powf" targetname: "system__fat_flt__attr_float__machine_rounding" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:110:8" }
+edge: { sourcename: "powf" targetname: "system__fat_flt__attr_float__machine_rounding" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:110:8" }
+edge: { sourcename: "powf" targetname: "system__fat_flt__attr_float__machine_rounding" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:110:8" }
+edge: { sourcename: "powf" targetname: "system__libm_single__float_approximations__approx_exp2Xn" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:723:15" }
+edge: { sourcename: "powf" targetname: "system__fat_flt__attr_float__scaling" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:186:19" }
+node: { title: "sinf" label: "Sin\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:738:4\n48 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "sinf" targetname: "system__libm_single__reduce_half_pi" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:747:7" }
+edge: { sourcename: "sinf" targetname: "system__libm_single__float_approximations__approx_sinXn" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:749:38" }
+edge: { sourcename: "sinf" targetname: "system__libm_single__float_approximations__approx_cosXn" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:749:58" }
+node: { title: "sinhf" label: "Sinh\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:758:4\n48 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "sinhf" targetname: "system__libm_single__float_approximations__approx_sinhXn" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:801:17" }
+edge: { sourcename: "sinhf" targetname: "expf" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:806:15" }
+edge: { sourcename: "sinhf" targetname: "expf" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:812:15" }
+node: { title: "system__libm_single__sqrt" label: "Sqrt\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:821:13\n0 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "system__libm_single__sqrt" targetname: "sqrtf" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:821:13" }
+node: { title: "tanf" label: "Tan\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:828:4\n48 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "tanf" targetname: "system__libm_single__reduce_half_pi" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:836:7" }
+edge: { sourcename: "tanf" targetname: "system__libm_single__float_approximations__approx_tanXn" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:842:17" }
+edge: { sourcename: "tanf" targetname: "system__libm_single__float_approximations__approx_cotXn" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:845:17" }
+node: { title: "tanhf" label: "Tanh\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:853:4\n48 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "tanhf" targetname: "expf" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:867:36" }
+edge: { sourcename: "tanhf" targetname: "system__libm_single__float_approximations__approx_tanhXn" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:869:23" }
+node: { title: "system__libm_single__multiply_add" label: "Multiply_Add\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-libsin.adb:169:4\n0 bytes (static)\n0 dynamic objects" }
+}

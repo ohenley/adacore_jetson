@@ -1,0 +1,5 @@
+graph: { title: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-imgcha.adb"
+node: { title: "system__img_char__image_character" label: "Image_Character\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-imgcha.adb:38:4\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "system__img_char__image_character_05" label: "Image_Character_05\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-imgcha.adb:169:4\n0 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "system__img_char__image_character_05" targetname: "system__img_char__image_character" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-imgcha.adb:180:10" }
+}

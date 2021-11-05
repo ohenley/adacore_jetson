@@ -1,0 +1,85 @@
+graph: { title: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb"
+node: { title: "interfaces__c__char_arrayIP" label: "char_arrayIP\n<built-in>\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "interfaces__c__wchar_arrayIP" label: "wchar_arrayIP\n<built-in>\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "interfaces__c__char16_arrayIP" label: "char16_arrayIP\n<built-in>\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "interfaces__c__char32_arrayIP" label: "char32_arrayIP\n<built-in>\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "interfaces__c__is_nul_terminated" label: "Is_Nul_Terminated\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:40:4\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "interfaces__c__is_nul_terminated__2" label: "Is_Nul_Terminated\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:53:4\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "interfaces__c__is_nul_terminated__3" label: "Is_Nul_Terminated\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:66:4\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "interfaces__c__is_nul_terminated__4" label: "Is_Nul_Terminated\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:79:4\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "interfaces__c__to_ada" label: "To_Ada\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:96:4\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "interfaces__c__to_ada__2" label: "To_Ada\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:103:4\n48 bytes (static)\n0 dynamic objects" }
+node: { title: "ada__exceptions__call_last_chance_handler_with_message" label: "Call_Last_Chance_Handler_With_Message\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-except.adb:40:14" shape : ellipse }
+edge: { sourcename: "interfaces__c__to_ada__2" targetname: "ada__exceptions__call_last_chance_handler_with_message" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:116:16" }
+node: { title: "system__secondary_stack__ss_allocate" label: "Ss_Allocate\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-secsta.ads:58:14" shape : ellipse }
+edge: { sourcename: "interfaces__c__to_ada__2" targetname: "system__secondary_stack__ss_allocate" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:130:7" }
+edge: { sourcename: "interfaces__c__to_ada__2" targetname: "system__secondary_stack__ss_allocate" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:130:7" }
+node: { title: "interfaces__c__to_ada__3" label: "To_Ada\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:144:4\n16 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "interfaces__c__to_ada__3" targetname: "ada__exceptions__call_last_chance_handler_with_message" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:158:16" }
+node: { title: "__gnat_last_chance_handler" label: "gnat_last_chance_handler\n<built-in>" shape : ellipse }
+edge: { sourcename: "interfaces__c__to_ada__3" targetname: "__gnat_last_chance_handler" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:173:10" }
+node: { title: "interfaces__c__to_ada__4" label: "To_Ada\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:190:4\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "interfaces__c__to_ada__5" label: "To_Ada\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:197:4\n48 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "interfaces__c__to_ada__5" targetname: "ada__exceptions__call_last_chance_handler_with_message" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:210:16" }
+edge: { sourcename: "interfaces__c__to_ada__5" targetname: "system__secondary_stack__ss_allocate" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:224:7" }
+edge: { sourcename: "interfaces__c__to_ada__5" targetname: "system__secondary_stack__ss_allocate" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:224:7" }
+node: { title: "interfaces__c__to_ada__6" label: "To_Ada\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:238:4\n16 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "interfaces__c__to_ada__6" targetname: "ada__exceptions__call_last_chance_handler_with_message" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:252:16" }
+edge: { sourcename: "interfaces__c__to_ada__6" targetname: "__gnat_last_chance_handler" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:267:10" }
+node: { title: "interfaces__c__to_ada__7" label: "To_Ada\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:283:4\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "interfaces__c__to_ada__8" label: "To_Ada\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:290:4\n64 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "interfaces__c__to_ada__8" targetname: "ada__exceptions__call_last_chance_handler_with_message" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:303:16" }
+edge: { sourcename: "interfaces__c__to_ada__8" targetname: "system__secondary_stack__ss_allocate" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:317:7" }
+edge: { sourcename: "interfaces__c__to_ada__8" targetname: "system__secondary_stack__ss_allocate" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:317:7" }
+node: { title: "interfaces__c__to_ada__9" label: "To_Ada\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:331:4\n16 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "interfaces__c__to_ada__9" targetname: "ada__exceptions__call_last_chance_handler_with_message" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:345:16" }
+edge: { sourcename: "interfaces__c__to_ada__9" targetname: "__gnat_last_chance_handler" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:360:10" }
+node: { title: "interfaces__c__to_ada__10" label: "To_Ada\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:376:4\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "interfaces__c__to_ada__11" label: "To_Ada\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:383:4\n48 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "interfaces__c__to_ada__11" targetname: "ada__exceptions__call_last_chance_handler_with_message" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:396:16" }
+edge: { sourcename: "interfaces__c__to_ada__11" targetname: "system__secondary_stack__ss_allocate" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:410:7" }
+edge: { sourcename: "interfaces__c__to_ada__11" targetname: "system__secondary_stack__ss_allocate" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:410:7" }
+node: { title: "interfaces__c__to_ada__12" label: "To_Ada\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:424:4\n16 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "interfaces__c__to_ada__12" targetname: "ada__exceptions__call_last_chance_handler_with_message" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:438:16" }
+edge: { sourcename: "interfaces__c__to_ada__12" targetname: "__gnat_last_chance_handler" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:453:10" }
+node: { title: "interfaces__c__to_c" label: "To_C\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:473:4\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "interfaces__c__to_c__2" label: "To_C\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:480:4\n48 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "interfaces__c__to_c__2" targetname: "__gnat_last_chance_handler" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:487:13" }
+edge: { sourcename: "interfaces__c__to_c__2" targetname: "system__secondary_stack__ss_allocate" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:486:10" }
+edge: { sourcename: "interfaces__c__to_c__2" targetname: "__gnat_last_chance_handler" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:509:13" }
+edge: { sourcename: "interfaces__c__to_c__2" targetname: "__gnat_last_chance_handler" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:515:16" }
+edge: { sourcename: "interfaces__c__to_c__2" targetname: "system__secondary_stack__ss_allocate" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:514:13" }
+node: { title: "interfaces__c__to_c__3" label: "To_C\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:530:4\n16 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "interfaces__c__to_c__3" targetname: "__gnat_last_chance_handler" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:540:10" }
+edge: { sourcename: "interfaces__c__to_c__3" targetname: "__gnat_last_chance_handler" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:551:16" }
+node: { title: "interfaces__c__to_c__4" label: "To_C\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:565:4\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "interfaces__c__to_c__5" label: "To_C\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:572:4\n48 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "interfaces__c__to_c__5" targetname: "__gnat_last_chance_handler" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:579:13" }
+edge: { sourcename: "interfaces__c__to_c__5" targetname: "system__secondary_stack__ss_allocate" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:578:10" }
+edge: { sourcename: "interfaces__c__to_c__5" targetname: "__gnat_last_chance_handler" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:599:13" }
+edge: { sourcename: "interfaces__c__to_c__5" targetname: "__gnat_last_chance_handler" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:603:16" }
+edge: { sourcename: "interfaces__c__to_c__5" targetname: "system__secondary_stack__ss_allocate" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:602:13" }
+node: { title: "interfaces__c__to_c__6" label: "To_C\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:618:4\n16 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "interfaces__c__to_c__6" targetname: "__gnat_last_chance_handler" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:628:10" }
+edge: { sourcename: "interfaces__c__to_c__6" targetname: "__gnat_last_chance_handler" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:639:16" }
+node: { title: "interfaces__c__to_c__7" label: "To_C\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:653:4\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "interfaces__c__to_c__8" label: "To_C\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:660:4\n48 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "interfaces__c__to_c__8" targetname: "__gnat_last_chance_handler" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:667:13" }
+edge: { sourcename: "interfaces__c__to_c__8" targetname: "system__secondary_stack__ss_allocate" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:666:10" }
+edge: { sourcename: "interfaces__c__to_c__8" targetname: "__gnat_last_chance_handler" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:687:13" }
+edge: { sourcename: "interfaces__c__to_c__8" targetname: "__gnat_last_chance_handler" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:691:16" }
+edge: { sourcename: "interfaces__c__to_c__8" targetname: "system__secondary_stack__ss_allocate" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:690:13" }
+node: { title: "interfaces__c__to_c__9" label: "To_C\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:706:4\n16 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "interfaces__c__to_c__9" targetname: "__gnat_last_chance_handler" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:716:10" }
+edge: { sourcename: "interfaces__c__to_c__9" targetname: "__gnat_last_chance_handler" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:727:16" }
+node: { title: "interfaces__c__to_c__10" label: "To_C\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:741:4\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "interfaces__c__to_c__11" label: "To_C\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:748:4\n48 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "interfaces__c__to_c__11" targetname: "__gnat_last_chance_handler" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:755:13" }
+edge: { sourcename: "interfaces__c__to_c__11" targetname: "system__secondary_stack__ss_allocate" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:754:10" }
+edge: { sourcename: "interfaces__c__to_c__11" targetname: "__gnat_last_chance_handler" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:774:13" }
+edge: { sourcename: "interfaces__c__to_c__11" targetname: "__gnat_last_chance_handler" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:778:16" }
+edge: { sourcename: "interfaces__c__to_c__11" targetname: "system__secondary_stack__ss_allocate" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:777:13" }
+node: { title: "interfaces__c__to_c__12" label: "To_C\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:793:4\n16 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "interfaces__c__to_c__12" targetname: "__gnat_last_chance_handler" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:803:10" }
+edge: { sourcename: "interfaces__c__to_c__12" targetname: "__gnat_last_chance_handler" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-c.adb:814:16" }
+}

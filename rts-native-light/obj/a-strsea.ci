@@ -1,0 +1,48 @@
+graph: { title: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb"
+node: { title: "ada__strings__search__count" label: "Count\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:80:4\n96 bytes (static)\n0 dynamic objects" }
+node: { title: "memcmp" label: "builtin_memcmp\n<built-in>" shape : ellipse }
+edge: { sourcename: "ada__strings__search__count" targetname: "memcmp" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:109:24" }
+node: { title: "ada__exceptions__call_last_chance_handler_with_message" label: "Call_Last_Chance_Handler_With_Message\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-except.adb:40:14" shape : ellipse }
+edge: { sourcename: "ada__strings__search__count" targetname: "ada__exceptions__call_last_chance_handler_with_message" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:91:10" }
+node: { title: "ada__strings__search__count__2" label: "Count\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:153:4\n112 bytes (static)\n0 dynamic objects" }
+node: { title: "__gnat_last_chance_handler" label: "gnat_last_chance_handler\n<built-in>" shape : ellipse }
+edge: { sourcename: "ada__strings__search__count__2" targetname: "__gnat_last_chance_handler" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:177:10" }
+node: { title: "__indirect_call" label: "Indirect Call Placeholder" shape : ellipse }
+edge: { sourcename: "ada__strings__search__count__2" targetname: "__indirect_call" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:185:31" }
+edge: { sourcename: "ada__strings__search__count__2" targetname: "ada__exceptions__call_last_chance_handler_with_message" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:164:10" }
+node: { title: "ada__strings__search__count__3" label: "Count\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:208:4\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "ada__strings__search__find_token" label: "Find_Token\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:229:4\n16 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "ada__strings__search__find_token" targetname: "ada__exceptions__call_last_chance_handler_with_message" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:241:10" }
+node: { title: "ada__strings__search__find_token__2" label: "Find_Token\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:283:4\n16 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "ada__strings__search__find_token__2" targetname: "__gnat_last_chance_handler" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:328:10" }
+node: { title: "ada__strings__search__index" label: "Index\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:340:4\n96 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "ada__strings__search__index" targetname: "memcmp" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:367:27" }
+edge: { sourcename: "ada__strings__search__index" targetname: "memcmp" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:412:27" }
+edge: { sourcename: "ada__strings__search__index" targetname: "ada__exceptions__call_last_chance_handler_with_message" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:350:10" }
+node: { title: "ada__strings__search__index__2" label: "Index\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:457:4\n112 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "ada__strings__search__index__2" targetname: "__gnat_last_chance_handler" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:472:10" }
+edge: { sourcename: "ada__strings__search__index__2" targetname: "__indirect_call" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:486:42" }
+edge: { sourcename: "ada__strings__search__index__2" targetname: "__indirect_call" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:512:42" }
+edge: { sourcename: "ada__strings__search__index__2" targetname: "ada__exceptions__call_last_chance_handler_with_message" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:466:10" }
+node: { title: "ada__strings__search__index__3" label: "Index\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:539:4\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "ada__strings__search__index__4" label: "Index\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:578:4\n32 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "ada__strings__search__index__4" targetname: "ada__exceptions__call_last_chance_handler_with_message" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:596:13" }
+edge: { sourcename: "ada__strings__search__index__4" targetname: "ada__strings__search__index" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:600:12" }
+edge: { sourcename: "ada__strings__search__index__4" targetname: "ada__exceptions__call_last_chance_handler_with_message" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:609:13" }
+edge: { sourcename: "ada__strings__search__index__4" targetname: "ada__strings__search__index" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:613:12" }
+node: { title: "ada__strings__search__index__5" label: "Index\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:624:4\n32 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "ada__strings__search__index__5" targetname: "ada__exceptions__call_last_chance_handler_with_message" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:640:13" }
+edge: { sourcename: "ada__strings__search__index__5" targetname: "ada__strings__search__index__2" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:643:17" }
+edge: { sourcename: "ada__strings__search__index__5" targetname: "ada__exceptions__call_last_chance_handler_with_message" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:648:13" }
+edge: { sourcename: "ada__strings__search__index__5" targetname: "ada__strings__search__index__2" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:651:17" }
+node: { title: "ada__strings__search__index__6" label: "Index\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:656:4\n32 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "ada__strings__search__index__6" targetname: "ada__exceptions__call_last_chance_handler_with_message" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:672:13" }
+edge: { sourcename: "ada__strings__search__index__6" targetname: "ada__strings__search__index__3" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:676:12" }
+edge: { sourcename: "ada__strings__search__index__6" targetname: "ada__exceptions__call_last_chance_handler_with_message" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:680:13" }
+edge: { sourcename: "ada__strings__search__index__6" targetname: "ada__strings__search__index__3" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:684:12" }
+node: { title: "ada__strings__search__index_non_blank" label: "Index_Non_Blank\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:692:4\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "ada__strings__search__index_non_blank__2" label: "Index_Non_Blank\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:723:4\n16 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "ada__strings__search__index_non_blank__2" targetname: "ada__exceptions__call_last_chance_handler_with_message" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:738:13" }
+edge: { sourcename: "ada__strings__search__index_non_blank__2" targetname: "ada__exceptions__call_last_chance_handler_with_message" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:746:13" }
+node: { title: "ada__strings__search__is_identity" label: "Is_Identity\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strsea.adb:754:4\n0 bytes (static)\n0 dynamic objects" }
+}

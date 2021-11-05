@@ -1,0 +1,5 @@
+graph: { title: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-imglli.ads"
+node: { title: "system__img_lli__impl__set_image_integer" label: "Set_Image_Integer\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-imagei.adb:109:4\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "system__img_lli__impl__image_integer" label: "Image_Integer\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-imagei.adb:48:4\n0 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "system__img_lli__impl__image_integer" targetname: "system__img_lli__impl__set_image_integer" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-imagei.adb:66:7" }
+}

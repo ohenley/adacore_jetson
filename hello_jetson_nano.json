@@ -7,7 +7,7 @@
     "target_platform" : "jetson_nano",
     "target_architecture" : "arm64",
 
-    "kernel_sources_path" : "/home/henley/adacore/repos/cross/linux_jetson_nano/output",
-    "cross_compiler_path" : "/home/henley/wave/aarch64-linux-linux64/gnat/install/bin",
+    "kernel_sources_path" : "/home/henley/cross/output",
+    "cross_compiler_path" : "/home/henley/adacore/e3-distrib-3.8-20210805-x86_64-linux-bin/wave/aarch64-linux-linux64/gnat/install/bin",
     "platform_definitions_filepath" : "platforms.json"
 }

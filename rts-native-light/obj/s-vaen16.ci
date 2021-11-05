@@ -1,0 +1,18 @@
+graph: { title: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-vaen16.ads"
+node: { title: "system__val_enum_16__impl__value_enumeration_pos" label: "Value_Enumeration_Pos\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valuen.adb:52:4\n128 bytes (dynamic)\n1 dynamic objects\n S /home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valuen.adb:62:7" }
+node: { title: "memcpy" label: "builtin_memcpy\n<built-in>" shape : ellipse }
+edge: { sourcename: "system__val_enum_16__impl__value_enumeration_pos" targetname: "memcpy" }
+node: { title: "system__val_util__normalize_string" label: "Normalize_String\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valuti.ads:41:14" shape : ellipse }
+edge: { sourcename: "system__val_enum_16__impl__value_enumeration_pos" targetname: "system__val_util__normalize_string" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valuen.adb:79:7" }
+node: { title: "__indirect_call" label: "Indirect Call Placeholder" shape : ellipse }
+edge: { sourcename: "system__val_enum_16__impl__value_enumeration_pos" targetname: "__indirect_call" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valuen.adb:87:42" }
+node: { title: "memcmp" label: "builtin_memcmp\n<built-in>" shape : ellipse }
+edge: { sourcename: "system__val_enum_16__impl__value_enumeration_pos" targetname: "memcmp" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valuen.adb:92:48" }
+edge: { sourcename: "system__val_enum_16__impl__value_enumeration_pos" targetname: "memcmp" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valuen.adb:103:51" }
+node: { title: "system__val_enum_16__impl__valid_value_enumeration" label: "Valid_Value_Enumeration\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valuen.adb:118:4\n16 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "system__val_enum_16__impl__valid_value_enumeration" targetname: "system__val_enum_16__impl__value_enumeration_pos" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valuen.adb:127:14" }
+node: { title: "system__val_enum_16__impl__value_enumeration" label: "Value_Enumeration\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valuen.adb:134:4\n32 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "system__val_enum_16__impl__value_enumeration" targetname: "system__val_enum_16__impl__value_enumeration_pos" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valuen.adb:143:9" }
+node: { title: "system__val_util__bad_value" label: "Bad_Value\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valuti.ads:37:14" shape : ellipse }
+edge: { sourcename: "system__val_enum_16__impl__value_enumeration" targetname: "system__val_util__bad_value" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valuen.adb:149:10" }
+}

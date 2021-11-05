@@ -1,0 +1,7 @@
+graph: { title: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-widllli.ads"
+node: { title: "system__wid_llli__width_long_long_long_integer" label: "Width_Long_Long_Long_Integer\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-widthi.adb:32:1\n48 bytes (static)\n0 dynamic objects" }
+node: { title: "__udivti3" label: "udivti3\n<built-in>" shape : ellipse }
+edge: { sourcename: "system__wid_llli__width_long_long_long_integer" targetname: "__udivti3" }
+node: { title: "__divti3" label: "divti3\n<built-in>" shape : ellipse }
+edge: { sourcename: "system__wid_llli__width_long_long_long_integer" targetname: "__divti3" }
+}

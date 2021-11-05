@@ -1,0 +1,9 @@
+graph: { title: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-assert.adb"
+node: { title: "ada__assertions__assert" label: "Assert\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-assert.adb:39:4\n16 bytes (static)\n0 dynamic objects" }
+node: { title: "ada__exceptions__call_last_chance_handler_with_message" label: "Call_Last_Chance_Handler_With_Message\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-except.adb:40:14" shape : ellipse }
+edge: { sourcename: "ada__assertions__assert" targetname: "ada__exceptions__call_last_chance_handler_with_message" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-assert.adb:42:10" }
+node: { title: "ada__assertions__assert__2" label: "Assert\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-assert.adb:46:4\n16 bytes (static)\n0 dynamic objects" }
+node: { title: "__gnat_last_chance_handler" label: "Last_Chance_Handler\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-except.adb:34:14" shape : ellipse }
+edge: { sourcename: "ada__assertions__assert__2" targetname: "__gnat_last_chance_handler" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-assert.adb:49:10" }
+edge: { sourcename: "ada__assertions__assert__2" targetname: "ada__exceptions__call_last_chance_handler_with_message" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-assert.adb:49:10" }
+}

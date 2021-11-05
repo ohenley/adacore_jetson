@@ -36,11 +36,19 @@ def generate(config):
             else:
                 print(line)
 
+    #def find_objects():
+    #    files = identify_src_files(config)
+    #    objects = []
+    #    for file in files:
+    #        objects.append("obj/" + Path(file).stem + ".o")
+
+    #    return objects
+
     def find_objects():
-        files = identify_src_files(config)
+        obj_files = glob.glob(os.path.join(os.getcwd(), "big_test", "*.o"))
         objects = []
-        for file in files:
-            objects.append("obj/" + Path(file).stem + ".o")
+        for file in obj_files:
+            objects.append("../big_test/" + Path(file).stem + ".o")
 
         return objects
 
@@ -138,27 +146,28 @@ def generate(config):
         formatted_gcc_options = ",\n".join(gcc_options)
         replace_in_file(filepath, "<parsed_make_compilation_options>", formatted_gcc_options) 
         
-    generate_gpr_file()
+    #generate_gpr_file()
     generate_makefile("templates/makefile_template", config['module_path'], config['module_name'], " ".join(find_objects()), os.path.join(os.getcwd(), config['module_path']))
     #shutil.rmtree("tmp", ignore_errors=True)
 
 def build(config):
 
     def compile_module_files():
-        cmd = [os.path.join(config["cross_compiler_path"], "gprbuild"), config['module_name'] + ".gpr"]
+        cmd = [os.path.join(config["cross_compiler_path"], "gprbuild"), "-v", "-f", "-g", config['module_name'] + ".gpr" ]
         output, error = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=os.path.join(os.getcwd(), config['module_path'])).communicate()
-        print(error)
+        print(output.decode("utf-8"))
+        print(error.decode("utf-8"))
 
     def create_cmd_o_files():
         files = identify_src_files(config)
         for file in files:
             filepath = "obj/.{}.o.cmd".format(Path(file).stem)
             output, error = subprocess.Popen(["touch", filepath], stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=os.path.join(os.getcwd(), config['module_path'])).communicate()
-            print(error)
+            print(error.decode("utf-8"))
 
     def build_kernel_module():
         output, error = subprocess.Popen(["make"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=os.path.join(os.getcwd(), config['module_path'])).communicate()
-        print(error)
+        print(error.decode("utf-8"))
 
     os.environ["ENV_PREFIX"] = config['cross_compiler_path']
     compile_module_files()

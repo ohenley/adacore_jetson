@@ -3,8 +3,11 @@ project <module_name> is
     for create_missing_dirs use "True";
     for Languages use ("ada", "c");
     for Target use <target_architecture>;
+    --for Target use "aarch64-elf";
     for Source_Dirs use (<module_sources_path>);
     for Object_Dir use <module_build_path>;
+
+    for Runtime ("Ada") use "../rts/light";
 
     package Compiler is
         --for Local_Configuration_Pragmas use "gnat.adc";

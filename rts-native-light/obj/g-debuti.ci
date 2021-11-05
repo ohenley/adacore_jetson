@@ -1,0 +1,14 @@
+graph: { title: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/g-debuti.adb"
+node: { title: "gnat__debug_utilities__image__2" label: "IMAGE\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/g-debuti.adb:46:4\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "gnat__debug_utilities__image" label: "IMAGE\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/g-debuti.adb:81:4\n80 bytes (dynamic)\n1 dynamic objects\n W /home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/g-debuti.adb:82:7" }
+node: { title: "system__secondary_stack__ss_allocate" label: "Ss_Allocate\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-secsta.ads:58:14" shape : ellipse }
+edge: { sourcename: "gnat__debug_utilities__image" targetname: "system__secondary_stack__ss_allocate" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/g-debuti.adb:100:7" }
+node: { title: "memcpy" label: "builtin_memcpy\n<built-in>" shape : ellipse }
+edge: { sourcename: "gnat__debug_utilities__image" targetname: "memcpy" }
+node: { title: "gnat__debug_utilities__image_c" label: "IMAGE_C\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/g-debuti.adb:107:4\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "gnat__debug_utilities__value" label: "VALUE\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/g-debuti.adb:125:4\n16 bytes (static)\n0 dynamic objects" }
+node: { title: "__gnat_last_chance_handler" label: "gnat_last_chance_handler\n<built-in>" shape : ellipse }
+edge: { sourcename: "gnat__debug_utilities__value" targetname: "__gnat_last_chance_handler" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/g-debuti.adb:148:16" }
+edge: { sourcename: "gnat__debug_utilities__value" targetname: "__gnat_last_chance_handler" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/g-debuti.adb:174:16" }
+edge: { sourcename: "gnat__debug_utilities__value" targetname: "__gnat_last_chance_handler" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/g-debuti.adb:178:16" }
+}

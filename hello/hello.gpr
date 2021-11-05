@@ -2,80 +2,87 @@ project hello is
 
     for create_missing_dirs use "True";
     for Languages use ("ada", "c");
-    for Target use "armhf-linux";
-    for Source_Dirs use ("src");
+    for Target use "aarch64-linux";
+    for Source_Dirs use ("src", "../linux_interfaces");
     for Object_Dir use "obj";
 
+    for Library_Dir use "lib";
+    for Library_Name use "ada_linux";
+    for Library_Kind use "static";
+    for Library_Interface use ("ada_linux");
+
+    for Runtime ("Ada") use Project'Project_Dir & "../rts-native-light";
+
+    package Builder is
+        for Global_Configuration_Pragmas use "gnat.adc";
+    end Builder;
+
     package Compiler is
-        --for Local_Configuration_Pragmas use "gnat.adc";
-        for Switches ("Ada") use (
-            "-msoft-float",
-"-fno-PIE",
-"-nostdlib",
-"-fno-exceptions",
-"-gnatp"
-            );
+        -- for Switches ("Ada") use (
+        --     "-static", 
+	    --     "-nostdlib"
+	    --     --"-O2", 
+        --     --  "-ffunction-sections",
+        --     --  "-fdata-sections", 
+	    --     --"-mcmodel=kernel"         -- required for kernel development
+        -- );
         for Switches ("C") use (
             "-nostdinc",
 "-isystem",
-"/home/henley/wave/arm-elf-linux64/gnat/install/bin/../lib/gcc/arm-eabi/10.3.1/include",
-"-I/home/henley/adacore/repos/cross/linux_rp32/arch/arm/include",
-"-I/home/henley/adacore/repos/cross/linux_rp32/arch/arm/include/generated",
-"-I/home/henley/adacore/repos/cross/linux_rp32/include",
-"-I/home/henley/adacore/repos/cross/linux_rp32/arch/arm/include/uapi",
-"-I/home/henley/adacore/repos/cross/linux_rp32/arch/arm/include/generated/uapi",
-"-I/home/henley/adacore/repos/cross/linux_rp32/include/uapi",
-"-I/home/henley/adacore/repos/cross/linux_rp32/include/generated/uapi",
+"/home/henley/adacore/e3-distrib-3.8-20210805-x86_64-linux-bin/wave/aarch64-linux-linux64/gnat/install/bin/../lib/gcc/aarch64-linux-gnu/10.3.1/include",
+"-I/home/henley/cross/Linux_for_Tegra/source/public/kernel/kernel-4.9/arch/arm64/include",
+"-I/home/henley/cross/output/arch/arm64/include/generated/uapi",
+"-I/home/henley/cross/output/arch/arm64/include/generated",
+"-I/home/henley/cross/Linux_for_Tegra/source/public/kernel/kernel-4.9/include",
+"-I/home/henley/cross/output/include",
+"-I/home/henley/cross/Linux_for_Tegra/source/public/kernel/kernel-4.9/arch/arm64/include/uapi",
+"-I/home/henley/cross/Linux_for_Tegra/source/public/kernel/kernel-4.9/include/uapi",
+"-I/home/henley/cross/output/include/generated/uapi",
 "-include",
-"/home/henley/adacore/repos/cross/linux_rp32/include/linux/kconfig.h",
-"-include",
-"/home/henley/adacore/repos/cross/linux_rp32/include/linux/compiler_types.h",
+"/home/henley/cross/Linux_for_Tegra/source/public/kernel/kernel-4.9/include/linux/kconfig.h",
+"-I/home/henley/cross/Linux_for_Tegra/source/public/kernel/kernel-4.9//home/henley/adacore/repos/adacore_jetson/src",
+"-I/home/henley/adacore/repos/adacore_jetson/src",
 "-D__KERNEL__",
 "-mlittle-endian",
-"-fmacro-prefix-map=./=",
 "-Wall",
 "-Wundef",
-"-Werror=strict-prototypes",
+"-Wstrict-prototypes",
 "-Wno-trigraphs",
 "-fno-strict-aliasing",
 "-fno-common",
 "-fshort-wchar",
-"-fno-PIE",
-"-Werror=implicit-function-declaration",
-"-Werror=implicit-int",
-"-Werror=return-type",
+"-Werror-implicit-function-declaration",
 "-Wno-format-security",
 "-std=gnu89",
-"-fno-dwarf2-cfi-asm",
-"-fno-omit-frame-pointer",
-"-mapcs",
-"-mno-sched-prolog",
-"-fno-ipa-sra",
-"-mabi=aapcs-linux",
-"-mfpu=vfp",
-"-marm",
-"-Wa,-mno-warn-deprecated",
-"-D__LINUX_ARM_ARCH__=7",
-"-march=armv7-a",
-"-msoft-float",
-"-Uarm",
+"-fno-PIE",
+"-mgeneral-regs-only",
+"-DCONFIG_AS_LSE=1",
+"-fno-asynchronous-unwind-tables",
+"-mpc-relative-literal-loads",
+"-fno-pic",
 "-fno-delete-null-pointer-checks",
 "-Wno-frame-address",
 "-Wno-format-truncation",
 "-Wno-format-overflow",
+"-Wno-int-in-bool-context",
 "-Wno-address-of-packed-member",
+"-Wno-attribute-alias",
+"-Wno-address-of-packed-member",
+"-Wno-packed-not-aligned",
 "-O2",
-"-fno-allow-store-data-races",
-"-Wframe-larger-than=1024",
-"-fstack-protector-strong",
-"-Wimplicit-fallthrough",
+-- "-fno-allow-store-data-races",
+"-DCC_HAVE_ASM_GOTO",
+"-Wframe-larger-than=2048",
+"-fno-stack-protector",
 "-Wno-unused-but-set-variable",
 "-Wno-unused-const-variable",
 "-fno-omit-frame-pointer",
 "-fno-optimize-sibling-calls",
+"-fno-var-tracking-assignments",
+"-g",
 "-pg",
+"-fno-inline-functions-called-once",
 "-Wdeclaration-after-statement",
-"-Wvla",
 "-Wno-pointer-sign",
 "-Wno-stringop-truncation",
 "-Wno-zero-length-bounds",
@@ -84,20 +91,34 @@ project hello is
 "-Wno-restrict",
 "-Wno-maybe-uninitialized",
 "-fno-strict-overflow",
+"-fno-merge-all-constants",
+"-fmerge-constants",
 "-fno-stack-check",
 "-fconserve-stack",
+"-Werror=implicit-int",
+"-Werror=strict-prototypes",
 "-Werror=date-time",
 "-Werror=incompatible-pointer-types",
 "-Werror=designated-init",
+"-fmacro-prefix-map=/home/henley/cross/Linux_for_Tegra/source/public/kernel/kernel-4.9/=",
 "-Wno-packed-not-aligned",
+"-I/home/henley/cross/Linux_for_Tegra/source/public/kernel/nvidia/include",
+"-I/home/henley/cross/Linux_for_Tegra/source/public/kernel/nvgpu/include",
+"-I/home/henley/cross/Linux_for_Tegra/source/public/kernel/nvgpu-next/include",
+"-I/home/henley/cross/Linux_for_Tegra/source/public/kernel/nvidia-t23x/include",
 "-DMODULE",
+"-mcmodel=large",
 "-DKBUILD_BASENAME='hello'",
 "-DKBUILD_MODNAME='hello'"
             );
     end Compiler;
 
-    package Linker is
-        for Switches ("Ada") use ("-Wl,-r");
-    end Linker;
+    -- package Binder is
+    --    for Switches ("Ada") use ("-lgcc", "-nostdlib");
+    -- end Linker;
+
+    package Binder is
+        for Default_Switches ("Ada") use ("-nostdlib");
+    end Binder;
 
 end hello;

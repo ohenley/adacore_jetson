@@ -1,4 +1,4 @@
-pragma Restrictions (No_Secondary_Stack);
+--pragma Restrictions (No_Secondary_Stack);
 with Interfaces.C;
 
 package linux is

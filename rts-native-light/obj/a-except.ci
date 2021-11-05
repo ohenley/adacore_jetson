@@ -1,0 +1,7 @@
+graph: { title: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-except.adb"
+node: { title: "ada__exceptions__call_last_chance_handler_with_message" label: "Call_Last_Chance_Handler_With_Message\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-except.adb:45:4\n112 bytes (static)\n0 dynamic objects" }
+node: { title: "memcpy" label: "builtin_memcpy\n<built-in>" shape : ellipse }
+edge: { sourcename: "ada__exceptions__call_last_chance_handler_with_message" targetname: "memcpy" }
+node: { title: "__gnat_last_chance_handler" label: "Last_Chance_Handler\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-except.adb:34:14" shape : ellipse }
+edge: { sourcename: "ada__exceptions__call_last_chance_handler_with_message" targetname: "__gnat_last_chance_handler" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-except.adb:62:7" }
+}

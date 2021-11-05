@@ -1,0 +1,28 @@
+graph: { title: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valuti.adb"
+node: { title: "system__val_util__bad_value" label: "Bad_Value\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valuti.adb:40:4\n192 bytes (dynamic)\n1 dynamic objects\n S24b /home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valuti.adb:49:69" }
+node: { title: "ada__exceptions__call_last_chance_handler_with_message" label: "Call_Last_Chance_Handler_With_Message\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-except.adb:40:14" shape : ellipse }
+edge: { sourcename: "system__val_util__bad_value" targetname: "ada__exceptions__call_last_chance_handler_with_message" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valuti.adb:46:10" }
+node: { title: "memcpy" label: "builtin_memcpy\n<built-in>" shape : ellipse }
+edge: { sourcename: "system__val_util__bad_value" targetname: "memcpy" }
+edge: { sourcename: "system__val_util__bad_value" targetname: "ada__exceptions__call_last_chance_handler_with_message" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valuti.adb:49:10" }
+node: { title: "system__val_util__normalize_string" label: "Normalize_String\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valuti.adb:57:4\n48 bytes (static)\n0 dynamic objects" }
+node: { title: "system__case_util__to_upper" label: "To_Upper\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-casuti.ads:47:13" shape : ellipse }
+edge: { sourcename: "system__val_util__normalize_string" targetname: "system__case_util__to_upper" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valuti.adb:87:22" }
+node: { title: "system__val_util__scan_exponent" label: "Scan_Exponent\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valuti.adb:96:4\n16 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "system__val_util__scan_exponent" targetname: "system__val_util__bad_value" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valuti.adb:324:10" }
+edge: { sourcename: "system__val_util__scan_exponent" targetname: "system__val_util__bad_value" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valuti.adb:338:10" }
+node: { title: "system__val_util__scan_plus_sign" label: "Scan_Plus_Sign\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valuti.adb:179:4\n16 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "system__val_util__scan_plus_sign" targetname: "system__val_util__bad_value" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valuti.adb:189:10" }
+edge: { sourcename: "system__val_util__scan_plus_sign" targetname: "system__val_util__bad_value" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valuti.adb:199:13" }
+edge: { sourcename: "system__val_util__scan_plus_sign" targetname: "system__val_util__bad_value" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valuti.adb:212:13" }
+node: { title: "system__val_util__scan_sign" label: "Scan_Sign\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valuti.adb:223:4\n16 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "system__val_util__scan_sign" targetname: "system__val_util__bad_value" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valuti.adb:237:10" }
+edge: { sourcename: "system__val_util__scan_sign" targetname: "system__val_util__bad_value" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valuti.adb:247:13" }
+edge: { sourcename: "system__val_util__scan_sign" targetname: "system__val_util__bad_value" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valuti.adb:261:13" }
+edge: { sourcename: "system__val_util__scan_sign" targetname: "system__val_util__bad_value" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valuti.adb:272:13" }
+node: { title: "system__val_util__scan_trailing_blanks" label: "Scan_Trailing_Blanks\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valuti.adb:286:4\n16 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "system__val_util__scan_trailing_blanks" targetname: "system__val_util__bad_value" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valuti.adb:290:13" }
+node: { title: "system__val_util__scan_underscore" label: "Scan_Underscore\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valuti.adb:299:4\n16 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "system__val_util__scan_underscore" targetname: "system__val_util__bad_value" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valuti.adb:324:10" }
+edge: { sourcename: "system__val_util__scan_underscore" targetname: "system__val_util__bad_value" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-valuti.adb:338:10" }
+}

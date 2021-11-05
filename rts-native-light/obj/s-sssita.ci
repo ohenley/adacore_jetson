@@ -1,0 +1,5 @@
+graph: { title: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-sssita.adb"
+node: { title: "__gnat_get_secondary_stack" label: "Get_Sec_Stack\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-sssita.adb:49:4\n32 bytes (static)\n0 dynamic objects" }
+node: { title: "system__secondary_stack__ss_init" label: "Ss_Init\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-secsta.ads:49:14" shape : ellipse }
+edge: { sourcename: "__gnat_get_secondary_stack" targetname: "system__secondary_stack__ss_init" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-sssita.adb:56:10" }
+}

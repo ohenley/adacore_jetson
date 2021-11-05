@@ -1,0 +1,56 @@
+graph: { title: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strmap.adb"
+node: { title: "ada__strings__maps__Tcharacter_set_internalBIP" label: "Tcharacter_set_internalBIP\n<built-in>\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "ada__strings__maps__Tcharacter_mappingBIP" label: "Tcharacter_mappingBIP\n<built-in>\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "ada__strings__maps__character_rangeIP" label: "character_rangeIP\n<built-in>\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "ada__strings__maps__character_rangesIP" label: "character_rangesIP\n<built-in>\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "ada__strings__maps__Osubtract" label: "-\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strmap.adb:54:4\n96 bytes (static)\n0 dynamic objects" }
+node: { title: "system__bit_ops__bit_not" label: "Bit_Not\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-bitops.ads:68:14" shape : ellipse }
+edge: { sourcename: "ada__strings__maps__Osubtract" targetname: "system__bit_ops__bit_not" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strmap.adb:84:29" }
+node: { title: "system__bit_ops__bit_and" label: "Bit_And\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-bitops.ads:46:14" shape : ellipse }
+edge: { sourcename: "ada__strings__maps__Osubtract" targetname: "system__bit_ops__bit_and" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strmap.adb:75:40" }
+node: { title: "ada__strings__maps__Oeq" label: "=\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strmap.adb:63:4\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "system__bit_ops__bit_eq" label: "Bit_Eq\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-bitops.ads:57:13" shape : ellipse }
+edge: { sourcename: "ada__strings__maps__Oeq" targetname: "system__bit_ops__bit_eq" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strmap.adb:65:44" }
+node: { title: "ada__strings__maps__Oand" label: "And\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strmap.adb:72:4\n64 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "ada__strings__maps__Oand" targetname: "system__bit_ops__bit_and" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strmap.adb:75:40" }
+node: { title: "ada__strings__maps__Onot" label: "Not\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strmap.adb:82:4\n64 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "ada__strings__maps__Onot" targetname: "system__bit_ops__bit_not" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strmap.adb:84:29" }
+node: { title: "ada__strings__maps__Oor" label: "Or\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strmap.adb:91:4\n64 bytes (static)\n0 dynamic objects" }
+node: { title: "system__bit_ops__bit_or" label: "Bit_Or\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-bitops.ads:77:14" shape : ellipse }
+edge: { sourcename: "ada__strings__maps__Oor" targetname: "system__bit_ops__bit_or" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strmap.adb:94:40" }
+node: { title: "ada__strings__maps__Oxor" label: "Xor\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strmap.adb:101:4\n64 bytes (static)\n0 dynamic objects" }
+node: { title: "system__bit_ops__bit_xor" label: "Bit_Xor\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-bitops.ads:88:14" shape : ellipse }
+edge: { sourcename: "ada__strings__maps__Oxor" targetname: "system__bit_ops__bit_xor" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strmap.adb:104:40" }
+node: { title: "ada__strings__maps__is_in" label: "Is_In\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strmap.adb:111:4\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "ada__strings__maps__is_subset" label: "Is_Subset\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strmap.adb:121:4\n96 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "ada__strings__maps__is_subset" targetname: "system__bit_ops__bit_and" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strmap.adb:75:40" }
+edge: { sourcename: "ada__strings__maps__is_subset" targetname: "system__bit_ops__bit_eq" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strmap.adb:65:44" }
+node: { title: "ada__strings__maps__to_domain" label: "To_Domain\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strmap.adb:133:4\n304 bytes (static)\n0 dynamic objects" }
+node: { title: "system__secondary_stack__ss_allocate" label: "Ss_Allocate\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-secsta.ads:58:14" shape : ellipse }
+edge: { sourcename: "ada__strings__maps__to_domain" targetname: "system__secondary_stack__ss_allocate" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strmap.adb:166:7" }
+node: { title: "memcpy" label: "builtin_memcpy\n<built-in>" shape : ellipse }
+edge: { sourcename: "ada__strings__maps__to_domain" targetname: "memcpy" }
+node: { title: "ada__strings__maps__to_mapping" label: "To_Mapping\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strmap.adb:173:4\n48 bytes (static)\n0 dynamic objects" }
+node: { title: "ada__exceptions__call_last_chance_handler_with_message" label: "Call_Last_Chance_Handler_With_Message\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-except.adb:40:14" shape : ellipse }
+edge: { sourcename: "ada__strings__maps__to_mapping" targetname: "ada__exceptions__call_last_chance_handler_with_message" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strmap.adb:183:10" }
+edge: { sourcename: "ada__strings__maps__to_mapping" targetname: "ada__exceptions__call_last_chance_handler_with_message" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strmap.adb:195:13" }
+node: { title: "ada__strings__maps__to_range" label: "To_Range\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strmap.adb:226:4\n304 bytes (static)\n0 dynamic objects" }
+node: { title: "system__secondary_stack__ss_mark" label: "Ss_Mark\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-secsta.ads:67:13" shape : ellipse }
+edge: { sourcename: "ada__strings__maps__to_range" targetname: "system__secondary_stack__ss_mark" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strmap.adb:413:45" }
+node: { title: "system__secondary_stack__ss_release" label: "Ss_Release\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-secsta.ads:70:14" shape : ellipse }
+edge: { sourcename: "ada__strings__maps__to_range" targetname: "system__secondary_stack__ss_release" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strmap.adb:413:0" }
+edge: { sourcename: "ada__strings__maps__to_range" targetname: "system__secondary_stack__ss_allocate" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strmap.adb:415:7" }
+edge: { sourcename: "ada__strings__maps__to_range" targetname: "memcpy" }
+node: { title: "ada__strings__maps__to_ranges" label: "To_Ranges\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strmap.adb:422:4\n320 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "ada__strings__maps__to_ranges" targetname: "system__secondary_stack__ss_allocate" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strmap.adb:496:7" }
+edge: { sourcename: "ada__strings__maps__to_ranges" targetname: "memcpy" }
+node: { title: "ada__strings__maps__to_sequence" label: "To_Sequence\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strmap.adb:503:4\n304 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "ada__strings__maps__to_sequence" targetname: "system__secondary_stack__ss_allocate" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strmap.adb:526:7" }
+edge: { sourcename: "ada__strings__maps__to_sequence" targetname: "memcpy" }
+node: { title: "ada__strings__maps__to_set" label: "To_Set\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strmap.adb:533:4\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "ada__strings__maps__to_set__2" label: "To_Set\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strmap.adb:557:4\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "ada__strings__maps__to_set__3" label: "To_Set\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strmap.adb:570:4\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "ada__strings__maps__to_set__4" label: "To_Set\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strmap.adb:584:4\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "ada__strings__maps__value" label: "Value\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strmap.adb:595:4\n0 bytes (static)\n0 dynamic objects" }
+node: { title: "ada__strings__maps___elabs" label: "Maps\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-strmap.ads:51:1\n0 bytes (static)\n0 dynamic objects" }
+}

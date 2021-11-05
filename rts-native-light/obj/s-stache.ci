@@ -1,0 +1,3 @@
+graph: { title: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-stache.adb"
+node: { title: "system__stack_checking__stack_infoIP" label: "stack_infoIP\n<built-in>\n0 bytes (static)\n0 dynamic objects" }
+}

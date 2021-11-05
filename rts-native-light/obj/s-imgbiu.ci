@@ -1,0 +1,11 @@
+graph: { title: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-imgbiu.ads"
+node: { title: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-imgbiu.ads:system__img_biu__impl__set_image_based_unsigned__set_digits.0" label: "Set_Digits\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-imageb.adb:104:7\n32 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-imgbiu.ads:system__img_biu__impl__set_image_based_unsigned__set_digits.0" targetname: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-imgbiu.ads:system__img_biu__impl__set_image_based_unsigned__set_digits.0" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-imageb.adb:107:13" }
+node: { title: "system__img_biu__impl__set_image_based_unsigned" label: "Set_Image_Based_Unsigned\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-imageb.adb:84:4\n80 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "system__img_biu__impl__set_image_based_unsigned" targetname: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-imgbiu.ads:system__img_biu__impl__set_image_based_unsigned__set_digits.0" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-imageb.adb:131:7" }
+node: { title: "memset" label: "builtin_memset\n<built-in>" shape : ellipse }
+edge: { sourcename: "system__img_biu__impl__set_image_based_unsigned" targetname: "memset" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-imageb.adb:150:19" }
+node: { title: "system__img_biu__impl__set_image_based_integer" label: "Set_Image_Based_Integer\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-imageb.adb:38:4\n64 bytes (static)\n0 dynamic objects" }
+edge: { sourcename: "system__img_biu__impl__set_image_based_integer" targetname: "system__img_biu__impl__set_image_based_unsigned" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-imageb.adb:51:10" }
+edge: { sourcename: "system__img_biu__impl__set_image_based_integer" targetname: "system__img_biu__impl__set_image_based_unsigned" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-imageb.adb:65:13" }
+}
