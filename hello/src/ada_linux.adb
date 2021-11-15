@@ -1,125 +1,84 @@
-
-pragma Suppress (All_Checks);
-
 with system;
 with Interfaces.C; use Interfaces.C;
---with Interfaces.C.Strings;
 with linux;
-with gpio_h;
-with printk_h;
+-- with gpio_h;
+with Timer_H;
+with Jiffies_H;
+with Printk_H;
 
 with ada.unchecked_conversion;
 
 package body ada_linux is
 
-    procedure Last_Chance_Handler (Msg : System.Address; Line : Integer) is
-    begin
-        null;
-    end;
+    package IC renames Interfaces.C;
 
-    procedure Call_Last_Chance_Handler_With_Message (Message : String) is
+    --procedure Last_Chance_Handler (Msg : System.Address; Line : Integer) is
+    --begin
+    --    null;
+    --end;
+
+    --procedure Call_Last_Chance_Handler_With_Message (Message : String) is
+    --begin
+    --    null;
+    --end;
+    --function to_char_array is new Ada.Unchecked_Conversion (Source => string, Target => ic.char_array);
+
+    function "+" (s : String) return ic.char_array is
     begin
-        null;
-    end;
+        return to_c (s);
+    end "+";
 
     procedure ada_linuxinit;
     pragma Import (C, ada_linuxinit, "ada_linuxinit");
 
-    package IC renames Interfaces.C;
-    type chars_ptr is access Interfaces.C.char_array;
+
+    led_timer : aliased Timer_H.Timer_List;
+    counter : natural := 0;
+
+    procedure timer_callback (data : Interfaces.C.Unsigned_Long) with Convention => C;
+    procedure timer_callback (data : Interfaces.C.Unsigned_Long) is
+        res        : IC.int;
+        --from_timer : String := "from_timer";
+        str : ic.char_array := "toto" & ic.nul;
+    begin
+        res := linux.printk_int (str, 1);
+        --counter := counter + 1;
+    end timer_callback;
+
+    --type timer_acc is access all Timer_H.Timer_List;
+    --led_timer_acc : timer_acc := led_timer'Access;
+
+    procedure setup_timer is
+        --timer_cb_acc : timer_h.Timer_List_Function_T := timer_callback'Access;
+        str : ic.char_array := "yo" & ic.nul;
+        --name   : String        := "yo";
+    begin
+        timer_h.Init_Timer_Key (led_timer'Access, 0, str, System.Null_Address);
+        led_timer.C_Function := timer_callback'Access;
+        led_timer.data       := 0;
+    end setup_timer;
 
     procedure ada_init_module is
     begin
         ada_linuxinit;
         declare
-            res : IC.int;
-            hello : string := "kiri";
-            msg_hello : IC.char_array := to_c(hello);
+            msec_in_jiffies : ic.unsigned_long := jiffies_h.Msecs_To_Jiffies (1000);
+            jifs : ic.unsigned_long := jiffies_h.jiffies;
+            res  : IC.int;
         begin
-            -- res := printk_h.Vprintk (msg_hello, 1);
-            res := linux.printk_int (msg_hello, 1);
+            setup_timer;
+            res := timer_h.mod_timer (led_timer'Access, jifs + msec_in_jiffies);
+            res := linux.printk_int (+res'image, 1);
         end;
-    end;
+    end ada_init_module;
 
     procedure ada_cleanup_module is
-        msg_bye : IC.char_array := "bye!!! ";
-        res : IC.int;
+        --msg_bye : String := "bye!!!";
+        res     : IC.int;
     begin
-        msg_bye(msg_bye'last) := ic.nul;
-        res := linux.printk_int (msg_bye, 1);
-    end;
+        --res := linux.printk_int (+msg_bye, 1);
+        res := linux.printk_int (+(counter'image), 1);
+        res := timer_h.del_timer (led_timer'Access);
+    end ada_cleanup_module;
 
 end ada_linux;
-
-
-    --     for i in 1..5 loop
-    --     x := x + 1;
-    -- end loop;
-    -- if x < 0 then
-    --     toto;
-    -- end if;
-
-    -- procedure toto is
-    --     hello : string := "hello";
-    --     msg_hello : IC.char_array := to_c(hello);
-    -- begin
-    --     null;
-    -- end;
-
-
-    -- procedure Last_Chance_Handler (Msg : System.Address; Line : Integer) is
-    -- begin
-    --     null;
-    -- end Last_Chance_Handler;
-
-
-
-
-    -- procedure ada_init_module is
-    --     res : IC.int;
-    --     gpio_num : IC.unsigned := 16;
-    --     msg_zero : IC.char_array := "zero!!! ";
-    --     msg_puck : IC.char_array := "puck!!! ";
-    --     gpio_name : IC.char_array := "gpio16";
-    -- begin
-    --     res := gpio_h.gpio_request(gpio_num, gpio_name);
-    --     if res = 0 then
-    --         res := linux.printk_int (msg_zero, 1);
-    --     else
-    --         res := linux.printk_int (msg_puck, 1);
-    --     end if;
-    --     
-    -- end;
-
---    procedure ada_init_module is
---    use IC;
---        msg_gpio : IC.char_array := "gpio!!! ";
---        msg_hello : IC.char_array := "hello!!! ";
---        gpio_name : IC.char_array := "gpio-17";
---        gpio_num : IC.unsigned := 17;
---        irq_number : IC.int;
---        res : IC.int;
---    begin
---        res := gpio_h.gpio_request(gpio_num, gpio_name);
---        res := gpio_h.Gpio_Direction_Input (gpio_num);
---        irq_number := gpio_h.Gpio_To_Irq (gpio_num);
---
---        declare
---            irq_num_str : string := irq_number'image;
---            irq_num_str_len : ic.size_t := irq_num_str'Length;
---            irq_num : ic.char_array(1..irq_num_str_len);
---        begin
---            to_c(irq_num_str, irq_num, irq_num_str_len);
---            res := linux.printk_int (irq_num, 1);
---        end;
---
---        
---
---        if res = 0 then
---            msg_gpio(msg_gpio'last) := ic.nul;
---            res := linux.printk_int (msg_gpio, 1);
---        end if;
---
---        msg_gpio(msg_hello'last) := ic.nul;
---        res := linux.printk_int (msg_hello, 1);
---    end;

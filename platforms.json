@@ -14,7 +14,7 @@
     "jetson_nano" : {
         "arm64":{
             "cross_compiler_binary_prefix" : "aarch64-linux-gnu-",
-            "unwanted_gcc_options" : [],
+            "unwanted_gcc_options" : ["-fno-allow-store-data-races"],
             "wanted_gnat_options" : ["-fno-PIE"]
         }
     }

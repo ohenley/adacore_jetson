@@ -36,14 +36,6 @@ def generate(config):
             else:
                 print(line)
 
-    #def find_objects():
-    #    files = identify_src_files(config)
-    #    objects = []
-    #    for file in files:
-    #        objects.append("obj/" + Path(file).stem + ".o")
-
-    #    return objects
-
     def find_objects():
         obj_files = glob.glob(os.path.join(os.getcwd(), "big_test", "*.o"))
         objects = []
@@ -56,9 +48,7 @@ def generate(config):
         filepath = copy_and_rename_file(src, dst, "Makefile")
         replace_in_file(filepath, "<module_name>", module_name)
 
-        if len(expanded_module_objects) == 0:
-            expanded_module_objects = ""
-        replace_in_file(filepath, "<expanded_module_objects>", expanded_module_objects)
+        replace_in_file(filepath, "<expanded_module_objects>", "obj/bundle.o")
 
         if config["target_architecture"] == "arm32":
             replace_in_file(filepath, "<target_architecture>", "arm")
@@ -146,11 +136,21 @@ def generate(config):
         formatted_gcc_options = ",\n".join(gcc_options)
         replace_in_file(filepath, "<parsed_make_compilation_options>", formatted_gcc_options) 
         
-    #generate_gpr_file()
+    generate_gpr_file()
     generate_makefile("templates/makefile_template", config['module_path'], config['module_name'], " ".join(find_objects()), os.path.join(os.getcwd(), config['module_path']))
     #shutil.rmtree("tmp", ignore_errors=True)
 
 def build(config):
+
+    def build_bundle():
+        linker = os.path.join(config["cross_compiler_path"], config["cross_compiler_binary_prefix"] + "ld")
+        ada_module = os.path.join(os.getcwd(), config['module_path'], "lib/libada_linux.a")
+        rts = os.path.join(os.getcwd(), config["rts_path"], "libgnat.a")
+        bundle = os.path.join(config['module_path'], "obj/bundle.o")
+        cmd = [linker, "-i", "-o", "obj/bundle.o", "--whole-archive", ada_module, "--no-whole-archive", rts]
+        output, error = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=os.path.join(os.getcwd(), config['module_path'])).communicate()
+        print(output.decode("utf-8"))
+        print(error.decode("utf-8"))
 
     def compile_module_files():
         cmd = [os.path.join(config["cross_compiler_path"], "gprbuild"), "-v", "-f", "-g", config['module_name'] + ".gpr" ]
@@ -171,6 +171,7 @@ def build(config):
 
     os.environ["ENV_PREFIX"] = config['cross_compiler_path']
     compile_module_files()
+    build_bundle()
     create_cmd_o_files()
     build_kernel_module()
 

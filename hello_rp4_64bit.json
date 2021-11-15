@@ -8,6 +8,6 @@
     "target_architecture" : "arm64",
 
     "kernel_sources_path" : "/home/henley/adacore/repos/cross/linux_rp32",
-    "cross_compiler_path" : "/home/henley/wave/aarch64-linux-linux64/gnat/install/bin",
+    "cross_compiler_path" : "/home/henley/e3-20211024/wave/aarch64-linux-linux64/gnat/install/bin",
     "platform_definitions_filepath" : "platforms.json"
 }
