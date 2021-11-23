@@ -9,8 +9,7 @@ package linux is
     procedure printk (s : string);
 
     -- gpio
-    function gpio_request
-       (gpio : ic.unsigned; label : ic.char_array)
+    function gpio_request (gpio : ic.unsigned; label : ic.char_array)
         return ic.int with
         import        => true,
         convention    => c,
@@ -45,8 +44,7 @@ package linux is
     end record with
         convention => c;
 
-    type timer_list_function_t is access procedure
-       (data : ic.unsigned_long) with
+    type timer_list_function_t is access procedure (data : ic.unsigned_long) with
         convention => c;
 
     type timer_list is record
