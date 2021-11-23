@@ -121,14 +121,19 @@ class Make:
             formatted_gcc_options = ",\n".join(gcc_options)
             replace_in_file(filepath, "<parsed_make_compilation_options>", formatted_gcc_options) 
 
-
+        copyfile(os.path.join(os.getcwd(), "templates/gnat.adc"), os.path.join(os.getcwd(), config['module_path'], "gnat.adc"))
         generate_gpr_file()
         generate_makefile("templates/makefile_template", config['module_path'], config['module_name'], os.path.join(os.getcwd(), config['module_path']))
 
     def build(self, config, rts):
 
         def build_rts():
-            pass
+            cmd = [os.path.join(config["cross_compiler_path"], "gprbuild"), "-v", "-f", "-g", os.path.join(os.getcwd(), config["rts_path"], "runtime_build.gpr")]
+
+            output, error = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=os.path.join(os.getcwd(), config['module_path'])).communicate()
+            print(output.decode("utf-8"))
+            print(error.decode("utf-8"))
+
 
         def build_bundle_object():
             linker = os.path.join(config["cross_compiler_path"], config["cross_compiler_binary_prefix"] + "ld")
