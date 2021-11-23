@@ -1,1 +1,0 @@
-cmd_/home/henley/adacore/repos/adacore_jetson/./hello/hello.o := /home/henley/adacore/e3-20211024/wave/aarch64-linux-linux64/gnat/install/bin/aarch64-linux-gnu-ld -EL    -r -o /home/henley/adacore/repos/adacore_jetson/./hello/hello.o /home/henley/adacore/repos/adacore_jetson/./hello/obj/bundle.o ; scripts/mod/modpost /home/henley/adacore/repos/adacore_jetson/./hello/hello.o

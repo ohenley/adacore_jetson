@@ -2,7 +2,6 @@
     "module_name" : "hello",
     "module_path" : "./hello",
     "module_sources_path" : "./hello/src",
-    "module_build_path" : "./hello/obj",
 
     "target_platform" : "jetson_nano",
     "target_architecture" : "arm64",

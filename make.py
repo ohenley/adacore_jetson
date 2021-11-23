@@ -124,7 +124,6 @@ class Make:
 
         generate_gpr_file()
         generate_makefile("templates/makefile_template", config['module_path'], config['module_name'], os.path.join(os.getcwd(), config['module_path']))
-        shutil.rmtree("tmp", ignore_errors=True)
 
     def build(self, config, rts):
 
@@ -208,12 +207,13 @@ class Make:
 
 
         remove_dir_recursively(os.getcwd(), ".tmp_versions")
-        shutil.rmtree("tmp", ignore_errors=True)
+        shutil.rmtree(os.path.join(os.getcwd(),"tmp"), ignore_errors=True)
 
-        remove_all_files(config['module_path'])
-        shutil.rmtree(config['module_build_path'], ignore_errors=True)
+        module_path = os.path.join(os.getcwd(), config['module_path'])
 
-        remove_file(os.path.join(config['module_path'], "Makefile"))
+        remove_all_files(module_path)
+        remove_all_files(os.path.join(module_path, "obj"))
+        remove_all_files(os.path.join(module_path, "lib"))
 
 if __name__ == "__main__":
 
