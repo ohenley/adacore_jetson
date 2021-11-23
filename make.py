@@ -40,12 +40,7 @@ class Make:
             filepath = copy_and_rename_file(src, dst, "Makefile")
             replace_in_file(filepath, "<module_name>", module_name)
             replace_in_file(filepath, "<expanded_module_objects>", "obj/bundle.o")
-
-            if config["target_architecture"] == "arm32":
-                replace_in_file(filepath, "<target_architecture>", "arm")
-            else:
-                replace_in_file(filepath, "<target_architecture>", config['target_architecture'])
-
+            replace_in_file(filepath, "<target_architecture>", config['target_architecture'])
             cross_compile_path_and_prefix = os.path.join(config['cross_toolchain_abspath'], config['cross_compiler_binary_prefix'])
             replace_in_file(filepath, "<cross_compile_path_and_prefix>", cross_compile_path_and_prefix)
             replace_in_file(filepath, "<kernel_sources_path>", config['kernel_sources_abspath'])
