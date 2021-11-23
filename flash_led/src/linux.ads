@@ -9,8 +9,7 @@ package linux is
     procedure printk (s : string);
 
     -- gpio
-    function gpio_request (gpio : ic.unsigned; label : ic.char_array)
-        return ic.int with
+    function gpio_request (gpio : ic.unsigned; label : ic.char_array) return ic.int with
         import        => true,
         convention    => c,
         external_name => "gpio_request";
@@ -18,6 +17,7 @@ package linux is
     function gpio_direction_output (gpio : ic.unsigned; value : ic.int) return ic.int;
     function gpio_get_value (gpio : ic.unsigned) return ic.int;
     procedure gpio_set_value (gpio : ic.unsigned; value : ic.int);
+    
     procedure gpio_free (gpio : ic.unsigned) with
         import        => true,
         convention    => c,
