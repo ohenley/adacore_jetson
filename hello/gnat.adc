@@ -1,2 +1,1 @@
 pragma Suppress (All_Checks);
--- pragma Restrictions (No_Elaboration_Code);

@@ -1,84 +1,60 @@
 with system;
-with Interfaces.C; use Interfaces.C;
+with interfaces.c; use interfaces.c;
 with linux;
--- with gpio_h;
-with Timer_H;
-with Jiffies_H;
-with Printk_H;
-
-with ada.unchecked_conversion;
 
 package body ada_linux is
 
-    package IC renames Interfaces.C;
+    package IC renames interfaces.c;
 
-    --procedure Last_Chance_Handler (Msg : System.Address; Line : Integer) is
-    --begin
-    --    null;
-    --end;
+    led_timer : aliased linux.Timer_List;
+    gpio : ic.unsigned := 14;
+    half_period_ms : ic.unsigned := 500;
 
-    --procedure Call_Last_Chance_Handler_With_Message (Message : String) is
-    --begin
-    --    null;
-    --end;
-    --function to_char_array is new Ada.Unchecked_Conversion (Source => string, Target => ic.char_array);
-
-    function "+" (s : String) return ic.char_array is
+    procedure timer_callback (data : ic.Unsigned_Long) with Convention => C;
+    procedure timer_callback (data : ic.Unsigned_Long) is
+        res  : IC.int;
     begin
-        return to_c (s);
-    end "+";
-
-    procedure ada_linuxinit;
-    pragma Import (C, ada_linuxinit, "ada_linuxinit");
-
-
-    led_timer : aliased Timer_H.Timer_List;
-    counter : natural := 0;
-
-    procedure timer_callback (data : Interfaces.C.Unsigned_Long) with Convention => C;
-    procedure timer_callback (data : Interfaces.C.Unsigned_Long) is
-        res        : IC.int;
-        --from_timer : String := "from_timer";
-        str : ic.char_array := "toto" & ic.nul;
-    begin
-        res := linux.printk_int (str, 1);
-        --counter := counter + 1;
-    end timer_callback;
-
-    --type timer_acc is access all Timer_H.Timer_List;
-    --led_timer_acc : timer_acc := led_timer'Access;
+        if linux.Gpio_Get_Value (gpio) = 0 then
+            res := linux.Gpio_Direction_Output (gpio, 1);
+        else
+            res := linux.Gpio_Direction_Output (gpio, 0);
+        end if;
+        led_timer.Expires := linux.jiffies + linux.Msecs_To_Jiffies (half_period_ms);
+        linux.Add_Timer (led_timer'access);
+    end;
 
     procedure setup_timer is
-        --timer_cb_acc : timer_h.Timer_List_Function_T := timer_callback'Access;
-        str : ic.char_array := "yo" & ic.nul;
-        --name   : String        := "yo";
+        name : ic.char_array := "gpio_timer" & ic.nul;
     begin
-        timer_h.Init_Timer_Key (led_timer'Access, 0, str, System.Null_Address);
+        linux.Init_Timer_Key (led_timer'Access, 0, name, System.Null_Address);
         led_timer.C_Function := timer_callback'Access;
         led_timer.data       := 0;
-    end setup_timer;
+        led_timer.Expires := linux.jiffies + linux.Msecs_To_Jiffies (half_period_ms);
+        linux.Add_Timer (led_timer'access);
+    end;
 
     procedure ada_init_module is
+        procedure ada_linuxinit with
+            Import        => True,
+            Convention    => Ada,
+            External_Name => "ada_linuxinit";
     begin
         ada_linuxinit;
         declare
-            msec_in_jiffies : ic.unsigned_long := jiffies_h.Msecs_To_Jiffies (1000);
-            jifs : ic.unsigned_long := jiffies_h.jiffies;
             res  : IC.int;
+            label : ic.char_array := "gpio14" & ic.nul;
         begin
+            res := linux.gpio_request (gpio, label);
+            res := linux.Gpio_Direction_Output (gpio, 0);
             setup_timer;
-            res := timer_h.mod_timer (led_timer'Access, jifs + msec_in_jiffies);
-            res := linux.printk_int (+res'image, 1);
         end;
-    end ada_init_module;
+    end;
 
     procedure ada_cleanup_module is
-        --msg_bye : String := "bye!!!";
         res     : IC.int;
     begin
-        --res := linux.printk_int (+msg_bye, 1);
-        res := linux.printk_int (+(counter'image), 1);
-        res := timer_h.del_timer (led_timer'Access);
-    end ada_cleanup_module;
+        res := linux.del_timer (led_timer'Access);
+        linux.Gpio_Free (gpio);
+    end ;
 
 end ada_linux;

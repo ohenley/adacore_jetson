@@ -6,6 +6,7 @@ pragma Suppress (Overflow_Check);
 
 package body ada_linuxmain is
 
+   E04 : Short_Integer; pragma Import (Ada, E04, "linux_E");
    E02 : Short_Integer; pragma Import (Ada, E02, "ada_linux_E");
 
    Sec_Default_Sized_Stacks : array (1 .. 1) of aliased System.Secondary_Stack.SS_Stack (System.Parameters.Runtime_Default_Sec_Stack_Size);
@@ -29,13 +30,15 @@ package body ada_linuxmain is
       Default_Sized_SS_Pool := Sec_Default_Sized_Stacks'Address;
 
 
+      E04 := E04 + 1;
+      if E02 = 0 then
+         ada_linux'elab_body;
+      end if;
       E02 := E02 + 1;
    end ada_linuxinit;
 
 --  BEGIN Object file/option list
-   --   /home/henley/adacore/repos/adacore_jetson/hello/obj/gpio_h.o
    --   /home/henley/adacore/repos/adacore_jetson/hello/obj/linux.o
-   --   /home/henley/adacore/repos/adacore_jetson/hello/obj/printk_h.o
    --   /home/henley/adacore/repos/adacore_jetson/hello/obj/ada_linux.o
    --   -L/home/henley/adacore/repos/adacore_jetson/hello/obj/
    --   -L/home/henley/adacore/repos/adacore_jetson/rts-native-light/adalib/

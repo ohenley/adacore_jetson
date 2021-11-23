@@ -1,4 +1,0 @@
-void addtimer_wrapper(unsigned int major, const char *name)
-{
-    unregister_chrdev(major, name);
-}

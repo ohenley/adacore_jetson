@@ -1,2 +1,0 @@
-ada_linux.ads:11:54: warning: type of argument "Call_Last_Chance_Handler_With_Message.Message" is unconstrained array [-gnatwx]
-ada_linux.ads:11:54: warning: foreign caller must pass bounds explicitly [-gnatwx]

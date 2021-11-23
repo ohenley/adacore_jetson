@@ -11,14 +11,13 @@ project <module_name> is
     for Library_Kind use "static";
     for Library_Interface use ("ada_linux");
 
-    for Runtime ("Ada") use Project'Project_Dir & "../rts-native-light";
+    for Runtime ("Ada") use <rts_path>;
 
     package Builder is
         for Global_Configuration_Pragmas use "gnat.adc";
     end Builder;
 
     package Compiler is
-        --for Local_Configuration_Pragmas use "gnat.adc";
         for Switches ("Ada") use (
             <wanted_gnat_options>
             );

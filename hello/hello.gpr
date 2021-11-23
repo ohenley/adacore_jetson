@@ -3,7 +3,7 @@ project hello is
     for create_missing_dirs use "True";
     for Languages use ("ada", "c");
     for Target use "aarch64-linux";
-    for Source_Dirs use ("src", "../linux_interfaces");
+    for Source_Dirs use ("src");
     for Object_Dir use "obj";
 
     for Library_Dir use "lib";
@@ -11,25 +11,20 @@ project hello is
     for Library_Kind use "static";
     for Library_Interface use ("ada_linux");
 
-    for Runtime ("Ada") use Project'Project_Dir & "../rts-native-light";
+    for Runtime ("Ada") use "/home/henley/adacore/repos/adacore_jetson/./rts-native-light";
 
     package Builder is
         for Global_Configuration_Pragmas use "gnat.adc";
     end Builder;
 
     package Compiler is
-        -- for Switches ("Ada") use (
-        --     "-static", 
-	    --     "-nostdlib"
-	    --     --"-O2", 
-        --     --  "-ffunction-sections",
-        --     --  "-fdata-sections", 
-	    --     --"-mcmodel=kernel"         -- required for kernel development
-        -- );
+        for Switches ("Ada") use (
+            "-fno-PIE"
+            );
         for Switches ("C") use (
             "-nostdinc",
 "-isystem",
-"/home/henley/adacore/e3-distrib-3.8-20210805-x86_64-linux-bin/wave/aarch64-linux-linux64/gnat/install/bin/../lib/gcc/aarch64-linux-gnu/10.3.1/include",
+"/home/henley/adacore/e3-20211024/wave/aarch64-linux-linux64/gnat/install/bin/../lib/gcc/aarch64-linux-gnu/10.3.1/include",
 "-I/home/henley/cross/Linux_for_Tegra/source/public/kernel/kernel-4.9/arch/arm64/include",
 "-I/home/henley/cross/output/arch/arm64/include/generated/uapi",
 "-I/home/henley/cross/output/arch/arm64/include/generated",
@@ -70,7 +65,6 @@ project hello is
 "-Wno-address-of-packed-member",
 "-Wno-packed-not-aligned",
 "-O2",
--- "-fno-allow-store-data-races",
 "-DCC_HAVE_ASM_GOTO",
 "-Wframe-larger-than=2048",
 "-fno-stack-protector",
@@ -112,10 +106,6 @@ project hello is
 "-DKBUILD_MODNAME='hello'"
             );
     end Compiler;
-
-    -- package Binder is
-    --    for Switches ("Ada") use ("-lgcc", "-nostdlib");
-    -- end Linker;
 
     package Binder is
         for Default_Switches ("Ada") use ("-nostdlib");

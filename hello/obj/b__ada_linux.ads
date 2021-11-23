@@ -11,16 +11,14 @@ package ada_linuxmain is
    pragma Linker_Constructor (ada_linuxinit);
 
    type Version_32 is mod 2 ** 32;
-   u00001 : constant Version_32 := 16#44032dd4#;
+   u00001 : constant Version_32 := 16#e958b56d#;
    pragma Export (C, u00001, "ada_linuxB");
-   u00002 : constant Version_32 := 16#3f164c44#;
+   u00002 : constant Version_32 := 16#a0519e26#;
    pragma Export (C, u00002, "ada_linuxS");
-   u00003 : constant Version_32 := 16#3018fe90#;
-   pragma Export (C, u00003, "gpio_hS");
-   u00004 : constant Version_32 := 16#7e509733#;
+   u00003 : constant Version_32 := 16#12b9b91a#;
+   pragma Export (C, u00003, "linuxB");
+   u00004 : constant Version_32 := 16#1fe8c001#;
    pragma Export (C, u00004, "linuxS");
-   u00005 : constant Version_32 := 16#f8d57d04#;
-   pragma Export (C, u00005, "printk_hS");
 
    --  BEGIN ELABORATION ORDER
    --  ada%s
@@ -35,11 +33,8 @@ package ada_linuxmain is
    --  system.secondary_stack%b
    --  interfaces.c%s
    --  interfaces.c%b
-   --  interfaces.c.strings%s
-   --  interfaces.c.strings%b
-   --  gpio_h%s
    --  linux%s
-   --  printk_h%s
+   --  linux%b
    --  ada_linux%s
    --  ada_linux%b
    --  END ELABORATION ORDER
