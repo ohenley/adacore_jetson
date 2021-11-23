@@ -1,4 +1,4 @@
-## Cross compilation kernel module for the NVIDIA Jetson Nano, HOST(linux x86_64) to TARGET(linux aarch64)
+## Cross compilation from HOST(linux x86_64) to TARGET(linux aarch64) kernel module for the NVIDIA Jetson Nano
 
 1. The Jetson host OS, eg. Ubuntu 18.04, needs to be up and running (install, boot, login directly or ssh remotely). Please refer to NVIDIA documentation if such Linux install is not done yet. We have informations to gather from it, eg using ssh:    
 ```
