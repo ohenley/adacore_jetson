@@ -5,7 +5,7 @@
 $ ssh my_jetson_username@192.168.88.126
 ```
 
-2. Check the Jetson version. On the remote/`target` Jetson platform, execute and note aside:    
+2. Check the Jetson version. On the remote/*target* Jetson platform, execute and note aside:    
 ```
 $ cat /etc/nv_tegra_release
 # R32 (release), REVISION: 6.1, GCID: 27863751, BOARD: t210ref, EABI: aarch64, DATE: Mon Jul 26 19:20:30 UTC 2021
