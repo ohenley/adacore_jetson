@@ -6,8 +6,6 @@ project Runtime_Build is
   for Languages use ("Ada");
   for Runtime ("Ada") use Project'Project_Dir;
   
-
-  -- for Library_Auto_Init use "False";
   for Library_Name use "gnat";
   for Library_Kind use "static";
   for Target use "aarch64-linux";
