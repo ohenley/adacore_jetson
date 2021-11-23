@@ -37,8 +37,7 @@ package body linux is
         convention    => c,
         external_name => "gpiod_get_raw_value";
 
-    function gpio_direction_output (gpio : ic.unsigned; value : ic.int) return ic.int
-    is
+    function gpio_direction_output (gpio : ic.unsigned; value : ic.int) return ic.int is
         desc : gpio_desc_acc := gpio_to_desc (gpio);
     begin
         return gpiod_direction_output_raw (desc, ic.int (value));
