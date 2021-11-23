@@ -29,10 +29,10 @@ Ada Linux Modules for the Nvidia Jetson-Nano
 flash a led --> working
 
 ## Prerequisites
-- x86_64 Linux running on target board
-- Python 3.x
-- GNAT cross compilation toolchain on host machine (see jetson_nano_cross_compilation.md for further details on how to setup)
-- Complete led circuit with transistor base connected to physical board pin 13 (linux equivalent internal mapping: gpio #14)  
+- x86_64 Linux running on target board.
+- Python 3.x on host.
+- GNAT cross compilation toolchain on host machine. (see jetson_nano_cross_compilation.md for further details on how to setup)
+- Complete led circuit with transistor base connected to physical board pin 13. (linux equivalent internal mapping: gpio #14)  
 ![alt text](https://i.stack.imgur.com/2vrSj.gif)
 
 ## Dependencies
@@ -40,27 +40,28 @@ flash a led --> working
 
 ## Building
 #### Linux
-- Set the absolute path value for both `kernel_sources_abspath` and `cross_toolchain_abspath` keys found in `flash_led_jetson_nano.json`
-- Issue the following at cmd: 
+- Set the absolute path value for both `kernel_sources_abspath` and `cross_toolchain_abspath` keys found in file `flash_led_jetson_nano.json`
+- Issue the following at host cmd: 
 ```
-host$ python make.py generate config:flash_led_jetson_nano.json
-host$ python make.py build config:flash_led_jetson_nano.json rts:true
+$ python make.py generate config:flash_led_jetson_nano.json
+$ python make.py build config:flash_led_jetson_nano.json rts:true
 ```
 
 ## Installation
-- Replace xxx.xxx.xxx.xxx by your jetson ip address and issue the following at cmd:
+- Replace xxx.xxx.xxx.xxx by your jetson ip address and issue the following at host cmd:
 ```
-host$ scp flash_led/flash_led.ko your_jetson_username@xxx.xxx.xxx.xxx:~ ; ssh your_jetson_username@xxx.xxx.xxx.xxx
+$ scp flash_led/flash_led.ko your_jetson_username@xxx.xxx.xxx.xxx:~ ; ssh your_jetson_username@xxx.xxx.xxx.xxx
 ```
 
 ## Limitations
 
 
 ## Usage
+- Issue the following at target cmd to insert kernel module: 
 ```
 jetson:~$ sudo insmod flash_led.ko
 ```
-- Your led should now flash at ~1Hz
+- Your led should now flash at ~1Hz. now to remove kernel module:
 ```
 jetson:~$ sudo rmmod flash_led.ko
 ```
