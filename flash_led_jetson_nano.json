@@ -1,0 +1,14 @@
+{
+    "module_name" : "flash_led",
+    "module_path" : "./flash_led",
+    "module_sources_path" : "./flash_led/src",
+
+    "target_platform" : "jetson_nano",
+    "target_architecture" : "arm64",
+
+    "rts_path" : "./rts-native-light",
+
+    "kernel_sources_abspath" : "where/sits/the/kernel/sources/on/your/host/machine",
+    "cross_toolchain_abspath" : "where/sits/the/cross_toolchain/on/your/host/machine",
+    "platform_definitions_filepath" : "platforms.json"
+}

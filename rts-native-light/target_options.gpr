@@ -1,0 +1,48 @@
+--  This is the default version of the target_options.gpr file,
+--  imported by runtime_build.gpr. Variables defined here are appended
+--  to the corresponding variables there. Target configurations may
+--  their own version of this file.
+
+abstract project Target_Options is
+
+  type Build_Type is ("Production", "Debug", "Assert", "Gnatcov");
+  Build : Build_Type := external ("BUILD", "Production");
+
+  --  COMFLAGS here is common flags (used for C and Ada).
+  COMFLAGS := ("-fcallgraph-info=su,da",
+        "-ffunction-sections",
+        "-fdata-sections");
+  COMGNARLFLAGS := ("");
+
+  --  Per language flags (COMFLAGS will be added later)
+  ADAFLAGS := ("-gnatg", "-nostdinc", "-fno-delete-null-pointer-checks", "-static-libgcc", "-lgcc");
+  ASMFLAGS := ("");
+  CFLAGS := ("-DIN_RTS",
+        "-Dinhibit_libc", "-Werror", "-Wall", "-static-libgcc", "-lgcc");
+  case Build is
+     when "Production" =>
+        --  Optimize
+        COMFLAGS := COMFLAGS & ("-O2");
+        ADAFLAGS := ADAFLAGS & ("-gnatp", "-gnatn2");
+     when "Debug" =>
+        --  Disable optimization and add debug symbols
+        COMFLAGS := COMFLAGS & ("-O0", "-g");
+        ASMFLAGS := ASMFLAGS & ("-g");
+     when "Assert" =>
+        --  Possibly enable assertions. This might use too much memory on
+        --  some systems or could be too slow.
+        COMFLAGS := COMFLAGS & ("-O");
+        ADAFLAGS := ADAFLAGS & ("-gnata");
+     when "Gnatcov" =>
+        --  For coverage
+        COMFLAGS := COMFLAGS & ("-O0", "-g", "-fdump-scos",
+                                "-fpreserve-control-flow");
+  end case;
+
+  --  Concatenate with common flags
+  ALL_ADAFLAGS := ADAFLAGS & COMFLAGS;
+  ALL_CFLAGS := CFLAGS & COMFLAGS;
+  GNARL_ADAFLAGS := ALL_ADAFLAGS & COMGNARLFLAGS;
+  GNARL_CFLAGS := ALL_CFLAGS & COMGNARLFLAGS;
+
+end Target_Options;

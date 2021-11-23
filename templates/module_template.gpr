@@ -1,0 +1,33 @@
+project <module_name> is
+
+    for create_missing_dirs use "true";
+    for languages use ("ada", "c");
+    for target use <target_architecture>;
+    for source_dirs use (<module_sources_path>);
+    for object_dir use "obj";
+
+    for library_dir use "lib";
+    for library_name use "<module_name>";
+    for library_kind use "static";
+    for library_interface use ("<module_name>");
+
+    for runtime ("ada") use <rts_path>;
+
+    package builder is
+        for global_configuration_pragmas use "gnat.adc";
+    end builder;
+
+    package compiler is
+        for switches ("ada") use (
+            <wanted_gnat_options>
+            );
+        for switches ("c") use (
+            <parsed_make_compilation_options>
+            );
+    end compiler;
+
+    package binder is
+        for default_switches ("ada") use ("-nostdlib");
+    end binder;
+
+end <module_name>;

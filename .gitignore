@@ -3,3 +3,23 @@
 
 # Ada Library Information
 *.ali
+
+# static lib files
+*.a
+
+# vscode settings
+.vscode/
+
+# any obj folder
+**/obj
+
+# module working files
+*.cmd
+*.ko
+*.mod.c
+*.symvers
+*.order
+*.stderr
+*.stdout
+*.lexch
+*.d
