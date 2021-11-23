@@ -2,7 +2,7 @@
 
 1. The Jetson host OS, eg. Ubuntu 18.04, needs to be up and running (install, boot, login directly or ssh remotely). Please refer to NVIDIA documentation if such Linux install is not done yet. We have informations to gather from it, eg using ssh:    
 ```
-$ ssh my_jetson_username@192.168.88.126
+$ ssh my_jetson_username@xxx.xxx.xxx.xxx
 ```
 
 2. Check the Jetson version. On the remote/**target** Jetson platform, execute and note aside:    
@@ -45,9 +45,9 @@ $ tar -xvf tegra_sources.archive
 $ tar –xjf ~/cross_base/Linux_for_Tegra/source/public/kernel_src.tbz2
 ```
 
-9. From remote/**target** Jetson command prompt, download its original kernel config to local machine/**host**, eg (192.168.55.100 being the address of my local machine/**host**):    
+9. From remote/**target** Jetson command prompt, download its original kernel config to local machine/**host**, eg (xxx.xxx.xxx.xxx being the address of my local machine/**host**):    
 ```
-$ sudo scp /proc/config.gz my_local_username@192.168.55.100:~/cross_base/output
+$ sudo scp /proc/config.gz my_local_username@xxx.xxx.xxx.xxx:~/cross_base/output
 ```
 
 10. Extract the config and rename it:    
