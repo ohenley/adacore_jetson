@@ -46,7 +46,7 @@ class Make:
             else:
                 replace_in_file(filepath, "<target_architecture>", config['target_architecture'])
 
-            cross_compile_path_and_prefix = os.path.join(config['cross_compiler_abspath'], config['cross_compiler_binary_prefix'])
+            cross_compile_path_and_prefix = os.path.join(config['cross_toolchain_abspath'], config['cross_compiler_binary_prefix'])
             replace_in_file(filepath, "<cross_compile_path_and_prefix>", cross_compile_path_and_prefix)
             replace_in_file(filepath, "<kernel_sources_path>", config['kernel_sources_abspath'])
             replace_in_file(filepath, "<makefile_location>", makefile_location)
@@ -89,7 +89,7 @@ class Make:
             copyfile("templates/basic_module.c", "tmp/basic_module.c") 
             generate_makefile("templates/makefile_template", "tmp", "basic_module", os.path.join(os.getcwd(), "tmp"))
             remove_line_from_file("tmp/Makefile", 2)
-            os.environ["ENV_PREFIX"] = config['cross_compiler_abspath']
+            os.environ["ENV_PREFIX"] = config['cross_toolchain_abspath']
             output, error = Popen(['make'], stdout=PIPE, stderr=PIPE, cwd="./tmp").communicate()
             print(output.decode("utf-8"))
             print(error.decode("utf-8"))
@@ -128,14 +128,14 @@ class Make:
     def build(self, config, rts):
 
         def build_rts():
-            cmd = [os.path.join(config["cross_compiler_abspath"], "gprbuild"), "-v", "-f", "-g", os.path.join(os.getcwd(), config["rts_path"], "runtime_build.gpr")]
+            cmd = [os.path.join(config["cross_toolchain_abspath"], "gprbuild"), "-v", "-f", "-g", os.path.join(os.getcwd(), config["rts_path"], "runtime_build.gpr")]
 
             output, error = Popen(cmd, stdout=PIPE, stderr=PIPE, cwd=os.path.join(os.getcwd(), config['module_path'])).communicate()
             print(output.decode("utf-8"))
             print(error.decode("utf-8"))
 
         def compile_module_files():
-            cmd = [os.path.join(config["cross_compiler_abspath"], "gprbuild"), "-v", "-f", "-g", os.path.join(os.getcwd(), config['module_path'], config['module_name'] + ".gpr")]
+            cmd = [os.path.join(config["cross_toolchain_abspath"], "gprbuild"), "-v", "-f", "-g", os.path.join(os.getcwd(), config['module_path'], config['module_name'] + ".gpr")]
 
             output, error = Popen(cmd, stdout=PIPE, stderr=PIPE, cwd=os.path.join(os.getcwd(), config['module_path'])).communicate()
             print(output.decode("utf-8"))
@@ -143,7 +143,7 @@ class Make:
 
 
         def build_bundle_object():
-            linker = os.path.join(config["cross_compiler_abspath"], config["cross_compiler_binary_prefix"] + "ld")
+            linker = os.path.join(config["cross_toolchain_abspath"], config["cross_compiler_binary_prefix"] + "ld")
             ada_module = os.path.join(os.getcwd(), config["module_path"], "lib/lib" + config["module_name"] + ".a")
             rts = os.path.join(os.getcwd(), config["rts_path"], "adalib", "libgnat.a")
             bundle = os.path.join(os.getcwd(), config['module_path'], "obj/bundle.o")
@@ -172,7 +172,7 @@ class Make:
             print(error.decode("utf-8"))
             print(output.decode("utf-8"))
 
-        os.environ["ENV_PREFIX"] = config['cross_compiler_abspath']
+        os.environ["ENV_PREFIX"] = config['cross_toolchain_abspath']
         if rts:
             build_rts()
         compile_module_files()
