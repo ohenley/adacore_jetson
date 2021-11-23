@@ -46,8 +46,6 @@ class Make:
             replace_in_file(filepath, "<kernel_sources_path>", config['kernel_sources_abspath'])
             replace_in_file(filepath, "<makefile_location>", makefile_location)
 
-            replace_in_file(filepath, "<kbuild_path>", "./")
-
         def find_gcc_options():
 
             def filter_options(line):
