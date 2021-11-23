@@ -8,7 +8,7 @@
 
     "rts_path" : "./rts-native-light",
 
-    "kernel_sources_abspath" : "/home/henley/cross/output",
-    "cross_compiler_abspath" : "/home/henley/adacore/e3-20211024/wave/aarch64-linux-linux64/gnat/install/bin",
+    "kernel_sources_abspath" : "where/sits/the/kernel/sources/on/your/host/machine",
+    "cross_toolchain_abspath" : "where/sits/the/cross_toolchain/on/your/host/machine",
     "platform_definitions_filepath" : "platforms.json"
 }
