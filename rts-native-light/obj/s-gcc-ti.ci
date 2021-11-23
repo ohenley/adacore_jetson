@@ -1,4 +1,0 @@
-graph: { title: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-gcc-ti.adb"
-node: { title: "system__gcc__ti__split" label: "Split\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-gcc-ti.adb:39:4\n0 bytes (static)\n0 dynamic objects" }
-node: { title: "system__gcc__ti__merge" label: "Merge\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-gcc-ti.adb:52:4\n0 bytes (static)\n0 dynamic objects" }
-}

@@ -1,6 +1,0 @@
-graph: { title: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-expllli.ads"
-node: { title: "system__exp_llli__exp_long_long_long_integer" label: "Exp_Long_Long_Long_Integer\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-expont.adb:32:1\n64 bytes (static)\n0 dynamic objects" }
-node: { title: "__gnat_mulv128" label: "gnat_mulv128\n<built-in>" shape : ellipse }
-edge: { sourcename: "system__exp_llli__exp_long_long_long_integer" targetname: "__gnat_mulv128" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-expont.adb:56:23" }
-edge: { sourcename: "system__exp_llli__exp_long_long_long_integer" targetname: "__gnat_mulv128" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-expont.adb:66:20" }
-}

@@ -1,6 +1,0 @@
-graph: { title: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-explli.ads"
-node: { title: "system__exp_lli__exp_long_long_integer" label: "Exp_Long_Long_Integer\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-expont.adb:32:1\n16 bytes (static)\n0 dynamic objects" }
-node: { title: "__gnat_last_chance_handler" label: "gnat_last_chance_handler\n<built-in>" shape : ellipse }
-edge: { sourcename: "system__exp_lli__exp_long_long_integer" targetname: "__gnat_last_chance_handler" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-expont.adb:56:33" }
-edge: { sourcename: "system__exp_lli__exp_long_long_integer" targetname: "__gnat_last_chance_handler" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-expont.adb:66:30" }
-}

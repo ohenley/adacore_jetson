@@ -1,5 +1,0 @@
-graph: { title: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-widlllu.ads"
-node: { title: "system__wid_lllu__width_long_long_long_unsigned" label: "Width_Long_Long_Long_Unsigned\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-widthu.adb:35:1\n48 bytes (static)\n0 dynamic objects" }
-node: { title: "__udivti3" label: "udivti3\n<built-in>" shape : ellipse }
-edge: { sourcename: "system__wid_lllu__width_long_long_long_unsigned" targetname: "__udivti3" }
-}

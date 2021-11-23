@@ -1,3 +1,0 @@
-graph: { title: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-gtumo4.ads"
-node: { title: "system__gcc__ti__udiv_mod_4__udivmod4" label: "Udivmod4\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-gudmo4.adb:63:4\n0 bytes (static)\n0 dynamic objects" }
-}

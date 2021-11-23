@@ -1,4 +1,0 @@
-graph: { title: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/i-cexten.ads"
-node: { title: "interfaces__c__extensions__float_128IP" label: "float_128IP\n<built-in>\n0 bytes (static)\n0 dynamic objects" }
-node: { title: "interfaces__c__extensions__cfloat_128IP" label: "cfloat_128IP\n<built-in>\n0 bytes (static)\n0 dynamic objects" }
-}

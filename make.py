@@ -134,6 +134,13 @@ class Make:
             print(output.decode("utf-8"))
             print(error.decode("utf-8"))
 
+        def compile_module_files():
+            cmd = [os.path.join(config["cross_compiler_path"], "gprbuild"), "-v", "-f", "-g", os.path.join(os.getcwd(), config['module_path'], config['module_name'] + ".gpr")]
+
+            output, error = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=os.path.join(os.getcwd(), config['module_path'])).communicate()
+            print(output.decode("utf-8"))
+            print(error.decode("utf-8"))
+
 
         def build_bundle_object():
             linker = os.path.join(config["cross_compiler_path"], config["cross_compiler_binary_prefix"] + "ld")
@@ -141,13 +148,6 @@ class Make:
             rts = os.path.join(os.getcwd(), config["rts_path"], "adalib", "libgnat.a")
             bundle = os.path.join(os.getcwd(), config['module_path'], "obj/bundle.o")
             cmd = [linker, "-i", "-o", bundle, "--whole-archive", ada_module, "--no-whole-archive", rts]
-
-            output, error = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=os.path.join(os.getcwd(), config['module_path'])).communicate()
-            print(output.decode("utf-8"))
-            print(error.decode("utf-8"))
-
-        def compile_module_files():
-            cmd = [os.path.join(config["cross_compiler_path"], "gprbuild"), "-v", "-f", "-g", config['module_name'] + ".gpr" ]
 
             output, error = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=os.path.join(os.getcwd(), config['module_path'])).communicate()
             print(output.decode("utf-8"))
@@ -219,6 +219,9 @@ class Make:
         remove_all_files(module_path)
         remove_all_files(os.path.join(module_path, "obj"))
         remove_all_files(os.path.join(module_path, "lib"))
+
+        remove_all_files(os.path.join(os.getcwd(), config['rts_path'], "adalib"))
+        remove_all_files(os.path.join(os.getcwd(), config['rts_path'], "obj"))
 
 if __name__ == "__main__":
 

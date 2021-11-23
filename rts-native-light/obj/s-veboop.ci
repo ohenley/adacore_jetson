@@ -1,3 +1,0 @@
-graph: { title: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-veboop.adb"
-node: { title: "system__vectors__boolean_operations__boolean_arrayIP" label: "boolean_arrayIP\n<built-in>\n0 bytes (static)\n0 dynamic objects" }
-}

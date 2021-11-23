@@ -1,3 +1,0 @@
-graph: { title: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-casi128.adb"
-node: { title: "system__compare_array_signed_128__compare_array_s128" label: "Compare_Array_S128\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-casi128.adb:56:4\n0 bytes (static)\n0 dynamic objects" }
-}

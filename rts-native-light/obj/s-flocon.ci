@@ -1,3 +1,0 @@
-graph: { title: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-flocon.adb"
-node: { title: "system__float_control__reset" label: "Reset\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-flocon.adb:41:4\n0 bytes (static)\n0 dynamic objects" }
-}

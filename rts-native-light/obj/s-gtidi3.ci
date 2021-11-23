@@ -1,5 +1,0 @@
-graph: { title: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-gtidi3.adb"
-node: { title: "__divti3" label: "Divti3\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-gtidi3.adb:43:4\n0 bytes (static)\n0 dynamic objects" }
-node: { title: "system__gcc__ti__div_mod_3__divmod3" label: "Divmod3\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-gcdimo.ads:47:13" shape : ellipse }
-edge: { sourcename: "__divti3" targetname: "system__gcc__ti__div_mod_3__divmod3" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-gtidi3.adb:45:14" }
-}

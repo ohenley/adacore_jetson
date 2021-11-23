@@ -1,3 +1,0 @@
-graph: { title: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-exnllli.ads"
-node: { title: "system__exn_llli__exn_long_long_long_integer" label: "Exn_Long_Long_Long_Integer\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-exponn.adb:32:1\n0 bytes (static)\n0 dynamic objects" }
-}

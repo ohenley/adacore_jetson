@@ -1,4 +1,0 @@
-graph: { title: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-expmod.adb"
-node: { title: "system__exp_mod__power_of_2Predicate" label: "power_of_2Predicate\n<built-in>\n0 bytes (static)\n0 dynamic objects" }
-node: { title: "system__exp_mod__exp_modular" label: "Exp_Modular\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-expmod.adb:39:4\n0 bytes (static)\n0 dynamic objects" }
-}

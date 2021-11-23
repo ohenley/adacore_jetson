@@ -1,7 +1,0 @@
-graph: { title: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-arit32.adb"
-node: { title: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-arit32.adb:system__arith_32__raise_error" label: "Raise_Error\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-arit32.adb:79:4\n16 bytes (static)\n0 dynamic objects" }
-node: { title: "ada__exceptions__call_last_chance_handler_with_message" label: "Call_Last_Chance_Handler_With_Message\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/a-except.adb:40:14" shape : ellipse }
-edge: { sourcename: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-arit32.adb:system__arith_32__raise_error" targetname: "ada__exceptions__call_last_chance_handler_with_message" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-arit32.adb:81:7" }
-node: { title: "system__arith_32__scaled_divide32" label: "Scaled_Divide32\n/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-arit32.adb:88:4\n16 bytes (static)\n0 dynamic objects" }
-edge: { sourcename: "system__arith_32__scaled_divide32" targetname: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-arit32.adb:system__arith_32__raise_error" label: "/home/henley/adacore/repos/adacore_jetson/rts-native-light/gnat/s-arit32.adb:112:10" }
-}
