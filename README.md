@@ -66,6 +66,6 @@ jetson:~$ sudo rmmod flash_led.ko
 ```
 
 ## Acknowledgments
-Thanks to Quentin Ochem, Nicolas Setton, Fabien Chouteau, Jerome Lambourg, Michael Frank and Derek Schacht. 
+Thanks to Quentin Ochem, Nicolas Setton, Fabien Chouteau, Jerome Lambourg, Michael Frank, Derek Schacht and Artium Nihamkin. 
 
 
