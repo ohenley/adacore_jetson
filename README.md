@@ -31,7 +31,7 @@ flash a led --> working
 ## Prerequisites
 - x86_64 Linux running on target board.
 - Python 3.x on host.
-- GNAT cross compilation toolchain on host machine. (see jetson_nano_cross_compilation.md for further details on how to setup)
+- GNAT cross compilation toolchain on host machine. (see `jetson_nano_cross_compilation.md` for further details on how to setup)
 - Complete led circuit with transistor base connected to physical board pin 13. (linux equivalent internal mapping: gpio #14)  
 ![alt text](https://i.stack.imgur.com/2vrSj.gif)
 
