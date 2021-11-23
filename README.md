@@ -1,6 +1,6 @@
-# Ada Linux Modules for the Nvidia Jetson-Nano
+# AdaCore Jetson
 
-The thug community chat application
+Ada Linux Modules for the Nvidia Jetson-Nano
 
 ## Table of Contents
 <details>
@@ -21,33 +21,18 @@ The thug community chat application
 </details>
 
 ## About
-<div align="center">
 
-<a href="https://www.youtube.com/embed/yUqJkAZofZs">
-<img border="0" src="https://img.youtube.com/vi/yUqJkAZofZs/1.jpg" style="max-width:100%;">
-</a>
-  
-<a href="https://www.youtube.com/embed/3e-BGblAMC4">
-<img border="0" src="https://img.youtube.com/vi/3e-BGblAMC4/2.jpg" style="max-width:100%;">	
-</a>
-  
-<a href="https://www.youtube.com/embed/0yXwnk8Cr0c">
-<img border="0" src="https://img.youtube.com/vi/0yXwnk8Cr0c/3.jpg" style="max-width:100%;">
-</a>
-   
-</div>
-
-> your street creds can now be voted up/down by peers.  
-> every 'he' occurences are replaced by 'thug'.
-
-<!---![alt text](https://github.com/ohenley/readme-template/blob/master/thug_war.png)--->
+> not so trivial linux modules tutorial written in the Ada programming language  
+> targeted at the Arm based Nvidia Jetson-Nano board running Ubuntu 18.04 
 
 ## Status
-Linux support: WIP
+Working: flash a led 
 
 ## Prerequisites
-- Win32 platform
-- Gnat compiler
+- x86_64 Linux running on target board
+- GNAT cross compilation toolchain on host machine (see jetson_nano_cross_compilation.md for further details on how to setup)
+- led circuit    
+![alt text](https://www.google.com/url?sa=i&url=https%3A%2F%2Felectronics.stackexchange.com%2Fquestions%2F60865%2Fhow-to-drive-a-20ma-led-from-a-4ma-max-gpio-pin&psig=AOvVaw1Namc7TPoYzWCPMEb7wEMw&ust=1637726418641000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCMD8tJLNrfQCFQAAAAAdAAAAABAD)
 
 ## Dependencies
 - Chat-Mania : https://github.com/ohenley/chat-mania
