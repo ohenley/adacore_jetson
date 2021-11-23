@@ -22,8 +22,8 @@ Ada Linux Modules for the Nvidia Jetson-Nano
 
 ## About
 
-> not so trivial linux modules tutorial written in the Ada programming language  
-> targeted at the Arm based Nvidia Jetson-Nano board running Ubuntu 18.04 
+> Not so trivial linux modules tutorial written in the Ada programming language  
+> Targeted at the Arm based Nvidia Jetson-Nano board running Ubuntu 18.04 
 
 ## Status
 flash a led --> working
@@ -32,7 +32,7 @@ flash a led --> working
 - x86_64 Linux running on target board
 - Python 3.x
 - GNAT cross compilation toolchain on host machine (see jetson_nano_cross_compilation.md for further details on how to setup)
-- complete led circuit with transistor base connected to physical board pin 13 (linux equivalent internal mapping: gpio #14)  
+- Complete led circuit with transistor base connected to physical board pin 13 (linux equivalent internal mapping: gpio #14)  
 ![alt text](https://i.stack.imgur.com/2vrSj.gif)
 
 ## Dependencies
