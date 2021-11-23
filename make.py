@@ -181,18 +181,6 @@ class Make:
         build_kernel_module()
 
     def clean(self, config):
-
-        def remove_by_extension(path, extension):
-            items = os.listdir(path)
-            for item in items:
-                if item.endswith(extension):
-                    os.remove(os.path.join(path, item))
-
-        def remove_file(filepath):
-            try:
-                os.remove(filepath)
-            except OSError:
-                pass
             
         def remove_all_files(dir):
             dir = Path(dir)

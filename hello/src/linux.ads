@@ -1,40 +1,40 @@
-with Interfaces.C;
+with interfaces.c;
 with system;
 
 package linux is
 
-    package IC renames Interfaces.C;
+    package ic renames interfaces.c;
 
     -- debug
-    procedure Printk (s : String);
+    procedure printk (s : string);
 
     -- gpio
-    function Gpio_Request
-       (Gpio : ic.Unsigned; Label : ic.char_array)
-        return ic.Int with
-        Import        => True,
-        Convention    => C,
-        External_Name => "gpio_request";
+    function gpio_request
+       (gpio : ic.unsigned; label : ic.char_array)
+        return ic.int with
+        import        => true,
+        convention    => c,
+        external_name => "gpio_request";
 
-    function Gpio_Direction_Output (Gpio : IC.Unsigned; Value : ic.Int) return ic.Int;
-    function Gpio_Get_Value (Gpio : ic.Unsigned) return ic.Int;
-    procedure Gpio_Set_Value (Gpio : ic.Unsigned; Value : ic.Int);
-    procedure Gpio_Free (Gpio : ic.Unsigned) with
-        Import        => True,
-        Convention    => C,
-        External_Name => "gpio_free";
+    function gpio_direction_output (gpio : ic.unsigned; value : ic.int) return ic.int;
+    function gpio_get_value (gpio : ic.unsigned) return ic.int;
+    procedure gpio_set_value (gpio : ic.unsigned; value : ic.int);
+    procedure gpio_free (gpio : ic.unsigned) with
+        import        => true,
+        convention    => c,
+        external_name => "gpio_free";
 
     -- timer
-    jiffies : ic.Unsigned_Long with
-        Import        => True,
-        Convention    => C,
-        External_Name => "jiffies";
+    jiffies : ic.unsigned_long with
+        import        => true,
+        convention    => c,
+        external_name => "jiffies";
 
-    function Msecs_To_Jiffies
-       (M : ic.Unsigned) return ic.Unsigned_Long with
-        Import        => True,
-        Convention    => C,
-        External_Name => "__msecs_to_jiffies";
+    function msecs_to_jiffies
+       (m : ic.unsigned) return ic.unsigned_long with
+        import        => true,
+        convention    => c,
+        external_name => "__msecs_to_jiffies";
 
     type hlist_node;
     type hlist_node_acc is access hlist_node;
@@ -43,36 +43,36 @@ package linux is
         next  : hlist_node_acc;
         pprev : hlist_node_acc;
     end record with
-        Convention => C;
+        convention => c;
 
-    type Timer_List_Function_T is access procedure
-       (data : ic.Unsigned_Long) with
-        Convention => C;
+    type timer_list_function_t is access procedure
+       (data : ic.unsigned_long) with
+        convention => c;
 
-    type Timer_List is record
-        C_Entry    : hlist_node;
-        Expires    : ic.Unsigned_Long;
-        C_Function : Timer_List_Function_T;
-        Data       : ic.Unsigned_Long;
-        Flags      : ic.Int;
+    type timer_list is record
+        c_entry    : hlist_node;
+        expires    : ic.unsigned_long;
+        c_function : timer_list_function_t;
+        data       : ic.unsigned_long;
+        flags      : ic.int;
     end record with
-        Convention => C;
+        convention => c;
 
-    procedure Init_Timer_Key
-       (Timer : access Timer_List; Flags : ic.Unsigned;
-        Name  : ic.char_array; Key : System.Address) with
-        Import        => True,
-        Convention    => C,
-        External_Name => "init_timer_key";
+    procedure init_timer_key
+       (timer : access timer_list; flags : ic.unsigned;
+        name  : ic.char_array; key : system.address) with
+        import        => true,
+        convention    => c,
+        external_name => "init_timer_key";
 
-    procedure Add_Timer (Timer : access Timer_List) with
-        Import        => True,
-        Convention    => C,
-        External_Name => "add_timer";
+    procedure add_timer (timer : access timer_list) with
+        import        => true,
+        convention    => c,
+        external_name => "add_timer";
 
-    function Del_Timer (Timer : access Timer_List) return ic.Int with
-        Import        => True,
-        Convention    => C,
-        External_Name => "del_timer";
+    function del_timer (timer : access timer_list) return ic.int with
+        import        => true,
+        convention    => c,
+        external_name => "del_timer";
 
 end linux;
