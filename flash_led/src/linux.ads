@@ -56,9 +56,10 @@ package linux is
     end record with
         convention => c;
 
-    procedure init_timer_key
-       (timer : access timer_list; flags : ic.unsigned;
-        name  : ic.char_array; key : system.address) with
+    procedure init_timer_key (timer : access timer_list; 
+                              flags : ic.unsigned;
+                              name  : ic.char_array; 
+                              key   : system.address) with
         import        => true,
         convention    => c,
         external_name => "init_timer_key";
