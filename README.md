@@ -32,7 +32,7 @@ Working: flash a led
 - x86_64 Linux running on target board
 - GNAT cross compilation toolchain on host machine (see jetson_nano_cross_compilation.md for further details on how to setup)
 - led circuit    
-![alt text](https://www.google.com/url?sa=i&url=https%3A%2F%2Felectronics.stackexchange.com%2Fquestions%2F60865%2Fhow-to-drive-a-20ma-led-from-a-4ma-max-gpio-pin&psig=AOvVaw1Namc7TPoYzWCPMEb7wEMw&ust=1637726418641000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCMD8tJLNrfQCFQAAAAAdAAAAABAD)
+![alt text](https://i.stack.imgur.com/2vrSj.gif)
 
 ## Dependencies
 - Chat-Mania : https://github.com/ohenley/chat-mania
