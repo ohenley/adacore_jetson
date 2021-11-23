@@ -46,9 +46,9 @@ class Make:
             else:
                 replace_in_file(filepath, "<target_architecture>", config['target_architecture'])
 
-            cross_compile_path_and_prefix = os.path.join(config['cross_compiler_path'], config['cross_compiler_binary_prefix'])
+            cross_compile_path_and_prefix = os.path.join(config['cross_compiler_abspath'], config['cross_compiler_binary_prefix'])
             replace_in_file(filepath, "<cross_compile_path_and_prefix>", cross_compile_path_and_prefix)
-            replace_in_file(filepath, "<kernel_sources_path>", config['kernel_sources_path'])
+            replace_in_file(filepath, "<kernel_sources_path>", config['kernel_sources_abspath'])
             replace_in_file(filepath, "<makefile_location>", makefile_location)
 
             replace_in_file(filepath, "<kbuild_path>", "./")
@@ -70,13 +70,13 @@ class Make:
                 relative_include = "-I./"
                 for index, option in enumerate(options):
                     if relative_include in option:
-                        options[index] = option.replace(relative_include, "-I" + config['kernel_sources_path'] + "/")
+                        options[index] = option.replace(relative_include, "-I" + config['kernel_sources_abspath'] + "/")
                     options[index] = "\"" + options[index] + "\""
 
                 relative = "./include"
                 for index, option in enumerate(options):
                     if relative in option:
-                        options[index] = option.replace(relative, config['kernel_sources_path'] + "/include")
+                        options[index] = option.replace(relative, config['kernel_sources_abspath'] + "/include")
 
                 for index, option in enumerate(options):
                     for unwanted_gcc_option in config["unwanted_gcc_options"]:
@@ -89,7 +89,7 @@ class Make:
             copyfile("templates/basic_module.c", "tmp/basic_module.c") 
             generate_makefile("templates/makefile_template", "tmp", "basic_module", os.path.join(os.getcwd(), "tmp"))
             remove_line_from_file("tmp/Makefile", 2)
-            os.environ["ENV_PREFIX"] = config['cross_compiler_path']
+            os.environ["ENV_PREFIX"] = config['cross_compiler_abspath']
             output, error = subprocess.Popen(['make'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd="./tmp").communicate()
             print(output.decode("utf-8"))
             print(error.decode("utf-8"))
@@ -128,14 +128,14 @@ class Make:
     def build(self, config, rts):
 
         def build_rts():
-            cmd = [os.path.join(config["cross_compiler_path"], "gprbuild"), "-v", "-f", "-g", os.path.join(os.getcwd(), config["rts_path"], "runtime_build.gpr")]
+            cmd = [os.path.join(config["cross_compiler_abspath"], "gprbuild"), "-v", "-f", "-g", os.path.join(os.getcwd(), config["rts_path"], "runtime_build.gpr")]
 
             output, error = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=os.path.join(os.getcwd(), config['module_path'])).communicate()
             print(output.decode("utf-8"))
             print(error.decode("utf-8"))
 
         def compile_module_files():
-            cmd = [os.path.join(config["cross_compiler_path"], "gprbuild"), "-v", "-f", "-g", os.path.join(os.getcwd(), config['module_path'], config['module_name'] + ".gpr")]
+            cmd = [os.path.join(config["cross_compiler_abspath"], "gprbuild"), "-v", "-f", "-g", os.path.join(os.getcwd(), config['module_path'], config['module_name'] + ".gpr")]
 
             output, error = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd=os.path.join(os.getcwd(), config['module_path'])).communicate()
             print(output.decode("utf-8"))
@@ -143,7 +143,7 @@ class Make:
 
 
         def build_bundle_object():
-            linker = os.path.join(config["cross_compiler_path"], config["cross_compiler_binary_prefix"] + "ld")
+            linker = os.path.join(config["cross_compiler_abspath"], config["cross_compiler_binary_prefix"] + "ld")
             ada_module = os.path.join(os.getcwd(), config['module_path'], "lib/libada_linux.a")
             rts = os.path.join(os.getcwd(), config["rts_path"], "adalib", "libgnat.a")
             bundle = os.path.join(os.getcwd(), config['module_path'], "obj/bundle.o")
@@ -172,7 +172,7 @@ class Make:
             print(error.decode("utf-8"))
             print(output.decode("utf-8"))
 
-        os.environ["ENV_PREFIX"] = config['cross_compiler_path']
+        os.environ["ENV_PREFIX"] = config['cross_compiler_abspath']
         if rts:
             build_rts()
         compile_module_files()
