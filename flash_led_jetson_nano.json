@@ -1,7 +1,7 @@
 {
-    "module_name" : "hello",
-    "module_path" : "./hello",
-    "module_sources_path" : "./hello/src",
+    "module_name" : "flash_led",
+    "module_path" : "./flash_led",
+    "module_sources_path" : "./flash_led/src",
 
     "target_platform" : "jetson_nano",
     "target_architecture" : "arm64",

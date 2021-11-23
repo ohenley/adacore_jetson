@@ -7,9 +7,9 @@ project <module_name> is
     for object_dir use "obj";
 
     for library_dir use "lib";
-    for library_name use "ada_linux";
+    for library_name use "<module_name>";
     for library_kind use "static";
-    for library_interface use ("ada_linux");
+    for library_interface use ("<module_name>");
 
     for runtime ("ada") use <rts_path>;
 

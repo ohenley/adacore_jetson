@@ -1,4 +1,4 @@
-package ada_linux is
+package flash_led is
 
     procedure ada_init_module with
         export        => true,
@@ -10,4 +10,4 @@ package ada_linux is
         convention    => c,
         external_name => "ada_cleanup_module";
 
-end ada_linux;
+end flash_led;

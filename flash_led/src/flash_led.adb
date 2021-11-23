@@ -2,7 +2,7 @@ with system;
 with interfaces.c; use interfaces.c;
 with linux;
 
-package body ada_linux is
+package body flash_led is
 
     package ic renames interfaces.c;
 
@@ -57,4 +57,4 @@ package body ada_linux is
         linux.gpio_free (gpio);
     end;
 
-end ada_linux;
+end flash_led;
