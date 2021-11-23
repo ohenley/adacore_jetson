@@ -22,7 +22,7 @@ Ada Linux Modules for the Nvidia Jetson-Nano
 
 ## About
 
-> Not "that" trivial linux modules tutorial written in the Ada programming language  
+> Not "that" trivial linux module tutorial written in the Ada programming language  
 > Targeted at the Arm based Nvidia Jetson-Nano board running Ubuntu 18.04 
 
 ## Status
