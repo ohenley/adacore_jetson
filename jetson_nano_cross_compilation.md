@@ -2,7 +2,7 @@
 
 1. The Jetson host OS, eg. Ubuntu 18.04, needs to be up and running (install, boot, login directly or ssh remotely). Please refer to NVIDIA documentation if such Linux install is not done yet. We have informations to gather from it, so login to the remote/**target** board, eg using ssh:    
 ```
-$ ssh my_jetson_username@xxx.xxx.xxx.xxx
+$ ssh my_jetson_username@192.168.xxx.xxx
 ```
 
 2. Check the Jetson version. On the remote/**target** Jetson platform, execute and note aside:    
@@ -42,18 +42,23 @@ $ tar -xvf tegra_sources.archive
 
 8. Unpack the kernel sources:       
 ```
-$ tar –xjf ~/cross_base/Linux_for_Tegra/source/public/kernel_src.tbz2
+$ tar -xjf ~/cross_base/Linux_for_Tegra/source/public/kernel_src.tbz2
 ```
 
 9. From remote/**target** Jetson command prompt, download its original kernel config to local machine/**host**, eg (xxx.xxx.xxx.xxx being the address of my local machine/**host**):    
 ```
-$ sudo scp /proc/config.gz my_local_username@xxx.xxx.xxx.xxx:~/cross_base/output
+$ sudo scp /proc/config.gz my_local_username@192.168.xxx.xxx:~/cross_base/output
 ```
 
 10. Extract the config and rename it:    
 ```
-$ gzip -d ~/cross_base/output/config.gz
+$ gzip -d -c ~/cross_base/output/config.gz
 $ mv ~/cross_base/output/config ~/cross_base/output/.config
+```
+
+11. Set ENV_PREFIX, eg. using `anod` will install it to something like `~/adacore/e3-20211024/wave/aarch64-linux-linux64/gnat/install/bin`:
+```
+export ENV_PREFIX="~/adacore/e3-20211024/wave/aarch64-linux-linux64/gnat/install/bin"
 ```
 
 11. Prepare the modules, eg:    
