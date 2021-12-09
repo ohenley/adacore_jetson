@@ -1,60 +1,58 @@
 with system;
-with interfaces.c; use interfaces.c;
-with linux;
+with kernel; use kernel;
 
 package body flash_led is
 
-    package ic renames interfaces.c;
+    led_timer : aliased kernel.timer_list;
+    gpio : kernel.u32 := 14;
+    half_period_ms : kernel.u32 := 500;
 
-    led_timer : aliased linux.timer_list;
-    gpio : ic.unsigned := 14;
-    half_period_ms : ic.unsigned := 500;
-
-    procedure timer_callback (data : ic.unsigned_long) with convention => c;
-    procedure timer_callback (data : ic.unsigned_long) is
-        res  : ic.int;
+    procedure timer_callback (unused : kernel.u32) with convention => c;
+    procedure timer_callback (unused : kernel.u32) is
+        use kernel.led; 
+        res  : kernel.result;
     begin
-        if linux.gpio_get_value (gpio) = 0 then
-            res := linux.gpio_direction_output (gpio, 1);
+        if kernel.gpio_get_value (gpio) = kernel.led.low then
+            res := kernel.gpio_direction_output (gpio, kernel.led.high);
         else
-            res := linux.gpio_direction_output (gpio, 0);
+            res := kernel.gpio_direction_output (gpio, kernel.led.low);
         end if;
-        led_timer.expires := linux.jiffies + linux.msecs_to_jiffies (half_period_ms);
-        linux.add_timer (led_timer'access);
+        led_timer.expires := kernel.jiffies + kernel.msecs_to_jiffies (half_period_ms);
+        kernel.add_timer (led_timer'access);
     end;
 
     procedure setup_timer is
-        name : ic.char_array := "gpio_timer" & ic.nul;
+        name : string := "gpio_timer";
     begin
-        linux.init_timer_key (led_timer'access, 0, name, system.null_address);
+        kernel.init_timer_key (led_timer'access, 0, name, system.null_address);
         led_timer.c_function := timer_callback'access;
         led_timer.data       := 0;
-        led_timer.expires := linux.jiffies + linux.msecs_to_jiffies (half_period_ms);
-        linux.add_timer (led_timer'access);
+        led_timer.expires := kernel.jiffies + kernel.msecs_to_jiffies (half_period_ms);
+        kernel.add_timer (led_timer'access);
     end;
 
     procedure ada_init_module is
-        procedure ada_linuxinit with
+        procedure ada_linux_init with
             import        => true,
             convention    => ada,
-            external_name => "ada_linuxinit";
+            external_name => "flash_ledinit";  
     begin
-        ada_linuxinit;
+        ada_linux_init;
         declare
-            res  : ic.int;
-            label : ic.char_array := "gpio14" & ic.nul;
+            use kernel.led;
+            res  : kernel.result;
+            label : string := "gpio14";
         begin
-            res := linux.gpio_request (gpio, label);
-            res := linux.gpio_direction_output (gpio, 0);
+            res := kernel.gpio_request (gpio, label);
             setup_timer;
         end;
     end;
 
     procedure ada_cleanup_module is
-        res     : ic.int;
+        res     : kernel.result;
     begin
-        res := linux.del_timer (led_timer'access);
-        linux.gpio_free (gpio);
+        res := kernel.del_timer (led_timer'access);
+        kernel.gpio_free (gpio);
     end;
 
 end flash_led;
