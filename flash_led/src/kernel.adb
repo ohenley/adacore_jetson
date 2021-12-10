@@ -55,8 +55,13 @@ package body kernel is
 
     function gpio_direction_output (gpio : u32; state : led.state) return result is
         desc : gpio_desc_acc := gpio_to_desc (gpio);
+        use led;
     begin
-        return to_result(resolved_gpiod_direction_output_raw (desc, to_s32(state)));
+        if state = high then
+            return to_result(resolved_gpiod_direction_output_raw (desc, 1));
+        else
+            return to_result(resolved_gpiod_direction_output_raw (desc, 0));
+        end if;
     end;
 
     function gpio_get_value (gpio : u32) return led.state is

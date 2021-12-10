@@ -1,6 +1,8 @@
 with interfaces.c;
 with system;
 
+with led;
+
 package kernel is
 
     type u32 is mod 2**32;
@@ -12,12 +14,6 @@ package kernel is
     type s32 is new interfaces.c.int;
 
     type result is (success, error);
-
-    package led is 
-        type state is (low, high);
-        for state use (low => 0, high => 1);
-        for state'size use s32'size;
-    end led;
 
     -- debug
     procedure print (s : string);
@@ -74,5 +70,27 @@ package kernel is
         external_name => "add_timer";
 
     function del_timer (timer : access timer_list) return result;
+
+    -- io
+    type iomem is access u32;
+    function ioremap_cache (phys_addr : u32; size : u32) return u32 with
+        import        => true,
+        convention    => c,
+        external_name => "ioremap_cache";
+
+    -- function early_ioremap (phys_addr : u32; size : u32) return u32 with
+    --     import        => true,
+    --     convention    => c,
+    --     external_name => "early_ioremap";
+
+    function ioread32 (addr : iomem) return u32 with
+        import        => true,
+        convention    => c,
+        external_name => "ioread32";
+
+    -- function phys_to_virt (phys_addr : u32) return u32 with
+    --     import        => true,
+    --     convention    => c,
+    --     external_name => "phys_to_virt"; 
 
 end kernel;
