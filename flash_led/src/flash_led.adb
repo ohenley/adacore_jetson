@@ -1,18 +1,17 @@
-with system;
-with kernel; use kernel;
+
 with led; use led;
 with led.device; use led.device;
+
+with System.Machine_Code;
 
 package body flash_led is
 
     timer : aliased kernel.timer_list;
-    half_period_ms : kernel.u32 := 500;
+    half_period_ms : kernel.u32 := 100;
 
-    --my_led : led_type; -- problem
+    my_led : led_type := (pin_nbr => 14, 
+                          label   => "my_led"); -- no problem
 
-    my_led : constant led_type := (pin_nbr => 14, 
-                                   label   => "my_led"); -- no problem
-    
     procedure timer_callback (unused : kernel.u32) with convention => c;
     procedure timer_callback (unused : kernel.u32) is
     begin
@@ -34,7 +33,7 @@ package body flash_led is
         procedure ada_linux_init with
             import        => true,
             convention    => ada,
-            external_name => "flash_ledinit";  
+            external_name => "flash_ledinit"; 
     begin
         ada_linux_init;
         init (my_led);
@@ -47,5 +46,16 @@ package body flash_led is
         res := kernel.del_timer (timer'access);
         deinit(my_led);
     end;
+
+
+    -- procedure print_hex (value : kernel.u32) with
+    --     Import        => True,
+    --     Convention    => c,
+    --     External_Name => "print_hex";
+
+    -- procedure print_hex (value : system.Address) with
+    --     Import        => True,
+    --     Convention    => c,
+    --     External_Name => "print_access_hex";
 
 end flash_led;

@@ -72,25 +72,12 @@ package kernel is
     function del_timer (timer : access timer_list) return result;
 
     -- io
-    type iomem is access u32;
-    function ioremap_cache (phys_addr : u32; size : u32) return u32 with
+    type byte is mod 2**8;
+    type byte_access is access all byte;
+
+    function ioremap (phys_addr : system.Address; size : u32; pgprot : u64) return system.Address with
         import        => true,
         convention    => c,
-        external_name => "ioremap_cache";
-
-    -- function early_ioremap (phys_addr : u32; size : u32) return u32 with
-    --     import        => true,
-    --     convention    => c,
-    --     external_name => "early_ioremap";
-
-    function ioread32 (addr : iomem) return u32 with
-        import        => true,
-        convention    => c,
-        external_name => "ioread32";
-
-    -- function phys_to_virt (phys_addr : u32) return u32 with
-    --     import        => true,
-    --     convention    => c,
-    --     external_name => "phys_to_virt"; 
+        external_name => "__ioremap";
 
 end kernel;

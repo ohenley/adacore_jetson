@@ -1,3 +1,6 @@
+with system;
+with kernel; use kernel;
+
 package flash_led is
 
     procedure ada_init_module with

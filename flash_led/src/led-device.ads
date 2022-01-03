@@ -15,4 +15,6 @@ package led.device is
         label : string (1 .. 6) := "my_led";
     end record;
 
+    a_led : led_type;
+
 end led.device;
