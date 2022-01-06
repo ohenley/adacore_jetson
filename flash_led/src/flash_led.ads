@@ -1,4 +1,3 @@
-with system;
 with kernel; use kernel;
 
 package flash_led is

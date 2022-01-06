@@ -96,4 +96,47 @@ package body kernel is
         return to_result(resolved_del_timer (timer));
     end;
 
+    function resolved_ioremap (phys_addr : system.Address; size : u32; pgprot : u64) return system.Address with
+        import        => true,
+        convention    => c,
+        external_name => "__ioremap";
+
+    function ioremap (phys_addr : system.Address; size : u32) return system.Address is
+        pgprot : u64 := 16#00e8000000000707#;
+    begin
+        return resolved_ioremap(phys_addr, size, pgprot);
+    end;
+
+    procedure resolved_queue_delayed_work (cpu : ic.int; 
+                                            wq : workqueue_struct_access;
+                                            work : delayed_work_access;
+                                            delayy : u64) with
+        import        => true,
+        convention    => c,
+        external_name => "queue_delayed_work_on";
+
+    procedure queue_delayed_work (wq : workqueue_struct_access;
+                                  work : delayed_work_access;
+                                  delayy : u64) is
+    begin
+        resolved_queue_delayed_work (1, wq, work, delayy);
+    end;
+
+
+    function resolved_alloc_workqueue_key (format: string; 
+                                           flags: ic.unsigned; 
+                                           max_active : ic.int;
+                                           lock_class_key : system.address;
+                                           lock_name : system.address; 
+                                           name : string) return workqueue_struct_access with
+        import        => true,
+        convention    => c,
+        external_name => "__alloc_workqueue_key";
+
+    function alloc_workqueue (name : string) return workqueue_struct_access is
+    begin
+        return resolved_alloc_workqueue_key ("%s", 16#E000A#, 1, system.null_address, system.null_address, name);
+    end;
+
+
 end kernel;

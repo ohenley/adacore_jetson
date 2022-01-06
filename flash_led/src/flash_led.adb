@@ -1,32 +1,58 @@
-
 with led; use led;
 with led.device; use led.device;
 
 with System.Machine_Code;
+with Ada.Unchecked_Conversion;
 
 package body flash_led is
 
-    timer : aliased kernel.timer_list;
-    half_period_ms : kernel.u32 := 100;
+    half_period_ms : kernel.u32 := 500;
 
-    my_led : led_type := (pin_nbr => 14, 
-                          label   => "my_led"); -- no problem
+    wq : kernel.workqueue_struct_access := kernel.workqueue_struct_access (system.null_address);
+    work : kernel.work_struct;
+    timer : kernel.timer_list;
+    delayed_work : aliased kernel.delayed_work;
 
-    procedure timer_callback (unused : kernel.u32) with convention => c;
-    procedure timer_callback (unused : kernel.u32) is
+    my_led : led_type := (pin_nbr => 14, label => "my_led");
+
+    procedure work_callback (work : kernel.work_struct_access) with convention => c;
+    procedure work_callback (work : kernel.work_struct_access) is
+        led_state : state := get_state (my_led);
     begin
-        light (my_led, not get_state (my_led));
-        timer.expires := kernel.jiffies + kernel.msecs_to_jiffies (half_period_ms);
-        kernel.add_timer (timer'access);
+        light (my_led, not led_state);
+        kernel.queue_delayed_work(wq, delayed_work'access, kernel.msecs_to_jiffies (half_period_ms));
     end;
 
-    procedure setup_timer is
+    procedure setup_delayed_work is
+        function to_unsigned_long is new Ada.Unchecked_Conversion (Source => delayed_work_access, Target => ic.unsigned_long);
     begin
-        kernel.init_timer_key (timer'access, 0, "gpio_timer", system.null_address);
-        timer.c_function := timer_callback'access;
-        timer.data       := 0;
-        timer.expires := kernel.jiffies + kernel.msecs_to_jiffies (half_period_ms);
-        kernel.add_timer (timer'access);
+        work.func := work_callback'access;
+        work.entryy.prev := delayed_work.work.entryy'access;
+        work.entryy.next := delayed_work.work.entryy'access;
+        delayed_work.work := work;
+
+        timer.func := delayed_work_timer_fn'access;
+        timer.expires := 0;
+        timer.data := to_unsigned_long(delayed_work'access);
+        delayed_work.timer := timer;
+
+        if wq = kernel.null_wq then
+            wq := kernel.alloc_workqueue ("flash_led_work");
+        end if;
+
+        if wq /= kernel.null_wq then
+            kernel.queue_delayed_work(wq, delayed_work'access, kernel.msecs_to_jiffies (half_period_ms));
+        end if;
+
+    end;
+
+    procedure cleanup_delayed_work is
+    begin
+        if wq /= kernel.null_wq then
+            cancel_delayed_work (delayed_work'access);
+		    flush_workqueue (wq);
+		    destroy_workqueue (wq);
+        end if;
     end;
 
     procedure ada_init_module is
@@ -37,25 +63,12 @@ package body flash_led is
     begin
         ada_linux_init;
         init (my_led);
-        setup_timer;
+        setup_delayed_work;
     end;
 
     procedure ada_cleanup_module is
-        res     : kernel.result;
     begin
-        res := kernel.del_timer (timer'access);
+        cleanup_delayed_work;
         deinit(my_led);
     end;
-
-
-    -- procedure print_hex (value : kernel.u32) with
-    --     Import        => True,
-    --     Convention    => c,
-    --     External_Name => "print_hex";
-
-    -- procedure print_hex (value : system.Address) with
-    --     Import        => True,
-    --     Convention    => c,
-    --     External_Name => "print_access_hex";
-
 end flash_led;

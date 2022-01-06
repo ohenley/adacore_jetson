@@ -11,12 +11,24 @@ package kernel is
     type u64 is mod 2**64;
     for u64'Size use 64;
 
-    type s32 is new interfaces.c.int;
+    package ic renames interfaces.c;
+
+    type s32 is new ic.int;
 
     type result is (success, error);
 
     -- debug
     procedure print (s : string);
+
+    procedure print_hex (value : kernel.u32) with
+        Import        => True,
+        Convention    => c,
+        External_Name => "print_hex";
+
+    procedure print_hex (value : system.Address) with
+        Import        => True,
+        Convention    => c,
+        External_Name => "print_access_hex";
 
     -- gpio
     function gpio_request (gpio : u32; label : string) return result;
@@ -47,14 +59,14 @@ package kernel is
     end record with
         convention => c;
 
-    type timer_list_function_t is access procedure (data : u32) with
+    type timer_list_function_t is access procedure (data : ic.unsigned_long) with
         convention => c;
 
     type timer_list is record
-        c_entry    : hlist_node;
-        expires    : u64;
-        c_function : timer_list_function_t;
-        data       : u32;
+        entryy     : hlist_node;
+        expires    : ic.unsigned_long;
+        func       : timer_list_function_t;
+        data       : ic.unsigned_long;
         flags      : s32;
     end record with
         convention => c;
@@ -75,9 +87,67 @@ package kernel is
     type byte is mod 2**8;
     type byte_access is access all byte;
 
-    function ioremap (phys_addr : system.Address; size : u32; pgprot : u64) return system.Address with
+    function ioremap (phys_addr : system.Address; size : u32) return system.address;
+
+---------------
+    type list_head;
+    type list_head_access is access all list_head;
+
+    type list_head is record
+        prev : list_head_access;
+        next : list_head_access;
+    end record with
+        convention => c;
+ 
+    type work_struct;
+    type work_struct_access is access all work_struct;
+
+    type work_func_t is access procedure (work : work_struct_access) with
+        convention => c;
+
+    type atomic_long_t is new ic.unsigned_long;
+    type work_struct is record
+        data : atomic_long_t;
+        entryy : aliased list_head;
+        func : work_func_t;
+    end record with
+        convention => c;
+
+    type workqueue_struct_access is new system.address;
+    null_wq : kernel.workqueue_struct_access := kernel.workqueue_struct_access (system.null_address);
+
+    type delayed_work is record
+        work : work_struct;
+        timer : timer_list;
+        wq : workqueue_struct_access;
+        cpu : ic.int;
+    end record;
+    type delayed_work_access is access all delayed_work;
+
+    procedure queue_delayed_work (wq : workqueue_struct_access;
+                                  work : delayed_work_access;
+                                  delayy : u64);
+    
+    procedure delayed_work_timer_fn (data : ic.unsigned_long) with
         import        => true,
         convention    => c,
-        external_name => "__ioremap";
+        external_name => "delayed_work_timer_fn";
+
+    function alloc_workqueue (name : string) return workqueue_struct_access;
+
+    procedure cancel_delayed_work (delayed_work : delayed_work_access) with
+        import        => true,
+        convention    => c,
+        external_name => "cancel_delayed_work";
+
+	procedure flush_workqueue (wq : workqueue_struct_access) with 
+        import        => true,
+        convention    => c,
+        external_name => "flush_workqueue";
+
+	procedure destroy_workqueue (wq : workqueue_struct_access) with
+        import        => true,
+        convention    => c,
+        external_name => "destroy_workqueue";
 
 end kernel;
