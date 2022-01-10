@@ -1,74 +1,83 @@
-with led; use led;
-with led.device; use led.device;
+With Led; Use Led;
 
-with System.Machine_Code;
-with Ada.Unchecked_Conversion;
+With System.Machine_Code;
+With Ada.Unchecked_Conversion;
+With Interfaces.C;
 
-package body flash_led is
 
-    half_period_ms : kernel.u32 := 500;
+With Kernel;
+With Controllers;
 
-    wq : kernel.workqueue_struct_access := kernel.workqueue_struct_access (system.null_address);
-    work : kernel.work_struct;
-    timer : kernel.timer_list;
-    delayed_work : aliased kernel.delayed_work;
+Package Body Flash_Led Is
 
-    my_led : led_type := (pin_nbr => 14, label => "my_led");
+    Package Ic Renames Interfaces.C;
 
-    procedure work_callback (work : kernel.work_struct_access) with convention => c;
-    procedure work_callback (work : kernel.work_struct_access) is
-        led_state : state := get_state (my_led);
-    begin
-        light (my_led, not led_state);
-        kernel.queue_delayed_work(wq, delayed_work'access, kernel.msecs_to_jiffies (half_period_ms));
-    end;
+    Half_Period_Ms : Ic.Unsigned := 500;
 
-    procedure setup_delayed_work is
-        function to_unsigned_long is new Ada.Unchecked_Conversion (Source => delayed_work_access, Target => ic.unsigned_long);
-    begin
-        work.func := work_callback'access;
-        work.entryy.prev := delayed_work.work.entryy'access;
-        work.entryy.next := delayed_work.work.entryy'access;
-        delayed_work.work := work;
+    Wq : Kernel.Workqueue_Struct_Access := Kernel.Workqueue_Struct_Access (System.Null_Address);
+    Work : Kernel.Work_Struct;
+    Timer : Kernel.Timer_List;
+    Delayed_Work : Aliased Kernel.Delayed_Work;
+    
+    Pin : Controllers.Pin := Controllers.Jetson_Nano_Header_Pins(18);
+    My_Led : Led_Type := (Pin => Pin, Label => "my_led");
 
-        timer.func := delayed_work_timer_fn'access;
-        timer.expires := 0;
-        timer.data := to_unsigned_long(delayed_work'access);
-        delayed_work.timer := timer;
+    Procedure Work_Callback (Work : Kernel.Work_Struct_Access) With Convention => C;
+    Procedure Work_Callback (Work : Kernel.Work_Struct_Access) Is
+        Led_State : State := Get_State (My_Led);
+    Begin
+        Light (My_Led, Not Led_State);
+        Kernel.Queue_Delayed_Work(Wq, Delayed_Work'Access, Kernel.Msecs_To_Jiffies (Half_Period_Ms));
+    End;
 
-        if wq = kernel.null_wq then
-            wq := kernel.alloc_workqueue ("flash_led_work");
-        end if;
+    Procedure Setup_Delayed_Work Is
+        Use Kernel;
+        Function To_Unsigned_Long Is New Ada.Unchecked_Conversion (Source => Kernel.Delayed_Work_Access, Target => Ic.Unsigned_Long);
+    Begin
+        Work.Func := Work_Callback'Access;
+        Work.Entryy.Prev := Delayed_Work.Work.Entryy'Access;
+        Work.Entryy.Next := Delayed_Work.Work.Entryy'Access;
+        Delayed_Work.Work := Work;
 
-        if wq /= kernel.null_wq then
-            kernel.queue_delayed_work(wq, delayed_work'access, kernel.msecs_to_jiffies (half_period_ms));
-        end if;
+        Timer.Func := Kernel.Delayed_Work_Timer_Fn'Access;
+        Timer.Expires := 0;
+        Timer.Data := To_Unsigned_Long(Delayed_Work'Access);
+        Delayed_Work.Timer := Timer;
 
-    end;
+        If Wq = Kernel.Null_Wq Then
+            Wq := Kernel.Alloc_Workqueue ("flash_led_work");
+        End If;
 
-    procedure cleanup_delayed_work is
-    begin
-        if wq /= kernel.null_wq then
-            cancel_delayed_work (delayed_work'access);
-		    flush_workqueue (wq);
-		    destroy_workqueue (wq);
-        end if;
-    end;
+        If Wq /= Kernel.Null_Wq Then
+            Kernel.Queue_Delayed_Work(Wq, Delayed_Work'Access, Kernel.Msecs_To_Jiffies (Half_Period_Ms));
+        End If;
 
-    procedure ada_init_module is
-        procedure ada_linux_init with
-            import        => true,
-            convention    => ada,
-            external_name => "flash_ledinit"; 
-    begin
-        ada_linux_init;
-        init (my_led);
-        setup_delayed_work;
-    end;
+    End;
 
-    procedure ada_cleanup_module is
-    begin
-        cleanup_delayed_work;
-        deinit(my_led);
-    end;
-end flash_led;
+    Procedure Cleanup_Delayed_Work Is
+        Use Kernel;
+    Begin
+        If Wq /= Kernel.Null_Wq Then
+            Cancel_Delayed_Work (Delayed_Work'Access);
+		    Flush_Workqueue (Wq);
+		    Destroy_Workqueue (Wq);
+        End If;
+    End;
+
+    Procedure Ada_Init_Module Is
+        Procedure Ada_Linux_Init With
+            Import        => True,
+            Convention    => Ada,
+            External_Name => "flash_ledinit"; 
+    Begin
+        Ada_Linux_Init;
+        Init (My_Led);
+        Setup_Delayed_Work;
+    End;
+
+    Procedure Ada_Cleanup_Module Is
+    Begin
+        Cleanup_Delayed_Work;
+        Final (My_Led);
+    End;
+End Flash_Led;

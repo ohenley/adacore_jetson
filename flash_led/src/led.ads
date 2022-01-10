@@ -1,7 +1,20 @@
-package led is
+With Controllers;
+Package Led Is
 
-    type state is (low, high);
-    for state use (low => 0, high => 1);
-    for state'size use 32;
+    Type State Is (Low, High);
+    For State Use (Low => 0, High => 1);
 
-end led;
+    Function "not" (S : State) Return State Is
+        (If S = High Then Low Else High);
+
+    Type Led_Type Is Record
+        Pin : Controllers.Pin;
+        Label : String (1 .. 6) := "my_led";
+    End Record;
+
+    Procedure Init (L : Led_Type);
+    Procedure Light (L : Led_Type; S : State);
+    Function Get_State (L : Led_Type) Return State;
+    Procedure Final (L : Led_Type);
+
+End Led;

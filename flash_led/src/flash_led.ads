@@ -1,15 +1,13 @@
-with kernel; use kernel;
+Package Flash_Led Is
 
-package flash_led is
+    Procedure Ada_Init_Module With
+        Export        => True,
+        Convention    => C,
+        External_Name => "ada_init_module";
 
-    procedure ada_init_module with
-        export        => true,
-        convention    => c,
-        external_name => "ada_init_module";
+    Procedure Ada_Cleanup_Module With
+        Export        => True,
+        Convention    => C,
+        External_Name => "ada_cleanup_module";
 
-    procedure ada_cleanup_module with
-        export        => true,
-        convention    => c,
-        external_name => "ada_cleanup_module";
-
-end flash_led;
+End Flash_Led;
