@@ -26,16 +26,6 @@ Package Body Kernel Is
       Print_Access_Hex_C (A);
    End;
 
-   Procedure Print_Access_Hex_C (A : System.Storage_Elements.Integer_Address) With
-     Import        => True,
-     Convention    => C,
-     External_Name => "print_access_hex";
-
-   Procedure Printk (A : System.Storage_Elements.Integer_Address) Is
-   Begin
-      Print_Access_Hex_C (A);
-   End;
-
    Type Gpio_Desc_Acc Is New System.Address;
 
    Function Gpio_To_Desc_C (Gpio : Ic.Unsigned) Return Gpio_Desc_Acc With

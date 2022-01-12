@@ -12,7 +12,6 @@ Package Kernel Is
    -- Debug
    Procedure Printk (S : String);
    Procedure Printk (A : System.Address);
-   Procedure Printk (A : System.Storage_Elements.Integer_Address);
 
    -- Gpio
    Function Gpio_Request (Gpio : Ic.Unsigned; Label : String) Return Ic.Int;
@@ -88,6 +87,7 @@ Package Kernel Is
    Function Alloc_Workqueue (Name : String) Return Workqueue_Struct_Access;
 
    Procedure Delayed_Work_Timer_Fn (Data : Ic.Unsigned_Long) With Convention => C;
+
    Procedure Cancel_Delayed_Work (Delayed_Work : Delayed_Work_Access);
    Procedure Flush_Workqueue (Wq : Workqueue_Struct_Access);
    Procedure Destroy_Workqueue (Wq : Workqueue_Struct_Access);
