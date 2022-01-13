@@ -107,9 +107,7 @@ Package Body Kernel Is
         MT_NORMAL_WT     : Memory_T := 5;
 
         Function PTE_ATTRINDX (Mt : Memory_T) Return Pgprot_T Is
-        Begin
-            Return Pgprot_T(Mt * 2#1#e+2);
-        End;
+            (Pgprot_T(Mt * 2#1#e+2));
 
         -- Page Table Entry
         PTE_VALID      : Pgprot_T := 2#1#e+0;
@@ -117,20 +115,20 @@ Package Body Kernel Is
         PTE_DIRTY      : Pgprot_T := 2#1#e+55;
         PTE_SPECIAL    : Pgprot_T := 2#1#e+56;
         PTE_PROT_NONE  : Pgprot_T := 2#1#e+58;
-        PTE_TYPE_MASK  : Pgprot_T := 3 * 2#1#e+0;
+        PTE_TYPE_MASK  : Pgprot_T := 2#1#e+0 + 2#1#e+1;
         PTE_TYPE_FAULT : Pgprot_T := 2#0#e+0;
-        PTE_TYPE_PAGE  : Pgprot_T := 3 * 2#1#e+0;
+        PTE_TYPE_PAGE  : Pgprot_T := 2#1#e+0 + 2#1#e+1;
         PTE_TABLE_BIT  : Pgprot_T := 2#1#e+1;
         PTE_USER       : Pgprot_T := 2#1#e+6;
         PTE_RDONLY     : Pgprot_T := 2#1#e+7;
-        PTE_SHARED     : Pgprot_T := 3 * 2#1#e+8;  -- Inner Shareable
-        PTE_AF         : Pgprot_T := 2#1#e+10;     -- Access Flag
-        PTE_NG         : Pgprot_T := 2#1#e+11;     -- NG
-        PTE_DBM        : Pgprot_T := 2#1#e+51;     -- Dirty Bit Management
-        PTE_CONT       : Pgprot_T := 2#1#e+52;     -- Contiguous Range
-        PTE_PXN        : Pgprot_T := 2#1#e+53;     -- Privileged XN
-        PTE_UXN        : Pgprot_T := 2#1#e+54;     -- User XN
-        PTE_HYP_XN     : Pgprot_T := 2#1#e+54;     -- HYP XN
+        PTE_SHARED     : Pgprot_T := 2#1#e+8 + 2#1#e+9;  -- Inner Shareable
+        PTE_AF         : Pgprot_T := 2#1#e+10;           -- Access Flag
+        PTE_NG         : Pgprot_T := 2#1#e+11;           -- NG
+        PTE_DBM        : Pgprot_T := 2#1#e+51;           -- Dirty Bit Management
+        PTE_CONT       : Pgprot_T := 2#1#e+52;           -- Contiguous Range
+        PTE_PXN        : Pgprot_T := 2#1#e+53;           -- Privileged XN
+        PTE_UXN        : Pgprot_T := 2#1#e+54;           -- User XN
+        PTE_HYP_XN     : Pgprot_T := 2#1#e+54;           -- HYP XN
 
         Pgprot : Pgprot_T := (PTE_TYPE_MASK Or 
                               PTE_AF Or
@@ -160,8 +158,11 @@ Package Body Kernel Is
    End;
 
    Function Alloc_Workqueue_Key_C
-     (Format         : String; Flags : Ic.Unsigned; Max_Active : Ic.Int;
-      Lock_Class_Key : System.Address; Lock_Name : System.Address;
+     (Format         : String; 
+      Flags          : Ic.Unsigned; 
+      Max_Active     : Ic.Int;
+      Lock_Class_Key : System.Address; 
+      Lock_Name      : System.Address;
       Name           : String) Return Workqueue_Struct_Access With
      Import        => True,
      Convention    => C,
