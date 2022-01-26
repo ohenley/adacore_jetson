@@ -28,7 +28,7 @@ Ada Linux Modules for the NVIDIA Jetson-Nano
 >  - Second controls by direct read/write to the GPIO memory registers using kernel mapped memory (`ioremap`, `ioread32`, `iowrite32`).       
 
 ## Status
-Both version are working.
+Both flavors of the LED interface implementation are working.
 
 ## Prerequisites
 - Python 3.x on host machine.    
