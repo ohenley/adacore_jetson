@@ -1,6 +1,6 @@
 # AdaCore Jetson
 
-Ada Linux Modules for the Nvidia Jetson-Nano
+Ada Linux Modules for the NVIDIA Jetson-Nano
 
 ## Table of Contents
 <details>
@@ -21,17 +21,19 @@ Ada Linux Modules for the Nvidia Jetson-Nano
 
 ## About
 
-> Not "that" trivial linux module tutorial written in the Ada programming language  
-> Targeted at the Arm based Nvidia Jetson-Nano board running Ubuntu 18.04 
+> Linux module tutorial written in the Ada programming language  
+> Targeted at the NVIDIA Jetson-Nano board running Ubuntu 18.04 (aarch64, kernel-based v4.294) 
+> It shows two implementations of a LED interface: 
+>  - First is based on the include/linux/gpio.h interface.
+>  - Second one controls by direct read/write to the GPIO memory registers   
 
 ## Status
-flash a led --> working
+Both version are working.
 
 ## Prerequisites
-- x86_64 Linux running on target board.
-- Python 3.x on host.
+- Python 3.x on host machine.
 - GNAT cross compilation toolchain on host machine. (see `jetson_nano_cross_compilation.md` for further details on how to setup)
-- Complete led circuit with transistor base connected to physical board pin 13. (linux equivalent internal mapping: gpio #14)  
+- Complete led circuit with transistor base connected to physical board pin 18.
 ![alt text](https://i.stack.imgur.com/2vrSj.gif)
 
 ## Dependencies
