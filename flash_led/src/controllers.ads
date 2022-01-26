@@ -6,22 +6,17 @@ With System.Storage_Elements; Use System.Storage_Elements;
 Package Controllers Is
 
     Type Function_Type Is
-       (GPIO, VDC3_3, VDC5_0, GND, I2C0_SDA, I2C0_CLK, I2C1_SDA, I2C1_SCL,
+       (GPIO, VDC3_3, VDC5_0, GND, NIL, I2C0_SDA, I2C0_CLK, I2C1_SDA, I2C1_SCL,
         UART1_TXD, UART1_RXD, AUD_CLK, UART1_RTS, SPI1_SCK, SPI0_MOSI,
         SPI0_MISO, SPI0_SCK, SPI0_CS0, CAM_MCLK, PWM, I2S0_FS, SPI1_MOSI, I2S0_SCLK,
         SPI1_CS1, SPI1_CS0, SPI1_MISO, SPI0_CS1, UART1_CTS, I2S0_DIN,
-        I2S_DOUT, NIL);
+        I2S_DOUT);
 
     Type Gpio_Tegra_Port Is
        (PA, PB, PC, PD, PE, PF, PG, PH, PI, PJ, PK, PL, PM, PN, PO, PP, PQ, PR,
         PS, PT, PU, PV, PW, PX, PY, PZ, PAA, PBB, PCC, PDD, PEE, NIL);
 
     Type Gpio_Bank_Desc Is Range 1 .. 8;
-
-    Type Ports_Banks_Map Is Array (Gpio_Tegra_Port) Of Gpio_Bank_Desc;
-    Ports_Banks : Constant Ports_Banks_Map :=
-       (1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 6,
-        7, 7, 7, 7, 8, 8, 8, 8);
 
     Type Banks_Array Is Array (Gpio_Bank_Desc) Of System.Address;
 
@@ -36,10 +31,11 @@ Package Controllers Is
         System'To_Address (16#6000_D700#));
 
     Type Jetson_Nano_Header_Pin Is Range 1 .. 40; -- Jetson Nano Physical Expansion Pinout
-    Type Gpio_Linux_Nbr Is Range 0 .. 255; -- Sudo Cat /Sys/Kernel/Debug/Gpio
+    Type Gpio_Linux_Nbr Is Range 0 .. 255;        -- sudo cat /sys/kernel/debug/gpio
     Type Register_Bit Is Range 0 .. 7;
 
-    Type Pin (Default : Function_Type := GPIO; Alternate: Function_Type := GPIO) Is Record
+    Type Pin (Default : Function_Type := GPIO) Is Record
+        Alternate: Function_Type := GPIO;
         Case Default Is
             When VDC3_3 .. GND =>
                 Null;
@@ -109,7 +105,7 @@ Package Controllers Is
         E_Schmt    : Bit;
         Drive_Type : Two_Bits;
     End Record;
-    For Pinmux_Control'Size Use 32;
+    For Pinmux_Control'Size Use Kernel.U32'Size;
 
     For Pinmux_Control Use Record
         Pm         At 0 Range  0 ..  1;
@@ -124,8 +120,6 @@ Package Controllers Is
     End Record;
 
     Pinmux_Base_Addr : System.Address := System'To_Address (16#7000_3000#);
-    --Pinmux_Offset : System.Storage_Elements.Storage_Offset := 16#6C#; -- 13
-    Pinmux_Offset : System.Storage_Elements.Storage_Offset := 16#70#; -- 18
 
     Type Gpio_Bit_Array Is Array (Register_Bit) Of Bit With Pack;
 
@@ -133,7 +127,7 @@ Package Controllers Is
         Bits : Gpio_Bit_Array;
         Locks : Gpio_Bit_Array;
     End Record;
-    For Gpio_Control'Size Use 32;
+    For Gpio_Control'Size Use Kernel.U32'Size;
 
     For Gpio_Control Use Record
         Bits  At 0 Range 0 .. 7; 
@@ -156,7 +150,7 @@ Package Controllers Is
     Function To_U32 Is New Ada.Unchecked_Conversion (Source => Gpio_Control, Target => Kernel.U32);
 
     Function Get_Bank_Phys_Address (Port : Gpio_Tegra_Port) Return System.Address Is
-        (Gpio_Banks(Ports_Banks(Port)));
+        (Gpio_Banks(Gpio_Tegra_Port'Pos(Port) / 4 + 1));
 
     Function Get_Register_Phys_Address (Port : Gpio_Tegra_Port; Reg : Register) Return System.Address Is
         (Get_Bank_Phys_Address (Port) + Registers_Offsets (Reg) + (Gpio_Tegra_Port'Pos(Port) Mod 4) * 4);
