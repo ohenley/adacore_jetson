@@ -20,12 +20,11 @@ Package Body Flash_Led Is
     Timer        : K.Timer_List;
     Delayed_Work : Aliased K.Delayed_Work;
     Pin          : C.Pin := C.Jetson_Nano_Header_Pins (18);
-    My_Led       : Led_Type := (Pin => Pin, Label => "my_led");
+    My_Led       : Led_Type := (Pin => Pin, Label => "my_led", S => Low);
 
     Procedure Work_Callback (Work : K.Work_Struct_Access) Is
-        Led_State : State := Get_State (My_Led);
     Begin
-        Light (My_Led, Not Led_State);
+        Flip_State (My_Led);
         K.Queue_Delayed_Work (Wq, 
                               Delayed_Work'Access, 
                               K.Msecs_To_Jiffies (Half_Period_Ms));

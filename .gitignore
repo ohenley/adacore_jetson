@@ -13,6 +13,9 @@
 # any obj folder
 **/obj
 
+# specific folders
+tmp/
+
 # module working files
 *.cmd
 *.ko
