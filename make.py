@@ -110,7 +110,6 @@ class Make:
             replace_in_file(filepath, "<target_architecture>", "\"" + config["architecture_alias"] + "\"")
             
             replace_in_file(filepath, "<module_sources_path>", get_sources_path())
-            #replace_in_file(filepath, "<module_sources_path>", "\"" + str(os.path.relpath(config['module_sources_path'], config['module_path'])) + "\"")
             replace_in_file(filepath, "<rts_path>", "\"" + str(os.path.join(os.getcwd(), config['rts_path'])) + "\"")
 
             gnat_options = find_gnat_options()
@@ -182,11 +181,12 @@ class Make:
 
     def clean(self, config):
             
-        def remove_all_files(dir):
+        def remove_all_files_but(dir, but = []):
             dir = Path(dir)
             for item in dir.iterdir():
                 if not item.is_dir():
-                    os.remove(item)
+                    if item.name not in but:
+                        os.remove(item)
 
         def remove_dir_recursively(root, dir_to_remove):
             root = Path(root)
@@ -204,12 +204,12 @@ class Make:
 
         module_path = os.path.join(os.getcwd(), config['module_path'])
 
-        remove_all_files(module_path)
-        remove_all_files(os.path.join(module_path, "obj"))
-        remove_all_files(os.path.join(module_path, "lib"))
+        remove_all_files_but(module_path, ["gnat.adc"])
+        remove_all_files_but(os.path.join(module_path, "obj"))
+        remove_all_files_but(os.path.join(module_path, "lib"))
 
-        remove_all_files(os.path.join(os.getcwd(), config['rts_path'], "adalib"))
-        remove_all_files(os.path.join(os.getcwd(), config['rts_path'], "obj"))
+        remove_all_files_but(os.path.join(os.getcwd(), config['rts_path'], "adalib"))
+        remove_all_files_but(os.path.join(os.getcwd(), config['rts_path'], "obj"))
 
 if __name__ == "__main__":
 
