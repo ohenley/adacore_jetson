@@ -49,9 +49,9 @@ class Make:
         def find_gcc_options():
 
             def filter_options(line):
-                magic_string = "cmd_" + os.getcwd() + "/tmp/basic_module.o :="
+                magic_string = "cmd_" + os.getcwd() + "/tmp/main_template.o :="
                 line = line.replace(magic_string, '')
-                line = line.replace("basic_module", config["module_name"])
+                line = line.replace("main_template", config["module_name"])
                 line = line.replace("tmp", "src")
                 line = line.replace("\'\"", "'")
                 line = line.replace("\"\'", "'")
@@ -79,15 +79,15 @@ class Make:
                 return options
     
             os.makedirs("tmp", exist_ok=True)
-            copyfile("templates/basic_module.c", "tmp/basic_module.c") 
-            generate_makefile("templates/makefile_template", "tmp", "basic_module", os.path.join(os.getcwd(), "tmp"))
+            copyfile("templates/main_template.c", "tmp/main_template.c") 
+            generate_makefile("templates/makefile_template", "tmp", "main_template", os.path.join(os.getcwd(), "tmp"))
             remove_line_from_file("tmp/Makefile", 2)
             os.environ["ENV_PREFIX"] = config['cross_toolchain_abspath']
             output, error = Popen(['make'], stdout=PIPE, stderr=PIPE, cwd="./tmp").communicate()
             print(output.decode("utf-8"))
             print(error.decode("utf-8"))
 
-            with open("tmp/.basic_module.o.cmd") as f:
+            with open("tmp/.main_template.o.cmd") as f:
                 lines = f.read()
                 first = lines.split('\n', 1)[0]
                 return filter_options(first)
