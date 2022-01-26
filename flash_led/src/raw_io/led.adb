@@ -33,7 +33,10 @@ Package Body Led Is
 
    Procedure Set_Gpio (Pin : Controllers.Pin; S : Led.State) Is
       use Controllers;
-      use Kernel;
+      use Kernel; 
+
+      Function Bit(S: Led.State) Return Bit Renames Led.State'Enum_Rep;
+
       Base_Addr   : Kernel.Iomem_Access;
       Control     : Controllers.Gpio_Control := (Bits => (Others => 0), Locks => (Others => 0));
       Control_C   : Kernel.U32;
@@ -41,7 +44,7 @@ Package Body Led Is
    Begin
       Set_Pinmux (Pin);
 
-      Control.Bits(Pin.Reg_Bit) := (If S = High Then 1 Else 0);
+      Control.Bits(Pin.Reg_Bit) := (If S = High Then Bit (High) Else Bit (Low));
 
       Base_Addr   := Ioremap (Get_Register_Phys_Address (Pin.Port, GPIO_CNF), Control_C'Size);
       Io_Write_32 (Control_C, Base_Addr);
@@ -58,12 +61,7 @@ Package Body Led Is
       Set_Gpio (L.Pin, Low);
    End;
 
-   Procedure Light (L : Led_Type; S : State) Is
-   Begin
-      Set_Gpio (L.Pin, S);
-   End;
-
-   Function Get_State (L : Led_Type) Return State Is
+   Procedure Flip_State (L : in out Led_Type) is
       Use Controllers;
       Use Kernel;
       Base_Addr : Kernel.Iomem_Access := Ioremap (Get_Register_Phys_Address (L.Pin.Port, GPIO_OUT), 4);
@@ -71,7 +69,8 @@ Package Body Led Is
       Data      : Controllers.Gpio_Control;
       For Data'Address Use Value'Address;
    Begin
-      Return (If Data.Bits(L.Pin.Reg_Bit) = 1 Then High Else Low);
+      L.S := State'Enum_Val (Data.Bits(L.Pin.Reg_Bit));
+      Set_Gpio (L.Pin, not L.S);
    End;
 
    Procedure Final (L : Led_Type) Is

@@ -8,13 +8,13 @@ Package Led Is
         (If S = High Then Low Else High);
 
     Type Led_Type Is Record
-        Pin : Controllers.Pin;
+        Pin   : Controllers.Pin;
         Label : String (1 .. 6) := "my_led";
+        S     : State := Low;
     End Record;
 
-    Procedure Init (L : Led_Type);
-    Procedure Light (L : Led_Type; S : State);
-    Function Get_State (L : Led_Type) Return State;
-    Procedure Final (L : Led_Type);
+    Procedure Init       (L : Led_Type);
+    Procedure Flip_State (L : in out Led_Type);
+    Procedure Final      (L : Led_Type);
 
 End Led;

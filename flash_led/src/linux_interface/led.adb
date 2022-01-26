@@ -11,17 +11,12 @@ Package Body Led Is
         Res := Kernel.Gpio_Request (Ic.Unsigned(L.Pin.Linux_Nbr), L.Label);
     End;
 
-    Procedure Light (L : Led_Type; S : State) Is
-        Res : Ic.Int;
+    Procedure Flip_State (L : in out Led_Type) is
+        Value : Ic.Int := Kernel.Gpio_Get_Value (Ic.Unsigned(L.Pin.Linux_Nbr));
+        Res   : Ic.Int;
     Begin
-        Res := Kernel.Gpio_Direction_Output (Ic.Unsigned(L.Pin.Linux_Nbr), Ic.Int(State'Enum_Rep (S)));
-    End;
-
-    Function Get_State (L : Led_Type) Return State Is
-        Value : Ic.Int;
-    Begin
-        Value := Kernel.Gpio_Get_Value (Ic.Unsigned(L.Pin.Linux_Nbr));
-        Return State'Enum_Val(Value);
+        L.S := State'Enum_Val(Value);
+        Res := Kernel.Gpio_Direction_Output (Ic.Unsigned(L.Pin.Linux_Nbr), State'Enum_Rep (not L.S));
     End;
 
     Procedure Final (L : Led_Type) Is
