@@ -31,24 +31,26 @@ Package Body Led Is
       Kernel.Io_Write_32 (0, Base_Addr);
    End;
 
-   Procedure Set_Gpio (Pin : Controllers.Pin; S : State) Is
-      Use Kernel;
-      Use Controllers;
+   Procedure Set_Gpio (Pin : Controllers.Pin; S : Led.State) Is
+      use Controllers;
+      use Kernel;
       Base_Addr   : Kernel.Iomem_Access;
-      Data        : Controllers.Gpio_Control := (Bits => (Others => 0), Locks => (Others => 0));
+      Control     : Controllers.Gpio_Control := (Bits => (Others => 0), Locks => (Others => 0));
+      Control_C   : Kernel.U32;
+      For Control_C'Address use Control'Address;
    Begin
       Set_Pinmux (Pin);
 
-      Data.Bits(Pin.Reg_Bit) := (If S = High Then 1 Else 0);
+      Control.Bits(Pin.Reg_Bit) := (If S = High Then 1 Else 0);
 
-      Base_Addr   := Ioremap (Get_Register_Phys_Address (Pin.Port, GPIO_CNF), 4);
-      Io_Write_32 (To_U32(Data), Base_Addr);
+      Base_Addr   := Ioremap (Get_Register_Phys_Address (Pin.Port, GPIO_CNF), Control_C'Size);
+      Io_Write_32 (Control_C, Base_Addr);
 
-      Base_Addr   := Ioremap (Get_Register_Phys_Address (Pin.Port, GPIO_OE), 4);
-      Io_Write_32 (To_U32(Data), Base_Addr);
+      Base_Addr   := Ioremap (Get_Register_Phys_Address (Pin.Port, GPIO_OE), Control_C'Size);
+      Io_Write_32 (Control_C, Base_Addr);
 
-      Base_Addr   := Ioremap (Get_Register_Phys_Address (Pin.Port, GPIO_OUT), 4);
-      Io_Write_32 (To_U32(Data), Base_Addr);
+      Base_Addr   := Ioremap (Get_Register_Phys_Address (Pin.Port, GPIO_OUT), Control_C'Size);
+      Io_Write_32 (Control_C, Base_Addr);
    End;
 
    Procedure Init (L : Led_Type) Is
