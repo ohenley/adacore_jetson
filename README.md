@@ -23,7 +23,7 @@ Ada Linux Modules for the NVIDIA Jetson-Nano
 
 > Linux module tutorial written in the Ada programming language.    
 > Targeted at the NVIDIA Jetson-Nano board running Ubuntu 18.04 (aarch64, kernel-based v4.294).         
-> It shows two implementations of a LED interface:     
+> It shows two implementations of a flashing LED interface:     
 >  - First is based on the include/linux/gpio.h interface.    
 >  - Second one controls by direct read/write to the GPIO memory registers       
 
