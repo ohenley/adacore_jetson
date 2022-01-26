@@ -57,10 +57,8 @@ Package Kernel Is
  
    Type Work_Struct;
    Type Work_Struct_Access Is Access All Work_Struct;
-
-   Type Work_Func_T Is Access Procedure (Work : Work_Struct_Access) With
-     Convention => C;
-
+   Type Work_Func_T Is Access Procedure (Work : Work_Struct_Access);
+   
    Type Atomic_Long_T Is New Ic.Unsigned_Long;
    Type Work_Struct Is Record
       Data   : Atomic_Long_T;
@@ -70,7 +68,10 @@ Package Kernel Is
      Convention => C;
 
    Type Workqueue_Struct_Access Is New System.Address;
-   Null_Wq : Kernel.Workqueue_Struct_Access := Kernel.Workqueue_Struct_Access (System.Null_Address);
+   Type Lock_Class_Key_Access Is New System.Address;
+   Null_Wq : Workqueue_Struct_Access := Workqueue_Struct_Access (System.Null_Address);
+   Null_Lock : Lock_Class_Key_Access := Lock_Class_Key_Access (System.Null_Address);
+   
 
    Type Delayed_Work Is Record
       Work  : Work_Struct;
@@ -84,7 +85,7 @@ Package Kernel Is
                                  Work   : Delayed_Work_Access;
                                  Delayy : Ic.Unsigned_Long);
     
-   Function Alloc_Workqueue (Name : String) Return Workqueue_Struct_Access;
+   Function Create_Singlethread_Wq (Name : String) Return Workqueue_Struct_Access;
 
    Procedure Delayed_Work_Timer_Fn (Data : Ic.Unsigned_Long) With Convention => C;
 

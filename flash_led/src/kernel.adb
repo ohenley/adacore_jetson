@@ -131,12 +131,12 @@ Package Body Kernel Is
         PTE_HYP_XN     : Pgprot_T := 2#1#e+54;           -- HYP XN
 
         Pgprot : Pgprot_T := (PTE_TYPE_MASK Or 
-                              PTE_AF Or
-                              PTE_SHARED Or
-                              PTE_PXN Or
-                              PTE_UXN Or
-                              PTE_DIRTY Or
-                              PTE_DBM Or
+                              PTE_AF        Or
+                              PTE_SHARED    Or
+                              PTE_PXN       Or
+                              PTE_UXN       Or
+                              PTE_DIRTY     Or
+                              PTE_DBM       Or
                               PTE_ATTRINDX (MT_DEVICE_NGnRE));
    Begin
       Return Ioremap_C (Phys_Addr, Size, Pgprot);
@@ -161,14 +161,14 @@ Package Body Kernel Is
      (Format         : String; 
       Flags          : Ic.Unsigned; 
       Max_Active     : Ic.Int;
-      Lock_Class_Key : System.Address; 
-      Lock_Name      : System.Address;
+      Lock_Class_Key : Lock_Class_Key_Access; 
+      Lock_Name      : String;
       Name           : String) Return Workqueue_Struct_Access With
      Import        => True,
      Convention    => C,
      External_Name => "__alloc_workqueue_key";
 
-   Function Alloc_Workqueue (Name : String) Return Workqueue_Struct_Access Is
+   Function Create_Singlethread_Wq (Name : String) Return Workqueue_Struct_Access Is
       Type Workqueue_Flags Is Record
          WQ_UNBOUND          : Bool;
          WQ_FREEZABLE        : Bool;
@@ -182,7 +182,7 @@ Package Body Kernel Is
          WQ_LEGACY           : Bool;
          WQ_ORDERED_EXPLICIT : Bool;
       End Record;
-      For Workqueue_Flags'Size Use 32;
+      For Workqueue_Flags'Size Use System.Word_Size;
       For Workqueue_Flags Use Record
          WQ_UNBOUND          At 0 Range  1 ..  1;
          WQ_FREEZABLE        At 0 Range  2 ..  2;
@@ -197,19 +197,22 @@ Package Body Kernel Is
          WQ_ORDERED_EXPLICIT At 0 Range 19 .. 19;
       End Record;
       Flags : Workqueue_Flags :=
-        (WQ_UNBOUND => YES, 
-         WQ_ORDERED => YES, 
+        (WQ_UNBOUND          => YES, 
+         WQ_ORDERED          => YES, 
          WQ_ORDERED_EXPLICIT => YES,
-         WQ_LEGACY  => YES, 
-         WQ_MEM_RECLAIM => YES, 
-         Others => NO);
+         WQ_LEGACY           => YES, 
+         WQ_MEM_RECLAIM      => YES, 
+         Others              => NO);
       Wq_Flags : Ic.Unsigned;
       For Wq_Flags'Address Use Flags'Address;
    Begin
       Return
-        Alloc_Workqueue_Key_C
-          ("%s", Wq_Flags, 1, System.Null_Address, System.Null_Address,
-           Name);
+        Alloc_Workqueue_Key_C ("%s", 
+                               Wq_Flags, 
+                               1, 
+                               Null_Lock, 
+                               "",
+                               Name);
    End;
 
    Procedure Delayed_Work_Timer_Fn_C (Data : Ic.Unsigned_Long) With
