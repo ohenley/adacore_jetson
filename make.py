@@ -98,12 +98,19 @@ class Make:
                 options[index] = "\"" + options[index] + "\""
             return options
 
+        def get_sources_path():
+            base = str(os.path.relpath(config['module_sources_path'], config['module_path']))
+            flavor = os.path.join(base, config['module_flavor'])
+            return "\"" + base + "\", \"" + flavor + "\""
+
         def generate_gpr_file():
             filepath = copy_and_rename_file("templates/module_template.gpr", config['module_path'], config['module_name'] + ".gpr")
 
             replace_in_file(filepath, "<module_name>", config['module_name'])
             replace_in_file(filepath, "<target_architecture>", "\"" + config["architecture_alias"] + "\"")
-            replace_in_file(filepath, "<module_sources_path>", "\"" + str(os.path.relpath(config['module_sources_path'], config['module_path'])) + "\"")
+            
+            replace_in_file(filepath, "<module_sources_path>", get_sources_path())
+            #replace_in_file(filepath, "<module_sources_path>", "\"" + str(os.path.relpath(config['module_sources_path'], config['module_path'])) + "\"")
             replace_in_file(filepath, "<rts_path>", "\"" + str(os.path.join(os.getcwd(), config['rts_path'])) + "\"")
 
             gnat_options = find_gnat_options()
