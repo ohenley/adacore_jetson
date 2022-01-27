@@ -19,12 +19,14 @@ Package Body Flash_Led Is
     Work         : K.Work_Struct;
     Timer        : K.Timer_List;
     Delayed_Work : Aliased K.Delayed_Work;
+
     Pin          : C.Pin := C.Jetson_Nano_Header_Pins (18);
-    My_Led       : Led_Type := (Pin => Pin, Label => "my_led", S => Low);
+    Led_Tag      : Led.Tag := "my_led";
+    My_Led       : Led_Type (Led_Tag'Size);
 
     Procedure Work_Callback (Work : K.Work_Struct_Access) Is
     Begin
-        Flip_State (My_Led);
+        My_Led.Flip_State;
         K.Queue_Delayed_Work (Wq, 
                               Delayed_Work'Access, 
                               K.Msecs_To_Jiffies (Half_Period_Ms));
@@ -63,7 +65,7 @@ Package Body Flash_Led Is
         use K;
     Begin
         Ada_Linux_Init;
-        Init (My_Led);
+        My_Led.Init (P => Pin, T => Led_Tag, S => Low);
         Declare_Delayed_Work;
 
         If Wq = K.Null_Wq Then
@@ -78,6 +80,6 @@ Package Body Flash_Led Is
     Procedure Ada_Cleanup_Module Is
     Begin
         Cleanup_Delayed_Work;
-        Final (My_Led);
+        My_Led.Final;
     End;
 End Flash_Led;
