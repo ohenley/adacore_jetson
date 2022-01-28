@@ -55,7 +55,7 @@ $ scp flash_led/flash_led.ko your_jetson_username@xxx.xxx.xxx.xxx:~ ; ssh your_j
 ```
 
 ## Limitations
-None
+None. Do not hesitate to fill a Github issue if you find any problem.
 
 ## Usage
 - Issue the following at target cmd to insert kernel module: 
