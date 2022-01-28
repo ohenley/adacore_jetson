@@ -21,7 +21,7 @@ NVIDIA jetson-nano LED driver experiment in Ada
 
 ## About
 
-> Linux module tutorial written in the Ada programming language.    
+> Linux module experiment written in the Ada programming language.    
 > Targeted at the NVIDIA Jetson-Nano board running Ubuntu 18.04 (aarch64, kernel-based v4.294).         
 > It shows two implementations of a flashing LED interface:     
 >  - First leverages the Linux GPIO interface (`include/linux/gpio.h`).    
