@@ -32,13 +32,12 @@ Both flavors of the LED interface implementation are working.
 
 ## Prerequisites
 - Python 3.x on host machine.    
-- GNAT cross compilation toolchain on host machine. (see `jetson_nano_cross_compilation.md` for further details on how to setup)    
-- Complete led circuit with transistor base connected to physical board pin 18.    
-
-![alt text](https://i.stack.imgur.com/2vrSj.gif)
+- GNAT cross compilation toolchain on host machine. (see `jetson_nano_cross_compilation.md` for further details on how to setup)     
 
 ## Dependencies
-- None
+- NVIDIA Jetson Nano Developer Kit.
+- Complete led circuit with transistor base connected to physical board pin 18.   
+![alt text](https://i.stack.imgur.com/2vrSj.gif)
 
 ## Building
 #### Linux
