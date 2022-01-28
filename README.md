@@ -1,6 +1,6 @@
 # AdaCore Jetson
 
-Ada Linux Modules for the NVIDIA Jetson-Nano
+NVIDIA jetson-nano LED driver experiment in Ada
 
 ## Table of Contents
 <details>
