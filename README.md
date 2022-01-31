@@ -31,9 +31,9 @@ NVIDIA jetson-nano LED driver experiment in Ada
 Both flavors of the LED interface implementation are working.
 
 ## Prerequisites
-- Python 3.x on host machine.    
-- GNAT cross compilation toolchain on host machine. (see `jetson_nano_cross_compilation.md` for further details on how to setup)    
-- Complete led circuit with transistor base connected to physical board pin 18.    
+- Python 3.x on __host__ machine.    
+- GNAT cross compilation toolchain on __host__ machine. (see `jetson_nano_cross_compilation.md` for further details on how to setup)    
+- Complete led circuit with transistor base connected to physical board pin 18 (default pin in code).     
 
 ![alt text](https://i.stack.imgur.com/2vrSj.gif)
 
@@ -43,23 +43,23 @@ Both flavors of the LED interface implementation are working.
 ## Building
 #### Linux
 - Set the absolute path value for both `kernel_sources_abspath` and `cross_toolchain_abspath` keys found in file `flash_led_jetson_nano.json`
-- Issue the following at host cmd: 
+- Issue the following at __host__ cmd: 
 ```
 $ python make.py generate config:flash_led_jetson_nano.json
 $ python make.py build config:flash_led_jetson_nano.json rts:true
 ```
 
 ## Installation
-- Replace xxx.xxx.xxx.xxx by your jetson ip address and issue the following at host cmd:
+- Replace xyz.xyz.xyz.xyz by your jetson ip address and issue the following at __host__ cmd:
 ```
-$ scp flash_led/flash_led.ko your_jetson_username@xxx.xxx.xxx.xxx:~ ; ssh your_jetson_username@xxx.xxx.xxx.xxx
+$ scp flash_led/flash_led.ko your_jetson_username@xyz.xyz.xyz.xyz:~ ; ssh your_jetson_username@xyz.xyz.xyz.xyz
 ```
 
 ## Limitations
 None
 
 ## Usage
-- Issue the following at target cmd to insert kernel module: 
+- Issue the following at __target__ cmd to insert kernel module: 
 ```
 jetson:~$ sudo insmod flash_led.ko
 ```
