@@ -1,77 +1,77 @@
-With Kernel;
-With System;
-With Ada.Unchecked_Conversion;
+with Kernel;
+with System;
+with Ada.Unchecked_Conversion;
 
-With Interfaces.C;
+with Interfaces.C;
 
-With System.Machine_Code;
-With System.Storage_Elements; use System.Storage_Elements;
+with System.Machine_Code;
+with System.Storage_Elements; use System.Storage_Elements;
 
-With Controllers;
-Package Body Led Is
+with Controllers;
+package body Led is
 
-   Package Ic Renames Interfaces.C;
-   Package K  Renames Kernel;
+   package Ic renames Interfaces.C;
+   package K renames Kernel;
 
-   Function "+" (Addr : System.Address; Offset : Storage_Offset) Return K.Phys_Addr_T Is
+   function "+" (Addr : System.Address; Offset : Storage_Offset) return K.Phys_Addr_T is
       Res : System.Address := Addr + Offset;
-   Begin
-      Return K.Phys_Addr_T (Res);
-   End;
+   begin
+      return K.Phys_Addr_T (Res);
+   end;
 
-   Function Ioremap (Phys_Addr : System.Address; Size : Ic.Size_T) Return K.Iomem_Access Is
-      (K.Ioremap (K.Phys_Addr_T (Phys_Addr), Size));
+   function Ioremap (Phys_Addr : System.Address; Size : Ic.Size_T) return K.Iomem_Access is
+     (K.Ioremap (K.Phys_Addr_T (Phys_Addr), Size));
 
-   Procedure Set_Pinmux (Pin : C.Pin) Is
-      Base_Addr   : K.Iomem_Access := K.Ioremap (C.Pinmux_Base_Addr + Pin.Pinmux_Offset, 4);
-   Begin
+   procedure Set_Pinmux (Pin : C.Pin) is
+      Base_Addr : K.Iomem_Access := K.Ioremap (C.Pinmux_Base_Addr + Pin.Pinmux_Offset, 4);
+   begin
       K.Io_Write_32 (0, Base_Addr);
-   End;
+   end;
 
-   Procedure Set_Gpio (Pin : C.Pin; S : Led.State) Is
+   procedure Set_Gpio (Pin : C.Pin; S : Led.State) is
 
-      Function Bit(S: Led.State) Return C.Bit Renames Led.State'Enum_Rep;
+      function Bit (S : Led.State) return C.Bit renames Led.State'Enum_Rep;
 
-      Base_Addr   : K.Iomem_Access;
-      Control     : C.Gpio_Control := (Bits => (Others => 0), Locks => (Others => 0));
-      Control_C   : K.U32;
-      For Control_C'Address use Control'Address;
-   Begin
+      Base_Addr : K.Iomem_Access;
+      Control   : C.Gpio_Control := (Bits => (others => 0), Locks => (others => 0));
+      Control_C : K.U32;
+      for Control_C'Address use Control'Address;
+   begin
       Set_Pinmux (Pin);
 
-      Control.Bits(Pin.Reg_Bit) := Bit (S);
+      Control.Bits (Pin.Reg_Bit) := Bit (S);
 
-      Base_Addr   := Ioremap (C.Get_Register_Phys_Address (Pin.Port, C.GPIO_CNF), Control_C'Size);
+      Base_Addr := Ioremap (C.Get_Register_Phys_Address (Pin.Port, C.GPIO_CNF), Control_C'Size);
       K.Io_Write_32 (Control_C, Base_Addr);
 
-      Base_Addr   := Ioremap (C.Get_Register_Phys_Address (Pin.Port, C.GPIO_OE), Control_C'Size);
+      Base_Addr := Ioremap (C.Get_Register_Phys_Address (Pin.Port, C.GPIO_OE), Control_C'Size);
       K.Io_Write_32 (Control_C, Base_Addr);
 
-      Base_Addr   := Ioremap (C.Get_Register_Phys_Address (Pin.Port, C.GPIO_OUT), Control_C'Size);
+      Base_Addr := Ioremap (C.Get_Register_Phys_Address (Pin.Port, C.GPIO_OUT), Control_C'Size);
       K.Io_Write_32 (Control_C, Base_Addr);
-   End;
+   end;
 
-   Procedure Init (L : Out Led_Type; P : C.Pin; T : Tag; S : State) Is
-   Begin
+   procedure Init (L : out Led_Type; P : C.Pin; T : Tag; S : State) is
+   begin
       L.P := P;
       L.T := T;
       L.S := S;
-      Set_Gpio (L.P, Low);
-   End;
+      Set_Gpio (L.P, Off);
+   end;
 
-   Procedure Flip_State (L : In Out Led_Type) is
+   procedure Flip_State (L : in out Led_Type) is
       Base_Addr : K.Iomem_Access := Ioremap (C.Get_Register_Phys_Address (L.P.Port, C.GPIO_OUT), 4);
-      Value     : K.U32 := K.Io_Read_32 (Base_Addr);
-      Data      : C.Gpio_Control;
-      For Data'Address Use Value'Address;
-   Begin
-      L.S := State'Enum_Val (Data.Bits(L.P.Reg_Bit));
+      Value : K.U32 := K.Io_Read_32 (Base_Addr);
+      Data  : C.Gpio_Control;
+      for Data'Address use Value'Address;
+   begin
+      L.S := State'Enum_Val (Data.Bits (L.P.Reg_Bit));
       Set_Gpio (L.P, not L.S);
-   End;
+   end;
 
-   Procedure Final (L : Led_Type) Is
-   Begin
-      Set_Gpio (L.P, Low);
-   End;
+   procedure Final (L : Led_Type) is
+   begin
+      Set_Gpio (L.P, Off);
+   end;
 
-End Led;
+end Led;

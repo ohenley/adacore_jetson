@@ -1,99 +1,104 @@
-With Interfaces.C;
-With System;
-With System.Storage_Elements;
+with Interfaces.C;
+with System;
+with System.Storage_Elements;
 
-Package Kernel Is
+package Kernel is
 
-   Type U32 Is Mod 2**32;
-   For U32'Size Use 32;
+   type U32 is mod 2**32;
+   for U32'Size use 32;
 
-   Package Ic Renames Interfaces.C;
-    
+   package Ic renames Interfaces.C;
+
    -- Debug
-   Procedure Printk (S : String);
-   Procedure Printk (A : System.Address);
+   procedure Printk (S : String);
+   procedure Printk (A : System.Address);
 
    -- Gpio
-   Function Gpio_Request (Gpio : Ic.Unsigned; Label : String) Return Ic.Int;
-   Function Gpio_Direction_Output (Gpio : Ic.Unsigned; Value : Ic.Int) Return Ic.Int;
-   Function Gpio_Get_Value (Gpio : Ic.Unsigned) Return Ic.Int;
-   Procedure Gpio_Free (Gpio : Ic.Unsigned);
+   function Gpio_Request (Gpio : Ic.unsigned; Label : String) return Ic.int;
+   function Gpio_Direction_Output (Gpio : Ic.unsigned; Value : Ic.int) return Ic.int;
+   function Gpio_Get_Value (Gpio : Ic.unsigned) return Ic.int;
+   procedure Gpio_Free (Gpio : Ic.unsigned);
 
-   Function Msecs_To_Jiffies (M : Ic.Unsigned) Return Ic.Unsigned_Long;
-    
-   Type Hlist_Node;
-   Type Hlist_Node_Acc Is Access Hlist_Node;
+   function Msecs_To_Jiffies (M : Ic.unsigned) return Ic.unsigned_long;
 
-   Type Hlist_Node Is Record
+   type Hlist_Node;
+   type Hlist_Node_Acc is access Hlist_Node;
+
+   type Hlist_Node is record
       Next  : Hlist_Node_Acc;
       Pprev : Hlist_Node_Acc;
-   End Record With
+   end record with
       Convention => C;
 
-   Type Timer_List_Function_T Is Access Procedure (Data : Ic.Unsigned_Long) With
-     Convention => C;
+   type Timer_List_Function_T is access procedure (Data : Ic.unsigned_long) with
+      Convention => C;
 
-   Type Timer_List Is Record
-      Entryy     : Hlist_Node;
-      Expires    : Ic.Unsigned_Long;
-      Func       : Timer_List_Function_T;
-      Data       : Ic.Unsigned_Long;
-      Flags      : U32;
-   End Record With
-     Convention => C;
+   type Timer_List is record
+      Entryy  : Hlist_Node;
+      Expires : Ic.unsigned_long;
+      Func    : Timer_List_Function_T;
+      Data    : Ic.unsigned_long;
+      Flags   : U32;
+   end record with
+      Convention => C;
 
-   Type Phys_Addr_T Is New System.Address;
-   Type Iomem_Access Is New System.Address;
-   Function Ioremap (Phys_Addr : Phys_Addr_T; Size : Ic.Size_T) Return Iomem_Access;
+   type Phys_Addr_T is new System.Address;
+   type Iomem_Access is new System.Address;
+   function Ioremap (Phys_Addr : Phys_Addr_T; Size : Ic.size_t) return Iomem_Access;
 
-   Type List_Head;
-   Type List_Head_Access Is Access All List_Head;
+   type List_Head;
+   type List_Head_Access is access all List_Head;
 
-   Type List_Head Is Record
+   type List_Head is record
       Prev : List_Head_Access;
       Next : List_Head_Access;
-   End Record With
-     Convention => C;
- 
-   Type Work_Struct;
-   Type Work_Struct_Access Is Access All Work_Struct;
-   Type Work_Func_T Is Access Procedure (Work : Work_Struct_Access);
-   
-   Type Atomic_Long_T Is New Ic.Unsigned_Long;
-   Type Work_Struct Is Record
-      Data   : Atomic_Long_T;
-      Entryy : Aliased List_Head;
-      Func   : Work_Func_T;
-   End Record With
-     Convention => C;
+   end record with
+      Convention => C;
 
-   Type Workqueue_Struct_Access Is New System.Address;
-   Type Lock_Class_Key_Access Is New System.Address;
+   type Work_Struct;
+   type Work_Struct_Access is access all Work_Struct;
+   type Work_Func_T is access procedure (Work : Work_Struct_Access);
+
+   type Atomic_Long_T is new Ic.unsigned_long;
+   type Work_Struct is record
+      Data   : Atomic_Long_T;
+      Entryy : aliased List_Head;
+      Func   : Work_Func_T;
+   end record with
+      Convention => C;
+
+   type Workqueue_Struct_Access is new System.Address;
+   type Lock_Class_Key_Access is new System.Address;
    Null_Wq : Workqueue_Struct_Access := Workqueue_Struct_Access (System.Null_Address);
    Null_Lock : Lock_Class_Key_Access := Lock_Class_Key_Access (System.Null_Address);
-   
 
-   Type Delayed_Work Is Record
+   type Delayed_Work is record
       Work  : Work_Struct;
       Timer : Timer_List;
       Wq    : Workqueue_Struct_Access;
-      Cpu   : Ic.Int;
-   End Record;
-   Type Delayed_Work_Access Is Access All Delayed_Work;
+      Cpu   : Ic.int;
+   end record;
+   type Delayed_Work_Access is access all Delayed_Work;
 
-   Procedure Queue_Delayed_Work (Wq     : Workqueue_Struct_Access;
+   procedure Queue_Delayed_Work (Wq     : Workqueue_Struct_Access;
                                  Work   : Delayed_Work_Access;
-                                 Delayy : Ic.Unsigned_Long);
-    
-   Function Create_Singlethread_Wq (Name : String) Return Workqueue_Struct_Access;
+                                 Delayy : Ic.unsigned_long);
 
-   Procedure Delayed_Work_Timer_Fn (Data : Ic.Unsigned_Long) With Convention => C;
+   function Create_Singlethread_Wq (Name : String) return Workqueue_Struct_Access;
 
-   Procedure Cancel_Delayed_Work (Delayed_Work : Delayed_Work_Access);
-   Procedure Flush_Workqueue (Wq : Workqueue_Struct_Access);
-   Procedure Destroy_Workqueue (Wq : Workqueue_Struct_Access);
+   -- function Create_Singlethread_Wq (Name : String) return Workqueue_Struct_Access with
+   --    Import        => True,
+   --    Convention    => C,
+   --    External_Name => "wrapper_create_singlethread_wq";
 
-   Procedure Io_Write_32 (Val : U32; Addr : Iomem_Access);
-   Function Io_Read_32 (Addr : Iomem_Access) Return U32;
+   procedure Delayed_Work_Timer_Fn (Data : Ic.unsigned_long) with
+      Convention => C;
 
-End Kernel;
+   procedure Cancel_Delayed_Work (Delayed_Work : Delayed_Work_Access);
+   procedure Flush_Workqueue (Wq : Workqueue_Struct_Access);
+   procedure Destroy_Workqueue (Wq : Workqueue_Struct_Access);
+
+   procedure Io_Write_32 (Val : U32; Addr : Iomem_Access);
+   function Io_Read_32 (Addr : Iomem_Access) return U32;
+
+end Kernel;

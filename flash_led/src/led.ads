@@ -1,28 +1,27 @@
-With Controllers;
-Package Led Is
+with Controllers;
+package Led is
 
-   Package C Renames Controllers;
+   package C renames Controllers;
 
-   Type State Is (Low, High);
-   Type Led_Type (Size : Natural) Is Tagged Private;
+   type State is (Off, On);
+   type Led_Type (Size : Natural) is tagged private;
 
    subtype Tag is String;
 
-   Procedure Init       (L : Out Led_Type; P : C.Pin; T : Tag; S : State);
-   Procedure Flip_State (L : In Out Led_Type);
-   Procedure Final      (L : Led_Type);
+   procedure Init (L : out Led_Type; P : C.Pin; T : Tag; S : State);
+   procedure Flip_State (L : in out Led_Type);
+   procedure Final (L : Led_Type);
 
 private
 
-   For State Use (Low => 0, High => 1);
+   for State use (Off => 0, On => 1);
 
-   Function "not" (S : State) Return State Is
-       (If S = High Then Low Else High);
+   function "not" (S : State) return State is (if S = On then Off else On);
 
-   Type Led_Type (Size : Natural) Is Tagged Record
-       P     : C.Pin;
-       T     : Tag (1 .. Size);
-       S     : State;
-   End Record;
+   type Led_Type (Size : Natural) is tagged record
+      P : C.Pin;
+      T : Tag (1 .. Size);
+      S : State;
+   end record;
 
-End Led;
+end Led;

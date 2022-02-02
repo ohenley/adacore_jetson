@@ -1,13 +1,13 @@
-Package Flash_Led Is
+package Flash_Led is
 
-    Procedure Ada_Init_Module With
-        Export        => True,
-        Convention    => C,
-        External_Name => "ada_init_module";
+   procedure Ada_Init_Module with
+      Export        => True,
+      Convention    => C,
+      External_Name => "ada_init_module";
 
-    Procedure Ada_Cleanup_Module With
-        Export        => True,
-        Convention    => C,
-        External_Name => "ada_cleanup_module";
+   procedure Ada_Cleanup_Module with
+      Export        => True,
+      Convention    => C,
+      External_Name => "ada_cleanup_module";
 
-End Flash_Led;
+end Flash_Led;
