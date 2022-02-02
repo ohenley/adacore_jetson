@@ -32,7 +32,7 @@ Both flavors of the LED interface implementation are working.
 
 ## Prerequisites
 - Python 3.x on host machine.    
-- GNAT cross compilation toolchain on host machine. (see `jetson_nano_cross_compilation.md` for further details on how to setup)     
+- GNAT cross compilation toolchain on host machine. (see `jetson_nano_modules_cross.md` for further details on how to setup)     
 
 ## Dependencies
 - NVIDIA Jetson Nano Developer Kit.
@@ -44,8 +44,8 @@ Both flavors of the LED interface implementation are working.
 - Set the absolute path value for both `kernel_sources_abspath` and `cross_toolchain_abspath` keys found in file `flash_led_jetson_nano.json`
 - Issue the following at __host__ cmd: 
 ```
-$ python make.py generate config:flash_led_jetson_nano.json
-$ python make.py build config:flash_led_jetson_nano.json rts:true
+$ python3 make.py generate config:flash_led_jetson_nano.json
+$ python3 make.py build config:flash_led_jetson_nano.json rts:true
 ```
 
 ## Installation

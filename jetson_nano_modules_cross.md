@@ -2,7 +2,7 @@
 
 1. The Jetson host OS, eg. Ubuntu 18.04, needs to be up and running (install, boot, login directly or ssh remotely). Please refer to NVIDIA documentation if such Linux install is not done yet. We have informations to gather from it, so login to the remote/**target** board, eg using ssh:    
 ```
-$ ssh my_jetson_username@192.168.xxx.xxx
+$ ssh my_jetson_username@192.168.xyz.xyz
 ```
 
 2. Check the Jetson version. On the remote/**target** Jetson platform, execute and note aside:    
@@ -50,10 +50,9 @@ $ tar -xjf ~/cross_base/Linux_for_Tegra/source/public/kernel_src.tbz2
 $ sudo scp /proc/config.gz my_local_username@192.168.xxx.xxx:~/cross_base/output
 ```
 
-10. Extract the config and rename it:    
+10. Extract the config.gz content to .config file:        
 ```
-$ gzip -d -c ~/cross_base/output/config.gz
-$ mv ~/cross_base/output/config ~/cross_base/output/.config
+$ gzip -d -c ~/cross_base/output/config.gz > ~/cross_base/output/.config
 ```
 
 11. Set ENV_PREFIX, eg. using `anod` will install it to something like `~/adacore/e3-20211024/wave/aarch64-linux-linux64/gnat/install/bin`:
@@ -64,4 +63,11 @@ export ENV_PREFIX="~/adacore/e3-20211024/wave/aarch64-linux-linux64/gnat/install
 11. Prepare the modules, eg:    
 ```
 $ make ARCH=arm64 CROSS_COMPILE=~/adacore/e3-20211024/wave/aarch64-linux-linux64/gnat/install/bin/aarch64-linux-gnu- O=~/cross_base/output -C ~/cross_base/kernel/kernel-4.9 modules_prepare
+```
+
+12. Set "kernel_sources_abspath" in flash_led_jetson_nano.json, eg.
+```
+...
+"kernel_sources_abspath" : "~/cross_base/output",
+...
 ```
