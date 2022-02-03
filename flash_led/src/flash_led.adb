@@ -15,7 +15,7 @@ package body Flash_Led is
 
    Half_Period_Ms : Ic.Unsigned := 500;
 
-   Wq           : K.Workqueue_Struct_Access := K.Null_Wq;
+   Wq           : K.Wq_Struct_Access := K.Null_Wq;
    Work         : K.Work_Struct;
    Timer        : K.Timer_List;
    Delayed_Work : aliased K.Delayed_Work;

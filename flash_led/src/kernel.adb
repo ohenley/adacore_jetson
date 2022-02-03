@@ -2,9 +2,9 @@ with Ada.Unchecked_Conversion;
 with System.Machine_Code;
 package body Kernel is
 
-   type Bool is (NO, YES);
+   type Bool is (NO, YES) with Size => 1;
    for Bool use (NO => 0, YES => 1);
-   for Bool'Size use 1;
+   --for Bool'Size use 1;
 
    procedure Printk_C (S : String) with
       Import        => True,
@@ -144,14 +144,14 @@ package body Kernel is
    end;
 
    procedure Queue_Delayed_Work_On_C (Cpu    : Ic.Int; 
-                                      Wq     : Workqueue_Struct_Access; 
+                                      Wq     : Wq_Struct_Access; 
                                       Work   : Delayed_Work_Access;
                                       Delayy : Ic.Unsigned_Long) with
       Import        => True,
       Convention    => C,
       External_Name => "queue_delayed_work_on";
 
-   procedure Queue_Delayed_Work (Wq     : Workqueue_Struct_Access; 
+   procedure Queue_Delayed_Work (Wq     : Wq_Struct_Access; 
                                  Work   : Delayed_Work_Access;
                                  Delayy : Ic.Unsigned_Long) is
    begin
@@ -163,12 +163,12 @@ package body Kernel is
                                    Max_Active     : Ic.Int;
                                    Lock_Class_Key : Lock_Class_Key_Access; 
                                    Lock_Name      : String;
-                                   Name           : String) return Workqueue_Struct_Access with
+                                   Name           : String) return Wq_Struct_Access with
       Import        => True,
       Convention    => C,
       External_Name => "__alloc_workqueue_key";
 
-   Function Create_Singlethread_Wq (Name : String) Return Workqueue_Struct_Access Is
+   function Create_Singlethread_Wq (Name : String) Return Wq_Struct_Access Is
       type Workqueue_Flags is record
          WQ_UNBOUND          : Bool;
          WQ_FREEZABLE        : Bool;
@@ -181,8 +181,9 @@ package body Kernel is
          WQ_ORDERED          : Bool;
          WQ_LEGACY           : Bool;
          WQ_ORDERED_EXPLICIT : Bool;
-      end record;
-      for Workqueue_Flags'size use System.Word_Size;
+      end record
+         with Size => System.Word_Size;
+      --for Workqueue_Flags'size use System.Word_Size;
       for Workqueue_Flags use record
          WQ_UNBOUND          at 0 range  1 ..  1;
          WQ_FREEZABLE        at 0 range  2 ..  2;
@@ -202,8 +203,8 @@ package body Kernel is
                                   WQ_LEGACY           => YES,
                                   WQ_MEM_RECLAIM      => YES,
                                   Others              => NO);
-      Wq_Flags : Ic.Unsigned;
-      for Wq_Flags'address use Flags'address;
+      Wq_Flags : Ic.Unsigned with Address => Flags'address;
+      --for Wq_Flags'address use Flags'address;
    begin
       return Alloc_Workqueue_Key_C ("%s",
                                     Wq_Flags,
@@ -233,22 +234,22 @@ package body Kernel is
       Cancel_Delayed_Work_C (Delayed_Work);
    end;
 
-   procedure Flush_Workqueue_C (Wq : Workqueue_Struct_Access) with
+   procedure Flush_Workqueue_C (Wq : Wq_Struct_Access) with
       Import        => True,
       Convention    => C,
       External_Name => "flush_workqueue";
 
-   procedure Flush_Workqueue (Wq : Workqueue_Struct_Access) is
+   procedure Flush_Workqueue (Wq : Wq_Struct_Access) is
    begin
       Flush_Workqueue_C (Wq);
    end;
 
-   procedure Destroy_Workqueue_C (Wq : Workqueue_Struct_Access) with
+   procedure Destroy_Workqueue_C (Wq : Wq_Struct_Access) with
       Import        => True,
       Convention    => C,
       External_Name => "destroy_workqueue";
 
-   procedure Destroy_Workqueue (Wq : Workqueue_Struct_Access) is
+   procedure Destroy_Workqueue (Wq : Wq_Struct_Access) is
    begin
       Destroy_Workqueue_C (Wq);
    end;

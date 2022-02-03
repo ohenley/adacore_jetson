@@ -67,36 +67,31 @@ package Kernel is
    end record with
       Convention => C;
 
-   type Workqueue_Struct_Access is new System.Address;
+   type Wq_Struct_Access is new System.Address;
    type Lock_Class_Key_Access is new System.Address;
-   Null_Wq : Workqueue_Struct_Access := Workqueue_Struct_Access (System.Null_Address);
+   Null_Wq : Wq_Struct_Access := Wq_Struct_Access (System.Null_Address);
    Null_Lock : Lock_Class_Key_Access := Lock_Class_Key_Access (System.Null_Address);
 
    type Delayed_Work is record
       Work  : Work_Struct;
       Timer : Timer_List;
-      Wq    : Workqueue_Struct_Access;
+      Wq    : Wq_Struct_Access;
       Cpu   : Ic.int;
    end record;
    type Delayed_Work_Access is access all Delayed_Work;
 
-   procedure Queue_Delayed_Work (Wq     : Workqueue_Struct_Access;
+   procedure Queue_Delayed_Work (Wq     : Wq_Struct_Access;
                                  Work   : Delayed_Work_Access;
                                  Delayy : Ic.unsigned_long);
 
-   function Create_Singlethread_Wq (Name : String) return Workqueue_Struct_Access;
-
-   -- function Create_Singlethread_Wq (Name : String) return Workqueue_Struct_Access with
-   --    Import        => True,
-   --    Convention    => C,
-   --    External_Name => "wrapper_create_singlethread_wq";
+   function Create_Singlethread_Wq (Name : String) return Wq_Struct_Access;
 
    procedure Delayed_Work_Timer_Fn (Data : Ic.unsigned_long) with
       Convention => C;
 
    procedure Cancel_Delayed_Work (Delayed_Work : Delayed_Work_Access);
-   procedure Flush_Workqueue (Wq : Workqueue_Struct_Access);
-   procedure Destroy_Workqueue (Wq : Workqueue_Struct_Access);
+   procedure Flush_Workqueue (Wq : Wq_Struct_Access);
+   procedure Destroy_Workqueue (Wq : Wq_Struct_Access);
 
    procedure Io_Write_32 (Val : U32; Addr : Iomem_Access);
    function Io_Read_32 (Addr : Iomem_Access) return U32;
