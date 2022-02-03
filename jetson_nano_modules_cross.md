@@ -47,7 +47,7 @@ tar -xjf ~/cross_base/Linux_for_Tegra/source/public/kernel_src.tbz2
 
 9. From remote/**target** Jetson command prompt, download its original kernel config to local machine/**host**, eg (xyz.xyz.xyz.xyz being the address of my local machine/**host**):    
 ```
-sudo scp /proc/config.gz my_local_username@192.168.xyz.xyz:~/cross_base/output
+jetson:~$ sudo scp /proc/config.gz my_local_username@192.168.xyz.xyz:~/cross_base/output
 ```
 
 10. Extract the config.gz content to .config file:        
