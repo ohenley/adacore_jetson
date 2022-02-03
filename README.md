@@ -1,6 +1,6 @@
 # AdaCore Jetson
 
-NVIDIA jetson-nano LED driver experiment in Ada
+NVIDIA Jetson Nano LED Linux driver experiment in Ada
 
 ## Table of Contents
 <details>
