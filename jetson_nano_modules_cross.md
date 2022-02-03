@@ -45,9 +45,9 @@ tar -xvf tegra_sources.archive
 tar -xjf ~/cross_base/Linux_for_Tegra/source/public/kernel_src.tbz2
 ```
 
-9. From remote/**target** Jetson command prompt, download its original kernel config to local machine/**host**, eg (xxx.xxx.xxx.xxx being the address of my local machine/**host**):    
+9. From remote/**target** Jetson command prompt, download its original kernel config to local machine/**host**, eg (xyz.xyz.xyz.xyz being the address of my local machine/**host**):    
 ```
-sudo scp /proc/config.gz my_local_username@192.168.xxx.xxx:~/cross_base/output
+sudo scp /proc/config.gz my_local_username@192.168.xyz.xyz:~/cross_base/output
 ```
 
 10. Extract the config.gz content to .config file:        
@@ -60,12 +60,12 @@ gzip -d -c ~/cross_base/output/config.gz > ~/cross_base/output/.config
 export ENV_PREFIX="~/adacore/e3-20211024/wave/aarch64-linux-linux64/gnat/install/bin"
 ```
 
-11. Prepare the modules, eg:    
+12. Prepare the modules, eg:    
 ```
 make ARCH=arm64 CROSS_COMPILE=~/adacore/e3-20211024/wave/aarch64-linux-linux64/gnat/install/bin/aarch64-linux-gnu- O=~/cross_base/output -C ~/cross_base/kernel/kernel-4.9 modules_prepare
 ```
 
-12. Set "kernel_sources_abspath" in flash_led_jetson_nano.json, eg.
+13. Set "kernel_sources_abspath" in flash_led_jetson_nano.json, eg.
 ```
 ...
 "kernel_sources_abspath" : "~/cross_base/output",
