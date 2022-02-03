@@ -55,7 +55,10 @@ $ scp flash_led/flash_led.ko your_jetson_username@xyz.xyz.xyz.xyz:~ ; ssh your_j
 ```
 
 ## Limitations
-None. Do not hesitate to fill a Github issue if you find any problem.
+- GNAT Pro 23.0w cross toolchain (Working)    
+- Jetson Ubuntu 18.04, GNAT 7.5.0 (WIP)    
+ 
+Do not hesitate to fill a Github issue if you find any problem.
 
 ## Usage
 - Issue the following at __target__ cmd to insert kernel module: 
