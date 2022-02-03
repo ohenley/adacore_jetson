@@ -2,7 +2,7 @@
 
 1. The Jetson host OS, eg. Ubuntu 18.04, needs to be up and running (install, boot, login directly or ssh remotely). Please refer to NVIDIA documentation if such Linux install is not done yet. We have informations to gather from it, so login to the remote/**target** board, eg using ssh:    
 ```
-$ ssh my_jetson_username@192.168.xyz.xyz
+ssh my_jetson_username@192.168.xyz.xyz
 ```
 
 2. Check the Jetson version. On the remote/**target** Jetson platform, execute and note aside:    
