@@ -55,8 +55,8 @@ $ scp flash_led/flash_led.ko your_jetson_username@xyz.xyz.xyz.xyz:~ ; ssh your_j
 ```
 
 ## Limitations
-- GNAT Pro 23.0w cross toolchain (Working)    
-- Jetson Ubuntu 18.04, GNAT 7.5.0 (WIP)    
+- Working : GNAT Pro 23.0w cross toolchain   
+- WIP : Jetson Ubuntu 18.04, GNAT 7.5.0
  
 Do not hesitate to fill a Github issue if you find any problem.
 
