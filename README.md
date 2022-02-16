@@ -25,7 +25,7 @@ NVIDIA Jetson Nano LED Linux driver experiment in Ada
 > Targeted at the NVIDIA Jetson-Nano board running Ubuntu 18.04 (aarch64, kernel-based v4.294).         
 > It shows two implementations of a flashing LED interface:     
 >  - First leverages the Linux GPIO interface (`include/linux/gpio.h`).    
->  - Second controls by direct read/write to the GPIO memory registers using kernel mapped memory (`ioremap`, `ioread32`, `iowrite32`).       
+>  - Second controls by direct read/write to the GPIO memory registers using kernel mapped memory IO interface (`include/asm-generic/io.h`).       
 
 ## Status
 Both flavors of the LED interface implementation are working.
