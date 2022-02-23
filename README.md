@@ -38,7 +38,7 @@ Both flavors of the LED interface implementation are working.
 
 ## Dependencies
 - NVIDIA Jetson Nano Developer Kit.
-- Complete led circuit with transistor base connected to physical board pin 18 (default pin in code).  
+- Complete led circuit. Bill of Material (eg. https://www.sparkfun.com/ : COM-10969 x1, COM-11372 x1, COM-13689 x1)
 
 ```
    +5V o-----------------o
@@ -54,7 +54,7 @@ Both flavors of the LED interface implementation are working.
                          |
                          |
             ___        |/
-Pin 18 o---|___|---o---|  P2N2222
+Pin 18 o---|___|---o---|  BC337
             10k        |>
                          |
                          |
