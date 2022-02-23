@@ -41,25 +41,25 @@ Both flavors of the LED interface implementation are working.
 - Complete led circuit with transistor base connected to physical board pin 18 (default pin in code).  
 
 ```
-     +5V o-----------------o
-                           |
-                          .-.
-                          | | 330
-                          '-'
-                           |
-                           |
-                          \ / LED
-                           V -->
-                          ---
-                           |
-                           |
-              ___        |/
-  Pin 18 o---|___|---o---|  P2N2222
-              10k        |>
-                           |
-                           |
-                           |
-     GND o-----------------o 
+   +5V o-----------------o
+                         |
+                        .-.
+                        | | 330
+                        '-'
+                         |
+                         |
+                        \ / LED
+                         V -->
+                        ---
+                         |
+                         |
+            ___        |/
+Pin 18 o---|___|---o---|  P2N2222
+            10k        |>
+                         |
+                         |
+                         |
+   GND o-----------------o 
 ```
 
 ## Building
