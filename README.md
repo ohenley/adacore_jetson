@@ -44,8 +44,7 @@ Both flavors of the LED interface implementation are working.
      +5V o-----------------o
                            |
                           .-.
-                          | |
-                          | |330
+                          | | 330
                           '-'
                            |
                            |
@@ -62,7 +61,6 @@ Both flavors of the LED interface implementation are working.
                            |
      GND o-----------------o 
 ```
-![alt text](https://i.stack.imgur.com/2vrSj.gif)
 
 ## Building
 #### Linux
