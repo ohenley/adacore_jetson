@@ -52,7 +52,7 @@ Both flavors of the LED interface implementation are working.
                         '-'
                          |
                          |
-                        \ / LED
+                   LED  \ /         
                          V -->
                         ---
                          |
