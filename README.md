@@ -38,7 +38,11 @@ Both flavors of the LED interface implementation are working.
 
 ## Dependencies
 - NVIDIA Jetson Nano Developer Kit.
-- Complete led circuit. Bill of Material (eg. https://www.sparkfun.com/ --> 1x resistor kit: __COM-10969__, 1x LED: __COM-11372__, 1x BC337 transistor: __COM-13689__, 1x breadboard: __PRT-12615__)
+- Complete led circuit. Bill of Material, eg. https://www.sparkfun.com/
+   - 1x resistor kit: __COM-10969__,    
+   - 1x LED: __COM-11372__,    
+   - 1x BC337 transistor: __COM-13689__,    
+   - 1x breadboard: __PRT-12615__)   
 
 ```
    +5V o-----------------o
