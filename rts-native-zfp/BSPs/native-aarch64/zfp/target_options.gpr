@@ -14,10 +14,6 @@ abstract project Target_Options is
 
   package Compiler is
      --  COMFLAGS here is common flags (used for C and Ada).
-     -- COMFLAGS := ("-fcallgraph-info=su,da",
-     --   "-ffunction-sections",
-     --   "-fdata-sections");
-
      COMFLAGS := ("-ffunction-sections", "-fdata-sections");
 
      --  Per language flags (COMFLAGS will be added later)
