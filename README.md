@@ -25,19 +25,46 @@ NVIDIA Jetson Nano LED Linux driver experiment in Ada
 > Targeted at the NVIDIA Jetson-Nano board running Ubuntu 18.04 (aarch64, kernel-based v4.294).         
 > It shows two implementations of a flashing LED interface:     
 >  - First leverages the Linux GPIO interface (`include/linux/gpio.h`).    
->  - Second controls by direct read/write to the GPIO memory registers using kernel mapped memory (`ioremap`, `ioread32`, `iowrite32`).       
+>  - Second controls by direct read/write to the GPIO memory registers using kernel mapped memory IO interface (`include/asm-generic/io.h`).       
 
 ## Status
 Both flavors of the LED interface implementation are working.
+- Working : GNAT Pro 23.0w cross toolchain   
+- WIP : Jetson Ubuntu 18.04, GNAT 7.5.0
 
 ## Prerequisites
 - Python 3.x on host machine.    
-- GNAT cross compilation toolchain on host machine. (see `jetson_nano_modules_cross.md` for further details on how to setup)     
+- GNAT Pro cross compilation toolchain on host machine. (see `jetson_nano_modules_cross.md` for further details on how to setup)   
 
 ## Dependencies
 - NVIDIA Jetson Nano Developer Kit.
-- Complete led circuit with transistor base connected to physical board pin 18 (default pin in code).   
-![alt text](https://i.stack.imgur.com/2vrSj.gif)
+- Complete led circuit. Bill of Material, eg. https://www.sparkfun.com/
+   - 1x resistor kit: __COM-10969__,    
+   - 1x LED: __COM-11372__,    
+   - 1x BC337 transistor: __COM-13689__,    
+   - 1x breadboard: __PRT-12615__)   
+
+```
+   +5V o-----------------o
+                         |
+                        .-.
+                        | | 330
+                        '-'
+                         |
+                         |
+                   LED  \ /         
+                         V -->
+                        ---
+                         |
+                         |
+            ___        |/
+Pin 18 o---|___|---o---|  BC337
+            10k        |>
+                         |
+                         |
+                         |
+   GND o-----------------o 
+```
 
 ## Building
 #### Linux
@@ -55,7 +82,7 @@ $ scp flash_led/flash_led.ko your_jetson_username@xyz.xyz.xyz.xyz:~ ; ssh your_j
 ```
 
 ## Limitations
-None. Do not hesitate to fill a Github issue if you find any problem.
+Do not hesitate to fill a Github issue if you find any problem.
 
 ## Usage
 - Issue the following at __target__ cmd to insert kernel module: 
