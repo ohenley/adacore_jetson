@@ -151,7 +151,7 @@ class Make:
                    "-v", 
                    "-f", 
                    "-P", 
-                   os.path.join(os.getcwd(), config["rts_path"], "zfp_native_aarch64.gpr")]
+                   os.path.join(os.getcwd(), config["rts_path"], "../../zfp_native_aarch64.gpr")]
 
             output, error = Popen(cmd, stdout=PIPE, stderr=PIPE, cwd=os.path.join(os.getcwd(), config['module_path'])).communicate()
             print(output.decode("utf-8"))
@@ -162,7 +162,7 @@ class Make:
                    "-v", 
                    "-f", 
                    "-P", 
-                   os.path.join(os.getcwd(), config["rts_path"], "zfp_native_aarch64.gpr"), 
+                   os.path.join(os.getcwd(), config["rts_path"], "../../zfp_native_aarch64.gpr"), 
                    "-p"]
 
             output, error = Popen(cmd, stdout=PIPE, stderr=PIPE, cwd=os.path.join(os.getcwd(), config['module_path'])).communicate()
