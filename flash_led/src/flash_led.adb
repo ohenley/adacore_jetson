@@ -20,7 +20,7 @@ package body Flash_Led is
    Timer        : K.Timer_List;
    Delayed_Work : aliased K.Delayed_Work;
 
-   Pin     : C.Pin   := C.Jetson_Nano_Header_Pins (18);
+   Pin     : C.Pin_Data   := C.Jetson_Nano_Header_Pins (18);
    Led_Tag : Led.Tag := "my_led";
    My_Led  : Led_Type (Led_Tag'Size);
 
@@ -62,6 +62,9 @@ package body Flash_Led is
       use K;
    begin
       Ada_Linux_Init;
+
+      --Delayed_Work := K.declare_delayed_work;
+
       My_Led.Init (P => Pin, T => Led_Tag, S => Off);
       Declare_Delayed_Work;
 

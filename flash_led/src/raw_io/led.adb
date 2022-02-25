@@ -22,13 +22,13 @@ package body Led is
    function Ioremap (Phys_Addr : System.Address; Size : Ic.Size_T) return K.Iomem_Access is
      (K.Ioremap (K.Phys_Addr_T (Phys_Addr), Size));
 
-   procedure Set_Pinmux (Pin : C.Pin) is
+   procedure Set_Pinmux (Pin : C.Pin_Data) is
       Base_Addr : K.Iomem_Access := K.Ioremap (C.Pinmux_Base_Addr + Pin.Pinmux_Offset, 4);
    begin
       K.Io_Write_32 (0, Base_Addr);
    end;
 
-   procedure Set_Gpio (Pin : C.Pin; S : Led.State) is
+   procedure Set_Gpio (Pin : C.Pin_Data; S : Led.State) is
 
       function Bit (S : Led.State) return C.Bit renames Led.State'Enum_Rep;
 
@@ -51,7 +51,7 @@ package body Led is
       K.Io_Write_32 (Control_C, Base_Addr);
    end;
 
-   procedure Init (L : out Led_Type; P : C.Pin; T : Tag; S : State) is
+   procedure Init (L : out Led_Type; P : C.Pin_Data; T : Tag; S : State) is
    begin
       L.P := P;
       L.T := T;

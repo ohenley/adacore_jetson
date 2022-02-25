@@ -5,7 +5,7 @@ package body Led is
 
    package Ic renames Interfaces.C;
 
-   procedure Init (L : out Led_Type; P : C.Pin; T : Tag; S : State) is
+   procedure Init (L : out Led_Type; P : C.Pin_Data; T : Tag; S : State) is
       Res : Ic.Int;
    begin
       L.P := P;

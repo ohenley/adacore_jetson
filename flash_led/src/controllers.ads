@@ -34,7 +34,7 @@ package Controllers is
    type Gpio_Linux_Nbr is range 0 .. 255;        -- sudo cat /sys/kernel/debug/gpio
    type Gpio_Tegra_Register_Bit is range 0 .. 7;
 
-   type Pin (Default : Function_Type := GPIO) is record
+   type Pin_Data (Default : Function_Type := GPIO) is record
       Alt : Function_Type := GPIO;
       case Default is
          when VDC3_3 .. GND =>
@@ -47,9 +47,9 @@ package Controllers is
       end case;
    end record;
 
-   type Jetson_Nano_Header_Pins_Array is array (Jetson_Nano_Header_Pin) of Pin;
+   type Jetson_Nano_Pin_Data_Array is array (Jetson_Nano_Header_Pin) of Pin_Data;
 
-   Jetson_Nano_Header_Pins : constant Jetson_Nano_Header_Pins_Array :=
+   Jetson_Nano_Header_Pins : constant Jetson_Nano_Pin_Data_Array :=
      (1  => (Default => VDC3_3,    Alt => NIL),
       2  => (Default => VDC5_0,    Alt => NIL),
       3  => (Default => I2C1_SDA,  Alt => GPIO,      Linux_Nbr => 75,  Port => PJ,  Reg_Bit => 3, Pinmux_Offset => 16#C8#),
@@ -121,8 +121,7 @@ package Controllers is
 
    Pinmux_Base_Addr : System.Address := System'To_Address (16#7000_3000#);
 
-   type Gpio_Bit_Array is array (Gpio_Tegra_Register_Bit) of Bit with
-      Pack;
+   type Gpio_Bit_Array is array (Gpio_Tegra_Register_Bit) of Bit with Pack;
 
    type Gpio_Control is record
       Bits  : Gpio_Bit_Array;
