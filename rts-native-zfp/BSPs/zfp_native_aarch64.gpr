@@ -1,5 +1,6 @@
 aggregate project Zfp_Native_Aarch64 is
 
+   for create_missing_dirs use "true";
    Base_BSP_Source_Dir   := Project'Project_Dir & "native-aarch64/";
    Base_Installation_Dir := "aarch64-linux/lib/gnat/";
    Board                 := "native-aarch64";
