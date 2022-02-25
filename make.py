@@ -125,7 +125,7 @@ class Make:
                 replace_in_file(filepath, "<partial_linker>", "")
             else:
                 replace_in_file(filepath, "<rts_path>", "\"zfp-native-aarch64\"")
-                replace_in_file(filepath, "<partial_linker>", "for Library_Partial_Linker use (\"gnatgcc\", \"-r\", \"-Wl,-r\", \"-o\")")
+                replace_in_file(filepath, "<partial_linker>", "for Library_Partial_Linker use (\"gnatgcc\", \"-r\", \"-Wl,-r\", \"-o\");")
 
             gnat_options = find_gnat_options()
             formatted_gnat_options = ",\n".join(gnat_options)
