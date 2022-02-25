@@ -1,0 +1,64 @@
+abstract project Libgnarl_Sources is
+
+   Gnarl_Dirs := ();
+   Gnarl_Langs := ("Ada");
+    
+   type CPU_Family_Type is ("arm", "aarch64", "leon", "powerpc", "x86");
+   CPU_Family : CPU_Family_Type := external ("CPU_Family", "arm");
+
+   type RTS_Profile_Type is ("zfp", "ravenscar-sfp", "ravenscar-full");
+   RTS_Profile : RTS_Profile_Type := external ("RTS_Profile", "zfp");
+
+   type Timer_Type is ("n/a", "timer32", "timer64");
+   Timer : Timer_Type := external ("Timer", "n/a");
+
+   Gnarl_Dirs := Gnarl_Dirs &
+     (Project'Project_dir & "../../include/rts-sources/gnarl/common");
+
+   case RTS_Profile is
+      when "ravenscar-sfp" =>
+         Gnarl_Dirs := Gnarl_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/gnarl/sfp");
+
+      when "ravenscar-full" =>
+         Gnarl_Dirs := Gnarl_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/gnarl/full",
+            Project'Project_dir & "../../include/rts-sources/gnarl/full/extended");
+
+      when others =>
+   end case;
+
+   case CPU_Family is
+      when "arm" =>
+         Gnarl_Dirs := Gnarl_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/gnarl/spinlock-gcc");
+
+      when "aarch64" =>
+         Gnarl_Dirs := Gnarl_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/gnarl/spinlock-gcc");
+
+      when "leon" =>
+         Gnarl_Dirs := Gnarl_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/gnarl/spinlock-leon");
+
+      when "powerpc" =>
+         Gnarl_Dirs := Gnarl_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/gnarl/spinlock-gcc");
+
+      when "x86" =>
+         Gnarl_Dirs := Gnarl_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/gnarl/spinlock-gcc");
+   end case;
+
+   case Timer is
+      when "timer32" =>
+         Gnarl_Dirs := Gnarl_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/gnarl/timer32");
+
+      when "timer64" =>
+         Gnarl_Dirs := Gnarl_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/gnarl/timer64");
+
+      when others =>
+   end case;
+end Libgnarl_Sources;

@@ -1,0 +1,613 @@
+abstract project Libgnat_Sources is
+
+   Gnat_Dirs := ();
+   Gnat_Langs := ("Ada");
+    
+   type Add_Arith64_Type is ("no", "yes");
+   Add_Arith64 : Add_Arith64_Type := external ("Add_Arith64", "no");
+
+   type Add_C_Integration_Type is ("no", "ada_clib", "newlib");
+   Add_C_Integration : Add_C_Integration_Type := external ("Add_C_Integration", "no");
+
+   type Add_Case_Util_Type is ("no", "yes");
+   Add_Case_Util : Add_Case_Util_Type := external ("Add_Case_Util", "no");
+
+   type Add_Complex_Type_Support_Type is ("no", "yes");
+   Add_Complex_Type_Support : Add_Complex_Type_Support_Type := external ("Add_Complex_Type_Support", "no");
+
+   type Add_Exponent_Int_Type is ("no", "yes");
+   Add_Exponent_Int : Add_Exponent_Int_Type := external ("Add_Exponent_Int", "no");
+
+   type Add_Exponent_LL_Float_Type is ("no", "yes");
+   Add_Exponent_LL_Float : Add_Exponent_LL_Float_Type := external ("Add_Exponent_LL_Float", "no");
+
+   type Add_Exponent_LL_Int_Type is ("no", "yes");
+   Add_Exponent_LL_Int : Add_Exponent_LL_Int_Type := external ("Add_Exponent_LL_Int", "no");
+
+   type Add_Exponent_Modular_Type is ("no", "yes");
+   Add_Exponent_Modular : Add_Exponent_Modular_Type := external ("Add_Exponent_Modular", "no");
+
+   type Add_Float_Control_Type is ("no", "yes");
+   Add_Float_Control : Add_Float_Control_Type := external ("Add_Float_Control", "no");
+
+   type Add_IO_Exceptions_Type is ("no", "yes");
+   Add_IO_Exceptions : Add_IO_Exceptions_Type := external ("Add_IO_Exceptions", "no");
+
+   type Add_Image_Based_Int_Type is ("no", "yes");
+   Add_Image_Based_Int : Add_Image_Based_Int_Type := external ("Add_Image_Based_Int", "no");
+
+   type Add_Image_Char_Type is ("no", "yes");
+   Add_Image_Char : Add_Image_Char_Type := external ("Add_Image_Char", "no");
+
+   type Add_Image_Decimal_Type is ("no", "yes");
+   Add_Image_Decimal : Add_Image_Decimal_Type := external ("Add_Image_Decimal", "no");
+
+   type Add_Image_Enum_Type is ("no", "yes");
+   Add_Image_Enum : Add_Image_Enum_Type := external ("Add_Image_Enum", "no");
+
+   type Add_Image_Float_Type is ("no", "yes");
+   Add_Image_Float : Add_Image_Float_Type := external ("Add_Image_Float", "no");
+
+   type Add_Image_Int_Type is ("no", "yes");
+   Add_Image_Int : Add_Image_Int_Type := external ("Add_Image_Int", "no");
+
+   type Add_Image_LL_Based_Int_Type is ("no", "yes");
+   Add_Image_LL_Based_Int : Add_Image_LL_Based_Int_Type := external ("Add_Image_LL_Based_Int", "no");
+
+   type Add_Image_LL_Decimal_Type is ("no", "yes");
+   Add_Image_LL_Decimal : Add_Image_LL_Decimal_Type := external ("Add_Image_LL_Decimal", "no");
+
+   type Add_Image_LL_Int_Type is ("no", "yes");
+   Add_Image_LL_Int : Add_Image_LL_Int_Type := external ("Add_Image_LL_Int", "no");
+
+   type Add_Image_Wide_Char_Type is ("no", "yes");
+   Add_Image_Wide_Char : Add_Image_Wide_Char_Type := external ("Add_Image_Wide_Char", "no");
+
+   type Add_Math_Lib_Type is ("no", "softfloat", "hardfloat", "hardfloat_dp", "hardfloat_sp");
+   Add_Math_Lib : Add_Math_Lib_Type := external ("Add_Math_Lib", "no");
+
+   type Add_Pack_Type is ("no", "yes");
+   Add_Pack : Add_Pack_Type := external ("Add_Pack", "no");
+
+   type Add_Streams_Type is ("no", "yes");
+   Add_Streams : Add_Streams_Type := external ("Add_Streams", "no");
+
+   type Add_Value_Based_Int_Type is ("no", "yes");
+   Add_Value_Based_Int : Add_Value_Based_Int_Type := external ("Add_Value_Based_Int", "no");
+
+   type Add_Value_Bool_Type is ("no", "yes");
+   Add_Value_Bool : Add_Value_Bool_Type := external ("Add_Value_Bool", "no");
+
+   type Add_Value_Char_Type is ("no", "yes");
+   Add_Value_Char : Add_Value_Char_Type := external ("Add_Value_Char", "no");
+
+   type Add_Value_Decimal_Type is ("no", "yes");
+   Add_Value_Decimal : Add_Value_Decimal_Type := external ("Add_Value_Decimal", "no");
+
+   type Add_Value_Enum_Type is ("no", "yes");
+   Add_Value_Enum : Add_Value_Enum_Type := external ("Add_Value_Enum", "no");
+
+   type Add_Value_Float_Type is ("no", "yes");
+   Add_Value_Float : Add_Value_Float_Type := external ("Add_Value_Float", "no");
+
+   type Add_Value_Int_Type is ("no", "yes");
+   Add_Value_Int : Add_Value_Int_Type := external ("Add_Value_Int", "no");
+
+   type Add_Value_LL_Based_Int_Type is ("no", "yes");
+   Add_Value_LL_Based_Int : Add_Value_LL_Based_Int_Type := external ("Add_Value_LL_Based_Int", "no");
+
+   type Add_Value_LL_Decimal_Type is ("no", "yes");
+   Add_Value_LL_Decimal : Add_Value_LL_Decimal_Type := external ("Add_Value_LL_Decimal", "no");
+
+   type Add_Value_LL_Int_Type is ("no", "yes");
+   Add_Value_LL_Int : Add_Value_LL_Int_Type := external ("Add_Value_LL_Int", "no");
+
+   type Add_Value_Utils_Type is ("no", "yes");
+   Add_Value_Utils : Add_Value_Utils_Type := external ("Add_Value_Utils", "no");
+
+   type Add_Value_Wide_Char_Type is ("no", "yes");
+   Add_Value_Wide_Char : Add_Value_Wide_Char_Type := external ("Add_Value_Wide_Char", "no");
+
+   type CPU_Family_Type is ("arm", "aarch64", "leon", "powerpc", "x86");
+   CPU_Family : CPU_Family_Type := external ("CPU_Family", "arm");
+
+   type Has_Compare_And_Swap_Type is ("yes", "no");
+   Has_Compare_And_Swap : Has_Compare_And_Swap_Type := external ("Has_Compare_And_Swap", "yes");
+
+   type Has_FPU_Type is ("no", "yes");
+   Has_FPU : Has_FPU_Type := external ("Has_FPU", "no");
+
+   type Has_libc_Type is ("no", "yes");
+   Has_libc : Has_libc_Type := external ("Has_libc", "no");
+
+   type Memory_Profile_Type is ("small", "large");
+   Memory_Profile : Memory_Profile_Type := external ("Memory_Profile", "small");
+
+   type RTS_Profile_Type is ("zfp", "ravenscar-sfp", "ravenscar-full");
+   RTS_Profile : RTS_Profile_Type := external ("RTS_Profile", "zfp");
+
+   type Text_IO_Type is ("serial", "semihosting");
+   Text_IO : Text_IO_Type := external ("Text_IO", "serial");
+
+   Gnat_Dirs := Gnat_Dirs &
+     (Project'Project_dir & "../../include/rts-sources/common");
+
+   case RTS_Profile is
+      when "zfp" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/zfp");
+
+         case Has_libc is
+            when "no" =>
+               Gnat_Dirs := Gnat_Dirs &
+                 (Project'Project_dir & "../../include/rts-sources/alloc/no-tasking");
+
+            when "yes" =>
+               Gnat_Dirs := Gnat_Dirs &
+                 (Project'Project_dir & "../../include/rts-sources/alloc/c");
+         end case;
+
+         case Memory_Profile is
+            when "small" =>
+               Gnat_Dirs := Gnat_Dirs &
+                 (Project'Project_dir & "../../include/rts-sources/gnat/parameters/zfp-small");
+
+            when "large" =>
+               Gnat_Dirs := Gnat_Dirs &
+                 (Project'Project_dir & "../../include/rts-sources/gnat/parameters/zfp-large");
+         end case;
+
+      when "ravenscar-sfp" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/zfp");
+
+         case Has_libc is
+            when "no" =>
+
+               case Has_Compare_And_Swap is
+                  when "yes" =>
+                     Gnat_Dirs := Gnat_Dirs &
+                       (Project'Project_dir & "../../include/rts-sources/alloc/tasking");
+
+                  when "no" =>
+                     Gnat_Dirs := Gnat_Dirs &
+                       (Project'Project_dir & "../../include/rts-sources/alloc/no-cas");
+               end case;
+
+            when "yes" =>
+               Gnat_Dirs := Gnat_Dirs &
+                 (Project'Project_dir & "../../include/rts-sources/alloc/c");
+         end case;
+
+         case Memory_Profile is
+            when "small" =>
+               Gnat_Dirs := Gnat_Dirs &
+                 (Project'Project_dir & "../../include/rts-sources/gnat/parameters/small");
+
+            when "large" =>
+               Gnat_Dirs := Gnat_Dirs &
+                 (Project'Project_dir & "../../include/rts-sources/gnat/parameters/large");
+         end case;
+
+      when "ravenscar-full" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/containers",
+            Project'Project_dir & "../../include/rts-sources/full");
+         Gnat_Langs := Gnat_Langs & ("C");
+
+         case CPU_Family is
+            when "arm" =>
+               Gnat_Dirs := Gnat_Dirs &
+                 (Project'Project_dir & "../../include/rts-sources/full/zcx-arm");
+
+            when "aarch64" =>
+               Gnat_Dirs := Gnat_Dirs &
+                 (Project'Project_dir & "../../include/rts-sources/full/zcx-aarch64",
+                  Project'Project_dir & "../../include/rts-sources/full/zcx-dw2");
+               Gnat_Langs := Gnat_Langs & ("C");
+
+            when "leon" =>
+               Gnat_Dirs := Gnat_Dirs &
+                 (Project'Project_dir & "../../include/rts-sources/full/zcx-dw2",
+                  Project'Project_dir & "../../include/rts-sources/full/zcx-leon");
+               Gnat_Langs := Gnat_Langs & ("C");
+
+            when "powerpc" =>
+               Gnat_Dirs := Gnat_Dirs &
+                 (Project'Project_dir & "../../include/rts-sources/full/zcx-dw2",
+                  Project'Project_dir & "../../include/rts-sources/full/zcx-ppc");
+               Gnat_Langs := Gnat_Langs & ("C");
+
+            when "x86" =>
+               Gnat_Dirs := Gnat_Dirs &
+                 (Project'Project_dir & "../../include/rts-sources/full/zcx-dw2",
+                  Project'Project_dir & "../../include/rts-sources/full/zcx-x86");
+               Gnat_Langs := Gnat_Langs & ("C");
+         end case;
+
+         case Add_Math_Lib is
+            when "softfloat" =>
+               Gnat_Dirs := Gnat_Dirs &
+                 (Project'Project_dir & "../../include/rts-sources/math/full");
+
+            when "hardfloat" =>
+               Gnat_Dirs := Gnat_Dirs &
+                 (Project'Project_dir & "../../include/rts-sources/math/full");
+
+            when "hardfloat_dp" =>
+               Gnat_Dirs := Gnat_Dirs &
+                 (Project'Project_dir & "../../include/rts-sources/math/full");
+
+            when "hardfloat_sp" =>
+               Gnat_Dirs := Gnat_Dirs &
+                 (Project'Project_dir & "../../include/rts-sources/math/full");
+
+            when others =>
+         end case;
+
+         case Memory_Profile is
+            when "small" =>
+               Gnat_Dirs := Gnat_Dirs &
+                 (Project'Project_dir & "../../include/rts-sources/gnat/parameters/small");
+
+            when "large" =>
+               Gnat_Dirs := Gnat_Dirs &
+                 (Project'Project_dir & "../../include/rts-sources/gnat/parameters/large");
+         end case;
+   end case;
+
+   case Add_Math_Lib is
+      when "softfloat" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/math",
+            Project'Project_dir & "../../include/rts-sources/math/softdp",
+            Project'Project_dir & "../../include/rts-sources/math/softsp");
+
+         case Add_Complex_Type_Support is
+            when "yes" =>
+               Gnat_Dirs := Gnat_Dirs &
+                 (Project'Project_dir & "../../include/rts-sources/math/complex");
+
+            when others =>
+         end case;
+
+      when "hardfloat" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/math",
+            Project'Project_dir & "../../include/rts-sources/math/harddp",
+            Project'Project_dir & "../../include/rts-sources/math/hardsp");
+
+         case Add_Complex_Type_Support is
+            when "yes" =>
+               Gnat_Dirs := Gnat_Dirs &
+                 (Project'Project_dir & "../../include/rts-sources/math/complex");
+
+            when others =>
+         end case;
+
+      when "hardfloat_dp" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/math",
+            Project'Project_dir & "../../include/rts-sources/math/harddp",
+            Project'Project_dir & "../../include/rts-sources/math/softsp");
+
+         case Add_Complex_Type_Support is
+            when "yes" =>
+               Gnat_Dirs := Gnat_Dirs &
+                 (Project'Project_dir & "../../include/rts-sources/math/complex");
+
+            when others =>
+         end case;
+
+      when "hardfloat_sp" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/math",
+            Project'Project_dir & "../../include/rts-sources/math/hardsp",
+            Project'Project_dir & "../../include/rts-sources/math/softdp");
+
+         case Add_Complex_Type_Support is
+            when "yes" =>
+               Gnat_Dirs := Gnat_Dirs &
+                 (Project'Project_dir & "../../include/rts-sources/math/complex");
+
+            when others =>
+         end case;
+
+      when others =>
+   end case;
+
+   case Has_libc is
+      when "no" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/mem");
+
+      when others =>
+   end case;
+
+   case Add_C_Integration is
+      when "ada_clib" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/libc");
+
+      when "newlib" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/newlib");
+         Gnat_Langs := Gnat_Langs & ("C");
+
+      when others =>
+   end case;
+
+   case Text_IO is
+      when "serial" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/system_io");
+
+      when "semihosting" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/semihosting");
+   end case;
+
+   case Add_Image_Enum is
+      when "yes" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/image/enum");
+
+      when others =>
+   end case;
+
+   case Add_Image_Decimal is
+      when "yes" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/image/decimal");
+
+      when others =>
+   end case;
+
+   case Add_Image_LL_Decimal is
+      when "yes" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/image/decimal_ll");
+
+      when others =>
+   end case;
+
+   case Add_Image_Float is
+      when "yes" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/image/float");
+
+      when others =>
+   end case;
+
+   case Add_Image_Int is
+      when "yes" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/image/int");
+
+      when others =>
+   end case;
+
+   case Add_Image_LL_Int is
+      when "yes" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/image/int_ll");
+
+      when others =>
+   end case;
+
+   case Add_Image_Based_Int is
+      when "yes" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/image/based_int");
+
+      when others =>
+   end case;
+
+   case Add_Image_LL_Based_Int is
+      when "yes" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/image/based_int_ll");
+
+      when others =>
+   end case;
+
+   case Add_Image_Char is
+      when "yes" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/image/char");
+
+      when others =>
+   end case;
+
+   case Add_Image_Wide_Char is
+      when "yes" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/image/wide_char");
+
+      when others =>
+   end case;
+
+   case Add_Value_Bool is
+      when "yes" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/value/Boolean");
+
+      when others =>
+   end case;
+
+   case Add_Value_Enum is
+      when "yes" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/value/enum");
+
+      when others =>
+   end case;
+
+   case Add_Value_Decimal is
+      when "yes" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/value/decimal");
+
+      when others =>
+   end case;
+
+   case Add_Value_LL_Decimal is
+      when "yes" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/value/decimal_ll");
+
+      when others =>
+   end case;
+
+   case Add_Value_Float is
+      when "yes" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/value/float");
+
+      when others =>
+   end case;
+
+   case Add_Value_Int is
+      when "yes" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/value/int");
+
+      when others =>
+   end case;
+
+   case Add_Value_LL_Int is
+      when "yes" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/value/int_ll");
+
+      when others =>
+   end case;
+
+   case Add_Value_Based_Int is
+      when "yes" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/value/based_int");
+
+      when others =>
+   end case;
+
+   case Add_Value_LL_Based_Int is
+      when "yes" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/value/based_int_ll");
+
+      when others =>
+   end case;
+
+   case Add_Value_Char is
+      when "yes" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/value/char");
+
+      when others =>
+   end case;
+
+   case Add_Value_Wide_Char is
+      when "yes" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/value/wide_char");
+
+      when others =>
+   end case;
+
+   case Add_Value_Utils is
+      when "yes" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/value/utils");
+
+      when others =>
+   end case;
+
+   case Add_Float_Control is
+      when "yes" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/utils/flocon");
+
+      when others =>
+   end case;
+
+   case Add_Case_Util is
+      when "yes" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/utils/case_util");
+
+      when others =>
+   end case;
+
+   case Add_IO_Exceptions is
+      when "yes" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/ioexce");
+
+      when others =>
+   end case;
+
+   case Has_FPU is
+      when "yes" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/fpu");
+
+      when others =>
+   end case;
+
+   case Add_Arith64 is
+      when "yes" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/arith64");
+
+      when others =>
+   end case;
+
+   case Add_Exponent_Int is
+      when "yes" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/exponent/int");
+
+      when others =>
+   end case;
+
+   case Add_Exponent_LL_Int is
+      when "yes" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/exponent/int_ll");
+
+      when others =>
+   end case;
+
+   case Add_Exponent_Modular is
+      when "yes" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/exponent/mod");
+
+      when others =>
+   end case;
+
+   case Add_Exponent_LL_Float is
+      when "yes" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/exponent/float_ll");
+
+      when others =>
+   end case;
+
+   case Add_Streams is
+      when "yes" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/streams");
+
+      when others =>
+   end case;
+
+   case Add_Pack is
+      when "yes" =>
+         Gnat_Dirs := Gnat_Dirs &
+           (Project'Project_dir & "../../include/rts-sources/pack");
+
+      when others =>
+   end case;
+end Libgnat_Sources;

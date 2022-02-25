@@ -1,0 +1,29 @@
+aggregate project Zfp_Native_Aarch64 is
+
+   Base_BSP_Source_Dir   := Project'Project_Dir & "native-aarch64/";
+   Base_Installation_Dir := "aarch64-linux/lib/gnat/";
+   Board                 := "native-aarch64";
+   Default_Prefix        := 
+     Base_Installation_Dir & "zfp-" & Board;
+   Install_Dir           := external ("PREFIX", Default_Prefix);
+
+   for external ("Has_FPU") use "yes";
+   for external ("Has_libc") use "yes";
+   for external ("Memory_Profile") use "large";
+   for external ("RTS_Profile") use "zfp";
+   for external ("Text_IO") use "serial";
+
+   for external ("INSTALL_PREFIX") use Install_Dir;
+
+   for Target use "aarch64-linux-gnu";
+   for Runtime ("Ada") use Base_BSP_Source_Dir &
+       "zfp";
+
+   for Project_Path use
+     (Base_BSP_Source_Dir & "zfp",
+      "../lib/gnat");
+   for Project_Files use
+     (Base_BSP_Source_Dir & "zfp/libgnat.gpr",
+      Base_BSP_Source_Dir & "zfp/install.gpr");
+
+end Zfp_Native_Aarch64;
