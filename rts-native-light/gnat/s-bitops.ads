@@ -31,10 +31,6 @@
 
 --  Operations on packed bit strings
 
-pragma Compiler_Unit_Warning;
-
-with System;
-
 package System.Bit_Ops is
 
    --  Note: in all the following routines, the System.Address parameters
