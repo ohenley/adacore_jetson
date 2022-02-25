@@ -40,9 +40,12 @@ class Make:
             filepath = copy_and_rename_file(src, dst, "Makefile")
             replace_in_file(filepath, "<module_name>", module_name)
             replace_in_file(filepath, "<expanded_module_objects>", "obj/bundle.o")
-            replace_in_file(filepath, "<target_architecture>", config['target_architecture'])
-            cross_compile_path_and_prefix = os.path.join(config['cross_toolchain_abspath'], config['cross_compiler_binary_prefix'])
-            replace_in_file(filepath, "<cross_compile_path_and_prefix>", cross_compile_path_and_prefix)
+
+            if config['toolchain_type'] == "cross":
+                replace_in_file(filepath, "<target_architecture>", config['target_architecture'])
+                cross_compile_path_and_prefix = os.path.join(config['toolchain_abspath'], config['cross_compiler_binary_prefix'])
+                replace_in_file(filepath, "<cross_compile_path_and_prefix>", cross_compile_path_and_prefix)
+
             replace_in_file(filepath, "<kernel_sources_path>", config['kernel_sources_abspath'])
             replace_in_file(filepath, "<makefile_location>", makefile_location)
 
@@ -82,7 +85,7 @@ class Make:
             copyfile("templates/main_template.c", "tmp/main_template.c") 
             generate_makefile("templates/makefile_template", "tmp", "main_template", os.path.join(os.getcwd(), "tmp"))
             remove_line_from_file("tmp/Makefile", 2)
-            os.environ["ENV_PREFIX"] = config['cross_toolchain_abspath']
+            os.environ["ENV_PREFIX"] = config['toolchain_abspath']
             output, error = Popen(['make'], stdout=PIPE, stderr=PIPE, cwd="./tmp").communicate()
             print(output.decode("utf-8"))
             print(error.decode("utf-8"))
@@ -110,7 +113,11 @@ class Make:
             replace_in_file(filepath, "<target_architecture>", "\"" + config["architecture_alias"] + "\"")
             
             replace_in_file(filepath, "<module_sources_path>", get_sources_path())
-            replace_in_file(filepath, "<rts_path>", "\"" + str(os.path.join(os.getcwd(), config['rts_path'])) + "\"")
+
+            if config['toolchain_type'] == "cross":
+                replace_in_file(filepath, "<rts_path>", "\"" + str(os.path.join(os.getcwd(), config['rts_path'])) + "\"")
+            else:
+                replace_in_file(filepath, "<rts_path>", "\"zfp-native-aarch64\"")
 
             gnat_options = find_gnat_options()
             formatted_gnat_options = ",\n".join(gnat_options)
@@ -126,15 +133,38 @@ class Make:
 
     def build(self, config, rts):
 
-        def build_rts():
-            cmd = [os.path.join(config["cross_toolchain_abspath"], "gprbuild"), "-v", "-f", "-g", os.path.join(os.getcwd(), config["rts_path"], "runtime_build.gpr")]
+        def build_rts_using_cross():
+            cmd = [os.path.join(config["toolchain_abspath"], "gprbuild"), "-v", "-f", "-g", os.path.join(os.getcwd(), config["rts_path"], "runtime_build.gpr")]
+
+            output, error = Popen(cmd, stdout=PIPE, stderr=PIPE, cwd=os.path.join(os.getcwd(), config['module_path'])).communicate()
+            print(output.decode("utf-8"))
+            print(error.decode("utf-8"))
+        
+        def build_rts_using_native():
+            cmd = [os.path.join(config["toolchain_abspath"], "gprbuild"), 
+                   "-v", 
+                   "-f", 
+                   "-P", 
+                   os.path.join(os.getcwd(), config["rts_path"], "zfp_native_aarch64.gpr")]
+
+            output, error = Popen(cmd, stdout=PIPE, stderr=PIPE, cwd=os.path.join(os.getcwd(), config['module_path'])).communicate()
+            print(output.decode("utf-8"))
+            print(error.decode("utf-8"))
+
+            cmd = ["sudo", 
+                   os.path.join(config["toolchain_abspath"], "gprinstall"), 
+                   "-v", 
+                   "-f", 
+                   "-P", 
+                   os.path.join(os.getcwd(), config["rts_path"], "zfp_native_aarch64.gpr"), 
+                   "-p"]
 
             output, error = Popen(cmd, stdout=PIPE, stderr=PIPE, cwd=os.path.join(os.getcwd(), config['module_path'])).communicate()
             print(output.decode("utf-8"))
             print(error.decode("utf-8"))
 
         def compile_module_files():
-            cmd = [os.path.join(config["cross_toolchain_abspath"], "gprbuild"), "-v", "-f", "-g", os.path.join(os.getcwd(), config['module_path'], config['module_name'] + ".gpr")]
+            cmd = [os.path.join(config["toolchain_abspath"], "gprbuild"), "-v", "-f", "-g", os.path.join(os.getcwd(), config['module_path'], config['module_name'] + ".gpr")]
 
             output, error = Popen(cmd, stdout=PIPE, stderr=PIPE, cwd=os.path.join(os.getcwd(), config['module_path'])).communicate()
             print(output.decode("utf-8"))
@@ -142,9 +172,14 @@ class Make:
 
 
         def build_bundle_object():
-            linker = os.path.join(config["cross_toolchain_abspath"], config["cross_compiler_binary_prefix"] + "ld")
+            if config['toolchain_type'] == "cross":
+                linker = os.path.join(config["toolchain_abspath"], config["cross_compiler_binary_prefix"] + "ld")
+            else:
+                linker = os.path.join(config["toolchain_abspath"], "ld")
             ada_module = os.path.join(os.getcwd(), config["module_path"], "lib/lib" + config["module_name"] + ".a")
+
             rts = os.path.join(os.getcwd(), config["rts_path"], "adalib", "libgnat.a")
+
             bundle = os.path.join(os.getcwd(), config['module_path'], "obj/bundle.o")
             cmd = [linker, "-i", "-o", bundle, "--whole-archive", ada_module, "--no-whole-archive", rts]
 
@@ -171,9 +206,12 @@ class Make:
             print(error.decode("utf-8"))
             print(output.decode("utf-8"))
 
-        os.environ["ENV_PREFIX"] = config['cross_toolchain_abspath']
+        os.environ["ENV_PREFIX"] = config['toolchain_abspath']
         if rts:
-            build_rts()
+            if config['toolchain_type'] == "cross":
+                build_rts_using_cross()
+            else:
+                build_rts_using_native()
         compile_module_files()
         build_bundle_object()
         create_cmd_o_files()
@@ -264,8 +302,8 @@ if __name__ == "__main__":
 
         help_messages = [
             "Call convention:",
-            "\t" + "$ python script function_name param(0):value(0) ... param(N-1):value(N-1)",
-            "\t" + "eg: $ python make.py build config:config.json rts:true",
+            "\t" + "$ python3 script function_name param(0):value(0) ... param(N-1):value(N-1)",
+            "\t" + "eg: $ python3 make.py build config:config.json rts:true",
             "Avalaible function_name:",
             *("\t" + avail_func for avail_func in func_description())
         ]
@@ -290,6 +328,10 @@ if __name__ == "__main__":
                 config["cross_compiler_binary_prefix"] = platform_config["cross_compiler_binary_prefix"]
                 config["unwanted_gcc_options"] = platform_config["unwanted_gcc_options"]
                 config["wanted_gnat_options"] = platform_config["wanted_gnat_options"]
+                if config["toolchain_type"] == "cross":
+                    config["rts_path"] = "rts-native-light"
+                else:
+                    config["rts_path"] = "rts-native-zfp/BSPs/native-aarch64/zfp"
         except:
             print("Loading the platforms.json failed.")
 
