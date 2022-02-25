@@ -12,6 +12,7 @@ project <module_name> is
     for library_interface use ("<module_name>");
 
     for runtime ("ada") use <rts_path>;
+    <partial_linker>
 
     package builder is
         for global_configuration_pragmas use "gnat.adc";
