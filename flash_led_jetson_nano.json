@@ -1,15 +1,15 @@
 {
+    "toolchain_type" : "replace_me",
     "module_name" : "flash_led",
     "module_path" : "./flash_led",
     "module_sources_path" : "./flash_led/src",
+
     "module_flavor" : "raw_io",
 
     "target_platform" : "jetson_nano",
     "target_architecture" : "arm64",
 
-    "rts_path" : "./rts-native-light",
-
-    "kernel_sources_abspath" : "where/sits/the/kernel/sources/on/your/host/machine",
-    "cross_toolchain_abspath" : "where/sits/the/cross_toolchain/on/your/host/machine",
+    "kernel_sources_abspath" : "/replace/me",
+    "toolchain_abspath" : "/replace/me",
     "platform_definitions_filepath" : "platforms.json"
 }
