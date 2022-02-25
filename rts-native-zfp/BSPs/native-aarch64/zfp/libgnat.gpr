@@ -4,6 +4,8 @@ with "install";
 
 library project Libgnat is
 
+   for create_missing_dirs use "true";
+   
    for Languages use
      Libgnat_Sources.Gnat_Langs &
      ("Ada");
