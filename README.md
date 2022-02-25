@@ -28,7 +28,7 @@ NVIDIA Jetson Nano LED Linux driver experiment in Ada
 >  - Second controls by direct read/write to the GPIO memory registers using kernel mapped memory IO interface (`include/asm-generic/io.h`).       
 
 ## Status
-Both flavors of the LED interface implementation are working.
+Both flavors of the LED interface implementation are working. Both cross and native build are working.
 - Working : GNAT Pro 23.0w cross toolchain  ("toolchain_type" : "cross")
 - Working : Jetson Ubuntu 18.04, GNAT 7.5.0 ("toolchain_type" : "native")
 
