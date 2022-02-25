@@ -29,12 +29,15 @@ NVIDIA Jetson Nano LED Linux driver experiment in Ada
 
 ## Status
 Both flavors of the LED interface implementation are working.
-- Working : GNAT Pro 23.0w cross toolchain   
-- WIP : Jetson Ubuntu 18.04, GNAT 7.5.0
+- Working : GNAT Pro 23.0w cross toolchain  ("toolchain_type" : "cross")
+- Working : Jetson Ubuntu 18.04, GNAT 7.5.0 ("toolchain_type" : "native")
 
 ## Prerequisites
 - Python 3.x on host machine.    
-- GNAT Pro cross compilation toolchain on host machine. (see `jetson_nano_modules_cross.md` for further details on how to setup)   
+#### Cross
+- GNAT Pro 23 cross compilation toolchain on host machine. (see `jetson_nano_modules_cross.md` for further details on how to setup)   
+#### Native
+- Jetson Ubuntu 18.04, GNAT 7.5.0. (see `jetson_nano_modules_native.md` for further details on how to setup) 
 
 ## Dependencies
 - NVIDIA Jetson Nano Developer Kit.
