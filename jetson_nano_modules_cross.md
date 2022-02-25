@@ -11,7 +11,7 @@ jetson:~$ cat /etc/nv_tegra_release
 # R32 (release), REVISION: 6.1, GCID: 27863751, BOARD: t210ref, EABI: aarch64, DATE: Mon Jul 26 19:20:30 UTC 2021
 ```
 
-3. Go back to the host machine. From AdaCore, install the **aarch64-linux-linux64** cross toolchain. Note the path of its cross binaries location, eg. using `anod` will install it to something like `~/adacore/e3-20211024/wave/aarch64-linux-linux64/gnat/install/bin`     
+3. Go back to the host machine. From AdaCore, install the **aarch64-linux-linux64** cross toolchain. Note the path of its cross binaries location, eg. using `anod` will install it to something like `~/adacore/wave/aarch64-linux-linux64/gnat/install/bin`     
 ```
 anod install gnat --target=aarch64-linux
 ```
@@ -49,14 +49,14 @@ jetson:~$ sudo scp /proc/config.gz my_local_username@192.168.xyz.xyz:~/cross_bas
 gzip -d -c ~/cross_base/output/config.gz > ~/cross_base/output/.config
 ```
 
-10. Set ENV_PREFIX, eg. using `anod` will install it to something like `~/adacore/e3-20211024/wave/aarch64-linux-linux64/gnat/install/bin`:
+10. Set ENV_PREFIX, eg. using `anod` will install it to something like `~/adacore/wave/aarch64-linux-linux64/gnat/install/bin`:
 ```
-export ENV_PREFIX="~/adacore/e3-20211024/wave/aarch64-linux-linux64/gnat/install/bin"
+export ENV_PREFIX="~/adacore/wave/aarch64-linux-linux64/gnat/install/bin"
 ```
 
 11. Prepare the modules, eg:    
 ```
-make ARCH=arm64 CROSS_COMPILE=~/adacore/e3-20211024/wave/aarch64-linux-linux64/gnat/install/bin/aarch64-linux-gnu- O=~/cross_base/output -C ~/cross_base/kernel/kernel-4.9 modules_prepare
+make ARCH=arm64 CROSS_COMPILE=~/adacore/wave/aarch64-linux-linux64/gnat/install/bin/aarch64-linux-gnu- O=~/cross_base/output -C ~/cross_base/kernel/kernel-4.9 modules_prepare
 ```
 
 12. Set "kernel_sources_abspath" in flash_led_jetson_nano.json, eg.
@@ -65,3 +65,18 @@ make ARCH=arm64 CROSS_COMPILE=~/adacore/e3-20211024/wave/aarch64-linux-linux64/g
 "kernel_sources_abspath" : "~/cross_base/output",
 ...
 ```
+
+13. Set "toolchain_type" in flash_led_jetson_nano.json, eg.
+```
+...
+"toolchain_type" : "cross",
+...
+```
+
+14. Set "toolchain_abspath" in flash_led_jetson_nano.json, eg.
+```
+...
+"toolchain_abspath" : "~/adacore/wave/aarch64-linux-linux64/gnat/install/bin",
+...
+```
+
