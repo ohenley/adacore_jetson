@@ -26,7 +26,7 @@ package body Flash_Led is
 
    procedure Work_Callback (Work : K.Work_Struct_Access) is
    begin
-      My_Led.Flip_State;
+      Flip_State (My_Led);
       K.Queue_Delayed_Work (Wq, Delayed_Work'Access, K.Msecs_To_Jiffies (Half_Period_Ms));
    end;
 
@@ -63,9 +63,7 @@ package body Flash_Led is
    begin
       Ada_Linux_Init;
 
-      --Delayed_Work := K.declare_delayed_work;
-
-      My_Led.Init (P => Pin, T => Led_Tag, S => Off);
+      Init (My_Led, P => Pin, T => Led_Tag, S => Off);
       Declare_Delayed_Work;
 
       if Wq = K.Null_Wq then
@@ -81,6 +79,6 @@ package body Flash_Led is
    procedure Ada_Cleanup_Module is
    begin
       Cleanup_Delayed_Work;
-      My_Led.Final;
+      Final (My_Led);
    end;
 end;

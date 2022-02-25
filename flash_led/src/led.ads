@@ -4,7 +4,7 @@ package Led is
    package C renames Controllers;
 
    type State is (Off, On);
-   type Led_Type (Size : Natural) is tagged private;
+   type Led_Type (Size : Natural) is private;
 
    subtype Tag is String;
 
@@ -18,7 +18,7 @@ private
 
    function "not" (S : State) return State is (if S = On then Off else On);
 
-   type Led_Type (Size : Natural) is tagged record
+   type Led_Type (Size : Natural) is record
       P : C.Pin_Data;
       T : Tag (1 .. Size);
       S : State;
