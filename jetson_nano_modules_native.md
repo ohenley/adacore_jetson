@@ -1,4 +1,4 @@
-## Compilation TARGET(linux aarch64) kernel module for the NVIDIA Jetson Nano
+## Compilation HOST(linux aarch64) kernel module for the NVIDIA Jetson Nano
 
 1. Install gnat   
 ```
