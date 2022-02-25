@@ -37,6 +37,12 @@ class Make:
                     print(line)
 
         def generate_makefile(src, dst, module_name, makefile_location):
+
+            if config['toolchain_type'] == "cross":
+                src = src + "_cross"
+            else:
+                src = src + "_native"
+
             filepath = copy_and_rename_file(src, dst, "Makefile")
             replace_in_file(filepath, "<module_name>", module_name)
             replace_in_file(filepath, "<expanded_module_objects>", "obj/bundle.o")
