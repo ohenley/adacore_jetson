@@ -160,7 +160,8 @@ class Make:
             cmd = ["sudo", 
                    os.path.join(config["toolchain_abspath"], "gprinstall"), 
                    "-v", 
-                   "-f", 
+                   "-f",
+                   "--install-name=zfp_native_aarch64",
                    "-P", 
                    os.path.join(os.getcwd(), config["rts_path"], "../../zfp_native_aarch64.gpr"), 
                    "-p"]
@@ -338,6 +339,7 @@ if __name__ == "__main__":
                     config["rts_path"] = "rts-native-light"
                 else:
                     config["rts_path"] = "rts-native-zfp/BSPs/native-aarch64/zfp"
+                    config["architecture_alias"] = config["architecture_alias"] + "-gnu"
         except:
             print("Loading the platforms.json failed.")
 
