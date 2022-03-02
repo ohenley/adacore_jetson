@@ -45,7 +45,8 @@ Both flavors of the LED interface implementation are working. Both cross and nat
    - 1x resistor kit: __COM-10969__,    
    - 1x LED: __COM-11372__,    
    - 1x BC337 transistor: __COM-13689__,    
-   - 1x breadboard: __PRT-12615__)   
+   - 1x breadboard: __PRT-12615__    
+   - 1x jumper wires kit: __PRT-09140__    
 
 ```
    +5V o-----------------o
