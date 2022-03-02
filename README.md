@@ -49,25 +49,25 @@ Both flavors of the LED interface implementation are working. Both cross and nat
    - 1x jumper wires kit: __PRT-09140__    
 
 ```
-   +5V o-----------------o
-                         |
-                        .-.
-                        | | 330
-                        '-'
-                         |
-                         |
-                   LED  \ /         
-                         V -->
-                        ---
-                         |
-                         |
-            ___        |/
-Pin 18 o---|___|---o---|  BC337
-            10k        |>
-                         |
-                         |
-                         |
-   GND o-----------------o 
++5V o----------jumper wire-----------o
+                                     |
+                                    .-.
+                                    | | 330
+                                    '-'
+                                     |
+                                     |
+                               LED  \ /         
+                                     V -->
+                                    ---
+                                     |
+                                     |
+                        ___        |/
+Pin 18 o--jumper wire--|___|---o---|  BC337
+                        10k        |>
+                                     |
+                                     |
+                                     |
+GND o----------jumper wire-----------o 
 ```
 
 ## Building
