@@ -33,15 +33,6 @@ Both flavors of the LED interface implementation are working. Both cross and nat
 - Working : Jetson Ubuntu 18.04, GNAT 7.5.0 ("toolchain_type" : "native")
 
 ## Prerequisites
-- Python 3.x on host machine.    
-#### Cross
-- GNAT Pro 23 cross compilation toolchain on host machine.     
-(see https://github.com/ohenley/adacore_jetson/blob/main/jetson_nano_modules_cross.md for further details on how to setup)   
-#### Native
-- Jetson Ubuntu 18.04, GNAT 7.5.0.     
-(see https://github.com/ohenley/adacore_jetson/blob/main/jetson_nano_modules_native.md for further details on how to setup) 
-
-## Dependencies
 - NVIDIA Jetson Nano Developer Kit.
 - Complete led circuit. Bill of Material, eg. https://www.sparkfun.com/
    - 1x resistor kit: __COM-10969__    
@@ -71,6 +62,15 @@ Pin 18 o--jumper wire--|___|---o---|  BC337
                                      |
 GND o----------jumper wire-----------o 
 ```
+
+## Dependencies
+- Python 3.x on host machine.    
+#### Cross
+- GNAT Pro 23 cross compilation toolchain on host machine.     
+(see https://github.com/ohenley/adacore_jetson/blob/main/jetson_nano_modules_cross.md for further details on how to setup)   
+#### Native
+- Jetson Ubuntu 18.04, GNAT 7.5.0.     
+(see https://github.com/ohenley/adacore_jetson/blob/main/jetson_nano_modules_native.md for further details on how to setup) 
 
 ## Building
 #### Linux
