@@ -5,7 +5,7 @@
 hostname -I | awk '{print $1}'
 ```
 
-2. From now on we will access the Jetson remotely using the network address just found. Connect to the remote/**target** Jetson board, eg using ssh:    
+2. From now on we will access the Jetson remotely using the network address just found. Connect to the remote/**target** Jetson board from your local machine/**host**, eg using ssh:    
 ```
 ssh my_jetson_username@192.168.xyz.xyz
 ```
