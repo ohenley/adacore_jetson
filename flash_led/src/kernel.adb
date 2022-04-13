@@ -183,7 +183,7 @@ package body Kernel is
          WQ_ORDERED_EXPLICIT : Bool;
       end record
          with Size => System.Word_Size;
-      --for Workqueue_Flags'size use System.Word_Size;
+         
       for Workqueue_Flags use record
          WQ_UNBOUND          at 0 range  1 ..  1;
          WQ_FREEZABLE        at 0 range  2 ..  2;
@@ -204,7 +204,6 @@ package body Kernel is
                                   WQ_MEM_RECLAIM      => YES,
                                   Others              => NO);
       Wq_Flags : Ic.Unsigned with Address => Flags'address;
-      --for Wq_Flags'address use Flags'address;
    begin
       return Alloc_Workqueue_Key_C ("%s",
                                     Wq_Flags,
