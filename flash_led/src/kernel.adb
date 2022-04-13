@@ -4,7 +4,6 @@ package body Kernel is
 
    type Bool is (NO, YES) with Size => 1;
    for Bool use (NO => 0, YES => 1);
-   --for Bool'Size use 1;
 
    procedure Printk_C (S : String) with
       Import        => True,
