@@ -30,7 +30,7 @@ $ tar -xjf ~/base/Linux_for_Tegra/source/public/kernel_src.tbz2
 
 6. Copy original kernel config:    
 ```
-$ sudo cp /proc/config.gz ~/cross_base/output/config.gz
+$ sudo cp /proc/config.gz ~/base/output/config.gz
 ```
 
 7. Extract the config.gz content to .config file:    
