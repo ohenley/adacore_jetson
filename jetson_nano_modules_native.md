@@ -2,7 +2,7 @@
 
 1. Install gnat   
 ```
-$ sudo apt-get install gnat
+$ sudo apt-get install gnat gprbuild
 ```
 
 2. On the local machine/**host** create a base folder for the cross compilation and kernel output folder, eg. `~/base` and move to it.     
