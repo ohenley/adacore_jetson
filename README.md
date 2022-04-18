@@ -45,7 +45,7 @@ Both flavors of the LED interface implementation are working. Both cross and nat
 +5V o----------jumper wire-----------o
                                      |
                                     .-.
-                                    | | 580
+                                    | | 560
                                     '-'
                                      |
                                      |
