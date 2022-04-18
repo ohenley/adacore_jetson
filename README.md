@@ -45,7 +45,7 @@ Both flavors of the LED interface implementation are working. Both cross and nat
 +5V o----------jumper wire-----------o
                                      |
                                     .-.
-                                    | | 330
+                                    | | 580
                                     '-'
                                      |
                                      |
@@ -54,9 +54,9 @@ Both flavors of the LED interface implementation are working. Both cross and nat
                                     ---
                                      |
                                      |
-                        ___        |/
-Pin 18 o--jumper wire--|___|---o---|  BC337
-                        10k        |>
+                                   |/
+Pin 18 o-------jumper wire---------|  BC337
+                                   |>
                                      |
                                      |
                                      |
