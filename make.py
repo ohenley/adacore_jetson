@@ -342,6 +342,11 @@ if __name__ == "__main__":
                 else:
                     config["rts_path"] = "rts-native-zfp/BSPs/native-aarch64/zfp"
                     config["architecture_alias"] = config["architecture_alias"] + "-gnu"
+
+                # uniform for ~ (home) usage in paths
+                config['kernel_sources_abspath'] = Path(config['kernel_sources_abspath']).expanduser()
+                config['toolchain_abspath'] = Path(config['toolchain_abspath']).expanduser()
+
         except:
             print("Loading the platforms.json failed.")
 
