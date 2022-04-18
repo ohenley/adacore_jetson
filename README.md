@@ -65,7 +65,7 @@ GND o----------jumper wire-----------o
 
 <br/><br/>
 <div align="center">
-	<img width=450px"  src="https://github.com/ohenley/files/blob/master/circuit.png" alt="Awesome">
+	<img width=600px"  src="https://github.com/ohenley/files/blob/master/circuit.png" alt="Awesome">
 </div>
 
 <br><br>
