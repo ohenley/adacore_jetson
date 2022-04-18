@@ -63,6 +63,13 @@ Pin 18 o--jumper wire--|___|---o---|  BC337
 GND o----------jumper wire-----------o 
 ```
 
+<br/><br/>
+<div align="center">
+	<img width=450px"  src="https://github.com/ohenley/files/blob/master/circuit.png" alt="Awesome">
+</div>
+
+<br><br>
+
 ## Dependencies
 - Python 3.x on host machine.    
 #### Cross
