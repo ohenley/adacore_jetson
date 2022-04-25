@@ -16,10 +16,9 @@ jetson:~$ cat /etc/nv_tegra_release
 # R32 (release), REVISION: 6.1, GCID: 27863751, BOARD: t210ref, EABI: aarch64, DATE: Mon Jul 26 19:20:30 UTC 2021
 ```
 
-4. Go back to the host machine. From AdaCore, install the **aarch64-linux-linux64** cross toolchain. Note the path of its cross binaries location, eg. using `anod` will install it to something like `~/adacore/wave/aarch64-linux-linux64/gnat/install/bin`     
-```
-anod install gnat --target=aarch64-linux
-```
+4. Go back to the host machine. From AdaCore, unpack the **aarch64-linux-linux64** cross toolchain somewhere. Note the path of its cross binaries location, eg. unpacking `GNAT Pro` on my machine/**host** at `~/Downloads/gnat-22.1` the binaries end up at
+`~/Downloads/gnat-22.1/gnatpro-22.1-aarch64-linux-linux64-bin/bin`
+
 
 5. On the local machine/**host** create a base folder for the cross compilation and kernel output folder, eg. `~/cross_base` and move to it.     
 ```
@@ -54,14 +53,14 @@ jetson:~$ sudo scp /proc/config.gz my_local_username@192.168.xyz.xyz:~/cross_bas
 gzip -d -c ~/cross_base/output/config.gz > ~/cross_base/output/.config
 ```
 
-11. Set ENV_PREFIX, eg. using `anod` will install it to something like `~/adacore/wave/aarch64-linux-linux64/gnat/install/bin`:
+11. Set ENV_PREFIX, eg. using `GNAT PRO` binaries on my machine/**host** it becomes:
 ```
-export ENV_PREFIX="~/adacore/wave/aarch64-linux-linux64/gnat/install/bin"
+export ENV_PREFIX="~/Downloads/gnat-22.1/gnatpro-22.1-aarch64-linux-linux64-bin/bin"
 ```
 
 12. Prepare the modules, eg:    
 ```
-make ARCH=arm64 CROSS_COMPILE=~/adacore/wave/aarch64-linux-linux64/gnat/install/bin/aarch64-linux-gnu- O=~/cross_base/output -C ~/cross_base/kernel/kernel-4.9 modules_prepare
+make ARCH=arm64 CROSS_COMPILE=~/Downloads/gnat-22.1/gnatpro-22.1-aarch64-linux-linux64-bin/bin/aarch64-linux-gnu- O=~/cross_base/output -C ~/cross_base/kernel/kernel-4.9 modules_prepare
 ```
 
 13. Set "kernel_sources_abspath" in flash_led_jetson_nano.json, eg.
@@ -81,7 +80,7 @@ make ARCH=arm64 CROSS_COMPILE=~/adacore/wave/aarch64-linux-linux64/gnat/install/
 15. Set "toolchain_abspath" in flash_led_jetson_nano.json, eg.
 ```
 ...
-"toolchain_abspath" : "~/adacore/wave/aarch64-linux-linux64/gnat/install/bin",
+"toolchain_abspath" : "~/Downloads/gnat-22.1/gnatpro-22.1-aarch64-linux-linux64-bin/bin",
 ...
 ```
 
