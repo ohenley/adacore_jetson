@@ -16,7 +16,7 @@ jetson:~$ cat /etc/nv_tegra_release
 # R32 (release), REVISION: 6.1, GCID: 27863751, BOARD: t210ref, EABI: aarch64, DATE: Mon Jul 26 19:20:30 UTC 2021
 ```
 
-4. Go back to the host machine. From AdaCore, unpack the **aarch64-linux-linux64** cross toolchain somewhere. Note the path of its cross binaries location, eg. unpacking `GNAT Pro` on my machine/**host** at `~/Downloads/gnat-22.1` the binaries end up at
+4. Go back to the host machine. Unpack the **aarch64-linux-linux64** (from AdaCore download page: https://gt3-int-prod-1.adacore.com/#/downloads) cross toolchain somewhere. Note the path of its cross binaries location, eg. unpacking `GNAT Pro` on my machine/**host** at `~/Downloads/gnat-22.1` the binaries end up at
 `~/Downloads/gnat-22.1/gnatpro-22.1-aarch64-linux-linux64-bin/bin`
 
 
@@ -27,7 +27,7 @@ mkdir ~/cross_base/output
 cd ~/cross_base
 ```
 
-6. Get the linux sources, **Linux for Tegra (L4T)** (from nvdia download page: https://developer.nvidia.com/embedded/downloads)
+6. Get the linux sources, **Linux for Tegra (L4T)** (from NVIDIA download page: https://developer.nvidia.com/embedded/downloads)
 eg. from the output at 2. I download the **kernel sources** identified as **L4T Driver Package (BSP) Sources 32.6.1** and rename for our context.     
 ```
 wget https://developer.nvidia.com/embedded/l4t/r32_release_v6.1/sources/t210/public_sources.tbz2 -O tegra_sources.archive
